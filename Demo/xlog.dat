@@ -134,3 +134,5 @@ Time: 2024-08-23 09:08:20 ms:852 Level: LOG ERROR    Message: XSystem socket rec
 Time: 2024-08-23 09:10:03 ms:239 Level: LOG ERROR    Message: XSystem socket receive timeout
 Time: 2024-08-23 09:12:08 ms:479 Level: LOG ERROR    Message: XSystem socket receive timeout
 Time: 2024-08-23 09:12:44 ms:326 Level: LOG ERROR    Message: XSystem socket receive timeout
+Time: 2024-08-23 09:56:55 ms:274 Level: LOG ERROR    Message: XSystem socket receive timeout
+Time: 2024-08-23 11:02:33 ms:486 Level: LOG ERROR    Message: XSystem socket receive timeout
