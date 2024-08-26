@@ -66,6 +66,11 @@ public:
 		ResetEvent(_event_obj);
 		WaitForSingleObject(_event_obj, millisecond);
 	}
+	void Wait()
+	{
+		ResetEvent(_event_obj);
+		WaitForSingleObject(_event_obj, INFINITE);
+	}
 private:
 	HANDLE _event_obj;
 };
