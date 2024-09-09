@@ -145,3 +145,10 @@ Time: 2024-08-26 14:22:52 ms:174 Level: LOG ERROR    Message: XSystem socket rec
 Time: 2024-08-26 14:25:40 ms:386 Level: LOG ERROR    Message: XSystem socket receive timeout
 Time: 2024-08-26 14:26:13 ms:319 Level: LOG ERROR    Message: XSystem socket receive timeout
 Time: 2024-08-26 14:32:31 ms:121 Level: LOG ERROR    Message: XSystem socket receive timeout
+Time: 2024-09-08 19:18:24 ms:564 Level: LOG ERROR    Message: XSystem socket fail to send command
+Time: 2024-09-08 19:52:10 ms:011 Level: LOG ERROR    Message: XSystem socket fail to send command
+Time: 2024-09-08 21:44:11 ms:710 Level: LOG ERROR    Message: XSystem socket fail to send command
+Time: 2024-09-08 21:46:25 ms:878 Level: LOG ERROR    Message: XSystem socket fail to send command
+Time: 2024-09-08 21:48:55 ms:206 Level: LOG ERROR    Message: XSystem socket fail to send command
+Time: 2024-09-08 21:51:06 ms:408 Level: LOG ERROR    Message: XSystem socket fail to send command
+Time: 2024-09-08 21:57:30 ms:062 Level: LOG ERROR    Message: XSystem socket fail to send command

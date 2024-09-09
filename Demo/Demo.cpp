@@ -1,6 +1,5 @@
 // Demo.cpp
 // A C++ example of the usage of X-LIB
-
 #include "stdafx.h"
 
 //include X-LIB headers
@@ -36,14 +35,15 @@
 
 using namespace std;
 
+//Global variables
+
 XImageHandler ximg_handle; // XImageHandler object
 XEvent frame_complete; // XEvent object
 
-uint32_t frame_count = 0; // Number of frames to grab
+uint32_t frame_count = 0; // Number of frames grabed
 uint32_t lost_frame_count = 0; // Number of lost frames
 
 bool is_save = 0; // Flag for saving frames
-uint32_t max_frame_count = 0; // Number of saved frames
 string save_file_name; // Name of the saved file
 
 //The allocated buffer size for the grabbed frames
@@ -53,40 +53,10 @@ uint32_t frame_buffer_size = 700;
 uint32_t frame_buffer_size = 400;
 #endif
 
-void displayMenu()
-{
-	printf("Please choose one option from following: \n\n");
+void displayMenu();
+void clearBuffer();
 
-	printf("1- Find device\n");
-
-	printf("2- Configure device\n");
-
-	printf("3- Open device\n");
-
-	printf("4- Send ASII command\n");
-
-	printf("5- Grab\n");
-
-	printf("6- Stop\n");
-
-	printf("7- Grab and Save\n");
-
-	printf("8- Correct file\n");
-
-	printf("9- Close device\n");
-
-	printf("B- Binning mode\n");
-
-	printf("C- Cycling test\n");
-
-	printf("G- Gain\n");
-
-	printf("I- Integration time\n");
-
-	printf("q- Exit program\n\n\n");
-}
-
-//A class for handling commmand events
+//A class for handling command events
 class CmdSink :public IXCmdSink
 {
 public:
@@ -96,7 +66,7 @@ public:
 	}
 	void OnXEvent(uint32_t event_id, XHealthPara data)
 	{
-		//printf("On Event ID %u data %f\n", event_id, data._dasTemperature1);
+		printf("On Event ID %u data %f\n", event_id, data._dasTemperature1);
 	}
 };
 
@@ -206,17 +176,18 @@ int main(int argc, char** argv)
 	uint64_t cmd_para = 0;
 
 	//For cycling test
-	uint32_t cycle_num = 0;
-	uint32_t cycle_frames = 0;
+	uint32_t cycle_num = 1;
+	uint32_t cycle_frames = 1;
+	uint32_t cycle_frames_interval = 0;
 	uint32_t cycle_interval = 0;
 	uint32_t cycle_it = 0;
-
-
 
 	do
 	{
 		printf("Please input your choice: \n");
 		input_char = getchar();
+		clearBuffer();
+		cout << endl;
 
 		switch (input_char)
 		{
@@ -320,26 +291,47 @@ int main(int argc, char** argv)
 
 			is_save = 1;
 
-			printf("Please input the number of frames to be saved \n");
-			cin >> max_frame_count;
-
-			if (0 == max_frame_count)
-			{
-				printf("The number of frames cannot be 0, return to the main menu \n");
-				break;
-			}
-
 			printf("Please input the file name, *.dat\n");
 			cin >> save_file_name;
 
-			if (!ximg_handle.OpenFile(save_file_name.c_str()))
-			{
+			if (cycle_num == 1) {
 
-				printf("Fail to open image, return to the main menu \n");
-				break;
+				if (!ximg_handle.OpenFile(save_file_name.c_str()))
+				{
+					printf("Fail to open image, return to the main menu \n");
+					break;
+				}
+
+				xacquisition.Grab(cycle_frames);
+
+				frame_complete.WaitTime(cycle_frames_interval);
 			}
+			else {
+				string save_file_name_base = save_file_name.substr(0, save_file_name.find(".dat"));
 
-			xacquisition.Grab(max_frame_count);
+				for (cycle_it = 0; cycle_it < cycle_num; cycle_it++)
+				{
+					printf("\n Starting cycle %d\n", cycle_it);
+
+					save_file_name = save_file_name_base + "_cycle_" + to_string(cycle_it) + ".dat";
+
+					if (!ximg_handle.OpenFile(save_file_name.c_str()))
+					{
+						printf("Fail to open image, return to the main menu \n");
+						break;
+					}
+
+					xacquisition.Grab(cycle_frames);
+
+					frame_complete.WaitTime(cycle_frames_interval);
+
+					XSLEEP(cycle_interval * XSLEEP_UNIT);
+				}
+
+				printf("\nAll cycles complete \n");
+
+				xacquisition.Grab(cycle_frames);
+			}
 
 			break;
 
@@ -429,6 +421,8 @@ int main(int argc, char** argv)
 
 			xcorrection.Close();
 
+			clearBuffer();
+
 			break;
 
 		case '9':
@@ -454,6 +448,8 @@ int main(int argc, char** argv)
 				printf("Fail setting binning mode\n\n");
 			}
 
+			clearBuffer();
+
 			break;
 
 		case 'I':
@@ -469,6 +465,8 @@ int main(int argc, char** argv)
 			{
 				printf("Fail setting integration time\n\n");
 			}
+
+			clearBuffer();
 
 			break;
 
@@ -486,6 +484,8 @@ int main(int argc, char** argv)
 				printf("Fail setting gain\n\n");
 			}
 
+			clearBuffer();
+
 			break;
 
 		case 'C':
@@ -495,25 +495,23 @@ int main(int argc, char** argv)
 
 			printf("Please input frame count\n");
 			cin >> cycle_frames;
+			cycle_frames = cycle_frames <= 0 ? 1 : cycle_frames;
+
+			printf("Please input frame interval (s)\n");
+			cin >> cycle_frames_interval;
+			cycle_frames_interval = cycle_frames_interval < 0 ? 1 : cycle_frames_interval;
 
 			printf("Please input cycle count\n");
 			cin >> cycle_num;
+			cycle_num = cycle_num <= 0 ? 1 : cycle_num;
 
 			printf("Please input cycle interval (s)\n");
 			cin >> cycle_interval;
+			cycle_interval = cycle_interval < 0 ? 1 : cycle_interval;
 
-			for (cycle_it = 0; cycle_it < cycle_num; cycle_it++)
-			{
-				printf("\n Starting cycle %d\n", cycle_it);
+			cout << endl;
 
-				xacquisition.Grab(cycle_frames);
-
-				frame_complete.Wait();
-
-				XSLEEP(cycle_interval * XSLEEP_UNIT);
-			}
-
-			printf("\nAll cycles complete \n");
+			clearBuffer();
 
 			break;
 
@@ -533,3 +531,25 @@ int main(int argc, char** argv)
 	return 1;
 }
 
+void displayMenu()
+{
+	printf("Please choose one option from following: \n\n");
+	printf("1- Find device\n");
+	printf("2- Configure device\n");
+	printf("3- Open device\n");
+	printf("4- Send ASII command\n");
+	printf("5- Grab\n");
+	printf("6- Stop\n");
+	printf("7- Grab and Save\n");
+	printf("8- Correct file\n");
+	printf("9- Close device\n");
+	printf("B- Binning mode\n");
+	printf("C- Cycling test\n");
+	printf("G- Gain\n");
+	printf("I- Integration time\n");
+	printf("q- Exit program\n\n\n");
+}
+
+void clearBuffer() {
+	cin.ignore(10000, '\n');
+}
