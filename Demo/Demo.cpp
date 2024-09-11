@@ -305,6 +305,8 @@ int main(int argc, char** argv)
 				xacquisition.Grab(cycle_frames);
 
 				frame_complete.WaitTime(cycle_frames_interval);
+
+				ximg_handle.CloseFile();
 			}
 			else {
 				string save_file_name_base = save_file_name.substr(0, save_file_name.find(".dat"));
@@ -324,6 +326,8 @@ int main(int argc, char** argv)
 					xacquisition.Grab(cycle_frames);
 
 					frame_complete.WaitTime(cycle_frames_interval);
+
+					ximg_handle.CloseFile();
 
 					XSLEEP(cycle_interval * XSLEEP_UNIT);
 				}
@@ -544,7 +548,7 @@ void displayMenu()
 	printf("8- Correct file\n");
 	printf("9- Close device\n");
 	printf("B- Binning mode\n");
-	printf("C- Cycling test\n");
+	printf("C- Cycling params\n");
 	printf("G- Gain\n");
 	printf("I- Integration time\n");
 	printf("q- Exit program\n\n\n");
