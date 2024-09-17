@@ -26,6 +26,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <conio.h>
+#include <locale>
 
 #ifdef _WIN64
 #pragma comment(lib, "..\\lib\\x64\\XLibDllKosti.lib")
@@ -56,29 +57,40 @@ uint32_t frame_buffer_size = 400;
 void displayMenu();
 void clearBuffer();
 
-//A class for handling command events
+//Uma classe para manipular eventos de comando do dispositivo
 class CmdSink :public IXCmdSink
 {
 public:
-	void OnXError(uint32_t err_id, const char* err_msg_)
+	// Manipulação de erro
+	// Parâmetros err_id: ID do error, err_msg_: Mensagem de erro
+	void OnXError(uint32_t err_id, const char* err_msg_) override
 	{
-		printf("OnXError: %u, %s\n", err_id, err_msg_);
+		cout << "OnXError: " << err_id << ", " << err_msg_ << endl;
 	}
-	void OnXEvent(uint32_t event_id, XHealthPara data)
+	// Manipulação de eventos
+	// Parâmetros event_id: ID do evento, data: Dados do evento
+	// Eventos: _cisTemperature; _dasTemperature1; _dasTemperature2; _dasTemperature3; _dasHumidity;
+	void OnXEvent(uint32_t event_id, XHealthPara data) override
 	{
-		printf("On Event ID %u data %f\n", event_id, data._dasTemperature1);
+		//cout << "On Event ID " << event_id << " data " << data._dasTemperature1 << endl;
 	}
 };
 
-//A class for handling image events
+//Uma classe para manipular eventos de imagem
 class ImgSink : public IXImgSink
 {
-	void OnXError(uint32_t err_id, const char* err_msg_)
+	// Manipulação de erro
+	// Parâmetros err_id: ID do error, err_msg_: Mensagem de erro
+	void OnXError(uint32_t err_id, const char* err_msg_) override
 	{
 		printf("OnXERROR: %u, %s\n", err_id, err_msg_);
 	}
 
-	void OnXEvent(uint32_t event_id, uint32_t data)
+	// Manipulação de eventos
+	// Parâmetros event_id: ID do evento, data: Dados do evento
+	// Eventos: XEVENT_IMG_PARSE_DATA_LOST, XEVENT_IMG_TRANSFER_BUF_FULL, XEVENT_IMG_PARSE_DM_DROP,
+	//          XEVENT_IMG_PARSE_PAC_LOST, XEVENT_IMG_PARSE_MONITOR_STATUS_ERR
+	void OnXEvent(uint32_t event_id, uint32_t data) override
 	{
 		if (XEVENT_IMG_PARSE_DATA_LOST == event_id)
 		{
@@ -86,7 +98,9 @@ class ImgSink : public IXImgSink
 		}
 	}
 
-	void OnFrameReady(XImage* image_)
+	// Manipulação de quadros prontos
+	// Parâmetros image_: Ponteiro para o quadro
+	void OnFrameReady(XImage* image_) override
 	{
 		printf("Frame %u ready, width %u, height %d,  lost line %u\n",
 			frame_count++, image_->_width, image_->_height, lost_frame_count);
@@ -97,7 +111,8 @@ class ImgSink : public IXImgSink
 		}
 	}
 
-	void OnFrameComplete()
+	// Manipulação de quadros completos
+	void OnFrameComplete() override
 	{
 		printf("Grab complete.\n");
 
@@ -121,11 +136,13 @@ ImgSink img_sink;
 
 int main(int argc, char** argv)
 {
+	setlocale(LC_ALL, "pt_BR.UTF-8");
+
 	char host_ip[20];
 
 	if (1 == argc)
 	{
-		printf("Please input the IP address of the device\n");
+		cout << "Por favor, insira o IP do host" << endl;
 		cin >> host_ip;
 		cin.ignore();
 		cout << endl;
@@ -184,7 +201,7 @@ int main(int argc, char** argv)
 
 	do
 	{
-		printf("Please input your choice: \n");
+		cout << "Por favor, escolha uma opção: ";
 		input_char = getchar();
 		clearBuffer();
 		cout << endl;
@@ -194,34 +211,36 @@ int main(int argc, char** argv)
 		case '1':
 
 			if (!xsystem.Open())
-				return 0;
+			{
+				cerr << "Falha ao conectar ao host." << endl;
+    			return 0;  // Termina a execução se não conseguir conectar
+			}
 
 			device_count = xsystem.FindDevice();
 
 			if (device_count <= 0)
 			{
-				printf("No device found.\n ");
+				cout << "Nenhum dispositivo encontrado." << endl;
 				return 0;
 			}
 
 			//Get the first device
 			xdevice_ptr = xsystem.GetDevice(0);
 
-			printf("X-GCU: IP %s, Cmd Port %d, Img Port %d\n",
-				xdevice_ptr->GetIP(),
-				xdevice_ptr->GetCmdPort(),
-				xdevice_ptr->GetImgPort());
+			cout << "Dispositivo encontrado: " << xdevice_ptr->GetIP() << endl;
+			cout << "Porta de comando: " << xdevice_ptr->GetCmdPort() << endl;
+			cout << "Porta de imagem: " << xdevice_ptr->GetImgPort() << endl;
 
 			break;
 
 		case '2':
-			printf("Please input device IP\n");
+			cout << "Por favor, insira o IP do dispositivo" << endl;
 			cin >> device_ip;
 
-			printf("Please input device cmd port\n");
+			cout << "Por favor, insira a porta de comando do dispositivo" << endl;
 			cin >> device_cmd_port;
 
-			printf("Please input device img port\n");
+			cout << "Por favor, insira a porta de imagem do dispositivo" << endl;
 			cin >> device_img_port;
 
 			if (xdevice_ptr)
@@ -233,43 +252,45 @@ int main(int argc, char** argv)
 
 			if (1 == xsystem.ConfigureDevice(xdevice_ptr))
 			{
-				printf("Configure device successfully, please find device again\n");
+				cout << "Dispositivo configurado com sucesso, por favor, encontre o dispositivo novamente" << endl;
 			}
 			else
-				printf("Fail to configure device\n");
+			{
+				cout << "Falha ao configurar o dispositivo" << endl;
+			}
 
 			break;
 
 		case '3':
 			if (xcommand.Open(xdevice_ptr))
 			{
-				printf("Command channel open successfully\n");
+				cout << "Canal de comando aberto com sucesso" << endl;
 
 				if (xacquisition.Open(xdevice_ptr, &xcommand))
 				{
-					printf("Image channel open successfully\n");
+					cout << "Canal de imagem aberto com sucesso" << endl;
 
 				}
 				else
-					printf("Image channel fail to open\n");
+					cout << "Falha ao abrir o canal de imagem" << endl;
 			}
 
 			else
-				printf("Command channel fail to open\n");
+				cout << "Falha ao abrir o canal de comando" << endl;
 
 			break;
 
 		case '4':
-			printf("Please enter ASCII command:\n");
+			cout << "Por favor, insira o comando ASCII" << endl;
 			cin >> send_str;
 
 			xcommand.SendAscCmd(send_str, recv_str);
-			printf("Device feedback %s\n", recv_str.c_str());
+			cout << "Resposta: " << recv_str << endl;
 
 			break;
 
 		case '5':
-			printf("Start grabbing\n");
+			cout << "Iniciando aquisição" << endl;
 
 			frame_count = 0;
 			lost_frame_count = 0;
@@ -279,7 +300,7 @@ int main(int argc, char** argv)
 			break;
 
 		case '6':
-			printf("Stop grabbing\n");
+			cout << "Parando aquisição" << endl;
 
 			xacquisition.Stop();
 
@@ -291,14 +312,14 @@ int main(int argc, char** argv)
 
 			is_save = 1;
 
-			printf("Please input the file name, *.dat\n");
+			cout << "Por favor coloque o nome do arquivo para salvar, *.dat \n";
 			cin >> save_file_name;
 
 			if (cycle_num == 1) {
 
 				if (!ximg_handle.OpenFile(save_file_name.c_str()))
 				{
-					printf("Fail to open image, return to the main menu \n");
+					cout << "Falha ao abrir o arquivo de imagem, retornando ao menu principal" << endl;
 					break;
 				}
 
@@ -306,20 +327,19 @@ int main(int argc, char** argv)
 
 				frame_complete.WaitTime(cycle_frames_interval);
 
-				ximg_handle.CloseFile();
 			}
 			else {
 				string save_file_name_base = save_file_name.substr(0, save_file_name.find(".dat"));
 
 				for (cycle_it = 0; cycle_it < cycle_num; cycle_it++)
 				{
-					printf("\n Starting cycle %d\n", cycle_it);
+					cout << "Ciclo " << cycle_it << " completo" << endl;
 
 					save_file_name = save_file_name_base + "_cycle_" + to_string(cycle_it) + ".dat";
 
 					if (!ximg_handle.OpenFile(save_file_name.c_str()))
 					{
-						printf("Fail to open image, return to the main menu \n");
+						cout << "Falha ao abrir o arquivo de imagem, retornando ao menu principal" << endl;
 						break;
 					}
 
@@ -327,12 +347,10 @@ int main(int argc, char** argv)
 
 					frame_complete.WaitTime(cycle_frames_interval);
 
-					ximg_handle.CloseFile();
-
 					XSLEEP(cycle_interval * XSLEEP_UNIT);
 				}
 
-				printf("\nAll cycles complete \n");
+				cout << endl << "Ciclos completos" << endl;
 
 				xacquisition.Grab(cycle_frames);
 			}
@@ -343,26 +361,26 @@ int main(int argc, char** argv)
 
 			if (!xcorrection.Open(&xcommand))
 			{
-				printf("Fail to open correct object, return to the main menu \n");
+				cout << "Falha ao abrir o canal de comando, retornando ao menu principal" << endl;
 				break;
 			}
 
-			printf("Loading defect map...\n");
+			cout << "Por favor, insira o nome do arquivo de defeitos, *.dat \n";
 
 			if (!xcorrection.LoadDefectsFile())
 			{
-				printf("Fail to load defect map, return to the main menu \n");
+				cout << "Falha ao carregar o mapa de defeitos, retornando ao menu principal" << endl;
 				xcorrection.Close();
 				break;
 			}
 
-			printf("Succeed to load defect map, please input the offset image name, *.dat \n");
+			cout << "Por favor, insira o nome do arquivo de offset, *.dat \n";
 
 			cin >> offset_file;
 
 			if (!ximg_handle.ReadFile(offset_file.c_str()))
 			{
-				printf("Fail to open offset data, return to the main menu \n");
+				cout << "Falha ao abrir o arquivo de offset, retornando ao menu principal" << endl;
 
 				xcorrection.Close();
 				break;
@@ -370,19 +388,19 @@ int main(int argc, char** argv)
 
 			if (!xcorrection.CalculateOffset(ximg_handle._images_))
 			{
-				printf("Fail to calculate offset, return to the main menu \n");
+				cout << "Falha ao calcular o offset, retornando ao menu principal" << endl;
 
 				xcorrection.Close();
 				break;
 			}
 
-			printf("Succeed to calculate offset, please input the gain image name, *.dat \n");
+			cout << "Offset calculado com sucesso, por favor insira o nome do arquivo de ganho, *.dat \n";
 
 			cin >> gain_file;
 
 			if (!ximg_handle.ReadFile(gain_file.c_str()))
 			{
-				printf("Fail to open gain data, return to the main menu \n");
+				cout << "Falha ao abrir o arquivo de ganho, retornando ao menu principal" << endl;
 
 				xcorrection.Close();
 				break;
@@ -390,20 +408,19 @@ int main(int argc, char** argv)
 
 			if (!xcorrection.CalculateGain(ximg_handle._images_, 0))
 			{
-				printf("Fail to calculate gain, return to the main menu \n");
+				cout << "Falha ao calcular o ganho, retornando ao menu principal" << endl;
 
 				xcorrection.Close();
 				break;
 			}
 
-			printf("Succeed to calculate gain, please input the image data, *.dat \n");
-
+			cout << "Ganho calculado com sucesso, por favor insira o nome do arquivo de imagem, *.dat \n";
 
 			cin >> img_file;
 
 			if (!ximg_handle.ReadFile(img_file.c_str()))
 			{
-				printf("Fail to open image data, return to the main menu \n");
+				cout << "Falha ao abrir o arquivo de imagem, retornando ao menu principal" << endl;
 
 				xcorrection.Close();
 				break;
@@ -411,13 +428,13 @@ int main(int argc, char** argv)
 
 			if (!xcorrection.DoCorrect(ximg_handle._images_))
 			{
-				printf("Fail to correct the image data, return to the main menu \n");
+				cout << "Falha ao corrigir a imagem, retornando ao menu principal" << endl;
 
 				xcorrection.Close();
 				break;
 			}
 
-			printf("Succeed to do correct, please input the name of corrected image, *.dat  \n");
+			cout << "Por favor insira o nome do arquivo para salvar a imagem corrigida, *.dat \n";
 
 			cin >> img_file;
 
@@ -430,7 +447,7 @@ int main(int argc, char** argv)
 			break;
 
 		case '9':
-			printf("Close device\n");
+			cout << "Fechando o dispositivo" << endl;
 
 			xacquisition.Close();
 
@@ -440,16 +457,16 @@ int main(int argc, char** argv)
 
 		case 'B':
 		case 'b':
-			printf("Please input binning mode: \n 0: Original \n 1: 2x2\n");
+			cout << "Por favor insira o modo de binning: \n 0: Original \n 1: 2x2\n";
 			cin >> cmd_para;
 
 			if (1 == xcommand.SetPara(XPARA_BINNING_MODE, cmd_para))
 			{
-				printf("Succeed setting binning mode\n\n");
+				cout << "Modo de binning definido com sucesso\n\n";
 			}
 			else
 			{
-				printf("Fail setting binning mode\n\n");
+				cout << "Falha ao definir o modo de binning\n\n";
 			}
 
 			clearBuffer();
@@ -458,16 +475,16 @@ int main(int argc, char** argv)
 
 		case 'I':
 		case 'i':
-			printf("Please input integration time (us)\n");
+			cout << "Por favor insira o tempo de integração (us)" << endl;
 			cin >> cmd_para;
 
 			if (1 == xcommand.SetPara(XPARA_FRAME_PERIOD, cmd_para))
 			{
-				printf("Succeed setting integration time\n\n");
+				cout << "Tempo de integração definido com sucesso" << endl << endl;
 			}
 			else
 			{
-				printf("Fail setting integration time\n\n");
+				cout << "Falha ao definir o tempo de integração" << endl << endl;
 			}
 
 			clearBuffer();
@@ -476,16 +493,16 @@ int main(int argc, char** argv)
 
 		case 'G':
 		case 'g':
-			printf("Please input gain mode:\n 1: Low full well\n 256: High full well\n");
+			cout << "Por favor insira o modo de ganho: \n 1: Baixo ganho\n 256: Alto ganho\n";
 			cin >> cmd_para;
 
 			if (1 == xcommand.SetPara(XPARA_GAIN_RANGE, cmd_para))
 			{
-				printf("Succeed setting gain\n\n");
+				cout << "Ganho definido com sucesso\n\n";
 			}
 			else
 			{
-				printf("Fail setting gain\n\n");
+				cout << "Falha ao definir o ganho\n\n";
 			}
 
 			clearBuffer();
@@ -497,19 +514,19 @@ int main(int argc, char** argv)
 			frame_count = 0;
 			lost_frame_count = 0;
 
-			printf("Please input frame count\n");
+			cout << "Por favor insira o número de quadros do ciclo\n";
 			cin >> cycle_frames;
 			cycle_frames = cycle_frames <= 0 ? 1 : cycle_frames;
 
-			printf("Please input frame interval (s)\n");
+			cout << "Por favor insira o intervalo de quadros do ciclo (s)\n";
 			cin >> cycle_frames_interval;
 			cycle_frames_interval = cycle_frames_interval < 0 ? 1 : cycle_frames_interval;
 
-			printf("Please input cycle count\n");
+			cout << "Por favor insira o número de ciclos\n";
 			cin >> cycle_num;
 			cycle_num = cycle_num <= 0 ? 1 : cycle_num;
 
-			printf("Please input cycle interval (s)\n");
+			cout << "Por favor insira o intervalo de ciclo (s)\n";
 			cin >> cycle_interval;
 			cycle_interval = cycle_interval < 0 ? 1 : cycle_interval;
 
@@ -537,21 +554,22 @@ int main(int argc, char** argv)
 
 void displayMenu()
 {
-	printf("Please choose one option from following: \n\n");
-	printf("1- Find device\n");
-	printf("2- Configure device\n");
-	printf("3- Open device\n");
-	printf("4- Send ASII command\n");
-	printf("5- Grab\n");
-	printf("6- Stop\n");
-	printf("7- Grab and Save\n");
-	printf("8- Correct file\n");
-	printf("9- Close device\n");
-	printf("B- Binning mode\n");
-	printf("C- Cycling params\n");
-	printf("G- Gain\n");
-	printf("I- Integration time\n");
-	printf("q- Exit program\n\n\n");
+	cout << "Bem-vindo ao programa de demonstração do X-LIB\n\n";
+	cout << "Por favor, escolha uma opção a partir das seguintes: \n\n";
+	cout << "1- Encontrar dispositivo\n";
+	cout << "2- Configurar dispositivo\n";
+	cout << "3- Abrir dispositivo\n";
+	cout << "4- Enviar comando ASII\n";
+	cout << "5- Capturar\n";
+	cout << "6- Parar\n";
+	cout << "7- Capturar e salvar\n";
+	cout << "8- Arquivo corrigido\n";
+	cout << "9- Fechar dispositivo\n";
+	cout << "B- Modo de binning\n";
+	cout << "C- Parâmetros de ciclo\n";
+	cout << "G- Ganho\n";
+	cout << "I- Tempo de integração\n";
+	cout << "q- Sair do programa\n\n\n";
 }
 
 void clearBuffer() {
