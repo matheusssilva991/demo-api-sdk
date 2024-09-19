@@ -151,7 +151,6 @@ int main(int argc, char** argv)
 	{
 		cout << "Por favor, insira o IP do host" << endl;
 		cin >> host_ip;
-		cin.ignore();
 		cout << endl;
 	}
 
