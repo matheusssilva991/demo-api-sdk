@@ -151,6 +151,7 @@ int main(int argc, char** argv)
 	{
 		cout << "Por favor, insira o IP do host" << endl;
 		cin >> host_ip;
+		clearBuffer();
 		cout << endl;
 	}
 
@@ -222,7 +223,8 @@ int main(int argc, char** argv)
     			return 0;  // Termina a execução se não conseguir conectar
 			}
 
-			device_count = xsystem.FindDevice();
+			// device_count = xsystem.FindDevice();
+			device_count = 1;
 
 			if (device_count <= 0)
 			{
@@ -231,7 +233,16 @@ int main(int argc, char** argv)
 			}
 
 			//Get the first device
-			xdevice_ptr = xsystem.GetDevice(0);
+			//xdevice_ptr = xsystem.GetDevice(0);
+			xdevice_ptr = new XDevice(&xsystem);
+			xdevice_ptr->SetIP("192.168.1.2");
+			xdevice_ptr->SetCmdPort(5000);
+			xdevice_ptr->SetImgPort(3000);
+			xdevice_ptr->SetDeviceType("1412_KOSTI");
+			xdevice_ptr->SetSerialNum("1234567890", 10);
+			xdevice_ptr->SetMAC((uint8_t*)"123456");
+			xdevice_ptr->SetFirmBuildVer(123);
+			xdevice_ptr->SetFirmVer(123);
 
 			cout << "Dispositivo encontrado: " << xdevice_ptr->GetIP() << endl;
 			cout << "Porta de comando: " << xdevice_ptr->GetCmdPort() << endl;

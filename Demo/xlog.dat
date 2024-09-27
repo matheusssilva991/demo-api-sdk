@@ -154,3 +154,96 @@ Time: 2024-09-08 21:51:06 ms:408 Level: LOG ERROR    Message: XSystem socket fai
 Time: 2024-09-08 21:57:30 ms:062 Level: LOG ERROR    Message: XSystem socket fail to send command
 Time: 2024-09-11 10:32:53 ms:994 Level: LOG ERROR    Message: XSystem socket fail to send command
 Time: 2024-09-16 22:47:25 ms:731 Level: LOG ERROR    Message: XSystem socket receive timeout
+Time: 2024-09-24 14:23:08 ms:858 Level: LOG ERROR    Message: XSystem socket fail to send command
+Time: 2024-09-24 14:24:39 ms:738 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 14:24:59 ms:935 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-24 14:24:59 ms:944 Level: LOG INFO     Message: [9]
+Time: 2024-09-24 14:31:06 ms:968 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 14:31:27 ms:096 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-24 14:31:27 ms:105 Level: LOG INFO     Message: [9]
+Time: 2024-09-24 14:41:09 ms:169 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 14:41:29 ms:543 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-24 14:41:29 ms:554 Level: LOG INFO     Message: [9]
+Time: 2024-09-24 14:46:29 ms:120 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 14:46:49 ms:362 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-24 14:46:49 ms:369 Level: LOG INFO     Message: [9]
+Time: 2024-09-24 14:54:07 ms:504 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 14:54:07 ms:506 Level: LOG INFO     Message: [2]
+Time: 2024-09-24 14:54:16 ms:744 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 14:54:16 ms:744 Level: LOG INFO     Message: [2]
+Time: 2024-09-24 14:55:14 ms:745 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 14:55:14 ms:745 Level: LOG INFO     Message: [2]
+Time: 2024-09-24 14:55:15 ms:920 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 14:55:15 ms:920 Level: LOG INFO     Message: [2]
+Time: 2024-09-24 15:03:39 ms:457 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 15:03:39 ms:458 Level: LOG INFO     Message: [2]
+Time: 2024-09-24 15:04:19 ms:320 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 15:04:19 ms:320 Level: LOG INFO     Message: [2]
+Time: 2024-09-24 15:05:16 ms:968 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 15:05:16 ms:969 Level: LOG INFO     Message: [2]
+Time: 2024-09-24 15:14:14 ms:817 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 15:14:14 ms:817 Level: LOG INFO     Message: [2]
+Time: 2024-09-24 15:37:46 ms:193 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-24 15:37:46 ms:193 Level: LOG INFO     Message: [2]
+Time: 2024-09-24 15:38:47 ms:081 Level: LOG ERROR    Message: XCmdEngine socket fail to bind 
+Time: 2024-09-24 15:39:03 ms:361 Level: LOG ERROR    Message: XCmdEngine socket fail to bind 
+Time: 2024-09-24 15:39:54 ms:872 Level: LOG ERROR    Message: XCmdEngine socket fail to bind 
+Time: 2024-09-24 15:39:56 ms:161 Level: LOG ERROR    Message: XCmdEngine socket fail to bind 
+Time: 2024-09-24 15:44:43 ms:123 Level: LOG ERROR    Message: XCmdEngine socket fail to bind 
+Time: 2024-09-24 15:44:47 ms:121 Level: LOG ERROR    Message: XCmdEngine socket fail to bind 
+Time: 2024-09-24 16:06:51 ms:002 Level: LOG ERROR    Message: XCmdEngine socket fail to bind 
+Time: 2024-09-27 09:54:42 ms:145 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 09:55:02 ms:177 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 09:55:02 ms:186 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 09:55:52 ms:184 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 09:56:12 ms:290 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 09:56:12 ms:292 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:12:35 ms:592 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:12:55 ms:830 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:12:55 ms:839 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:14:04 ms:137 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:14:24 ms:313 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:14:24 ms:323 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:16:10 ms:192 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:16:30 ms:312 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:16:30 ms:316 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:18:24 ms:344 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:18:44 ms:612 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:18:44 ms:625 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:22:47 ms:818 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:23:07 ms:943 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:23:07 ms:949 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:26:28 ms:392 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:26:48 ms:728 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:26:48 ms:734 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:31:36 ms:817 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:31:56 ms:978 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:31:56 ms:985 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:32:23 ms:809 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:32:43 ms:946 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:32:43 ms:951 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:32:57 ms:729 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:33:17 ms:998 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:33:18 ms:001 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:34:41 ms:730 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:35:01 ms:937 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:35:01 ms:948 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:51:56 ms:754 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:52:16 ms:909 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:52:16 ms:917 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 10:57:43 ms:290 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 10:58:03 ms:389 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 10:58:03 ms:391 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 11:06:05 ms:978 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 11:06:05 ms:999 Level: LOG INFO     Message: [2]
+Time: 2024-09-27 11:06:24 ms:105 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 11:06:24 ms:109 Level: LOG INFO     Message: [2]
+Time: 2024-09-27 11:08:19 ms:018 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 11:08:19 ms:021 Level: LOG INFO     Message: [2]
+Time: 2024-09-27 11:10:14 ms:114 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 11:10:14 ms:117 Level: LOG INFO     Message: [2]
+Time: 2024-09-27 11:15:12 ms:481 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 11:15:32 ms:698 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-09-27 11:15:32 ms:707 Level: LOG INFO     Message: [9]
+Time: 2024-09-27 11:18:25 ms:625 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-09-27 11:18:25 ms:628 Level: LOG INFO     Message: [2]
