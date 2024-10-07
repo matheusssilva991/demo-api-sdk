@@ -14,3 +14,5 @@ Time: 2024-09-18 15:22:48 ms:888 Level: LOG ERROR    Message: XSystem socket fai
 Time: 2024-09-18 15:23:25 ms:834 Level: LOG ERROR    Message: XSystem socket receive timeout
 Time: 2024-09-18 15:34:53 ms:786 Level: LOG ERROR    Message: XSystem socket receive timeout
 Time: 2024-09-18 15:35:03 ms:671 Level: LOG ERROR    Message: XSystem socket receive timeout
+Time: 2024-10-07 10:13:03 ms:499 Level: LOG ERROR    Message: XSystem socket fail to send command
+Time: 2024-10-07 10:13:06 ms:664 Level: LOG ERROR    Message: XSystem socket fail to send command

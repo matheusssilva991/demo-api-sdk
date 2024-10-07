@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="QtGui">
+    <qresource prefix="/QtGui"/>
+    <qresource prefix="/Assets">
+        <file>assets/select_arrow.png</file>
     </qresource>
 </RCC>

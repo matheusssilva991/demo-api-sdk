@@ -43,10 +43,11 @@ QtGui::QtGui(QWidget *parent)
 {
     ui.setupUi(this);
 
-	connect(ui.hostIpConnectBtn, SIGNAL(clicked()), this, SLOT(on_btn_connect_clicked()));
+	connect(ui.hostIpConnectBtn, SIGNAL(clicked()), this, SLOT(onBtnConnectClicked()));
+	connect(ui.deviceSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(onDeviceSelectChanged(int)));
 }
 
-void QtGui::on_btn_connect_clicked() {
+void QtGui::onBtnConnectClicked() {
 	QString host_ip = ui.hostIpInput->text();
 	char host_ip_c[20];
 
@@ -72,14 +73,15 @@ void QtGui::on_btn_connect_clicked() {
 	this->xacquisition->RegisterEventSink(&this->img_sink);
 	this->xacquisition->RegisterFrameTransfer(this->xtransfer);
 
-	// Open system connection
+	/*// Open system connection
 	if (!this->xsystem->Open()) {
 		QMessageBox::critical(this, "Connection", "Failed to connect to " + host_ip);
 		return;
 	}
 
-	/*// Find device
-	if (this->xsystem->FindDevice() <= 0) {
+	// Find device
+	int num_devices = this->xsystem->FindDevice();
+	if (num_devices <= 0) {
 		QMessageBox::critical(this, "Connection", "No device found on " + host_ip);
 		return;
 	}
@@ -94,11 +96,37 @@ void QtGui::on_btn_connect_clicked() {
 		}
 
 	} else {
-		cout << "Falha ao abrir o canal de comando" << endl;
-	}
+		QMessageBox::critical(this, "Connection", "Failed to open command");
+	}*/
+	
+	QMessageBox::information(this, "Connection", "Connecting to " + host_ip);
 
-	// Set device info
-	QString mac_address(reinterpret_cast<char*>(this->xdevice_ptr->GetMAC()));
+	ui.hostIpInput->setDisabled(true);
+	ui.hostIpConnectBtn->setDisabled(true);
+
+	// Enable device info
+	ui.deviceSelect->setDisabled(false);
+	ui.deviceCmdPortInput->setDisabled(false);
+	ui.deviceImgPortInput->setDisabled(false);
+	ui.deviceSerialInput->setDisabled(false);
+	ui.deviceTypeInput->setDisabled(false);
+	ui.deviceMacInput->setDisabled(false);
+	ui.deviceFirmwareInput->setDisabled(false);
+	ui.deviceIpInput->setDisabled(false);
+	ui.deviceInfoUpdateBtn->setDisabled(false);
+
+	int num_devices = 4;
+	for (int i = 0; i < num_devices; i++) {
+		ui.deviceSelect->addItem("Dispositivo " + QString::number(i + 1));
+	}
+}
+
+void QtGui::onDeviceSelectChanged(int index) {
+	QString selectedOption = ui.deviceSelect->itemText(index);
+	int deviceId = selectedOption.split(" ")[1].toInt() - 1;
+	//this->xdevice_ptr = this->xsystem->GetDevice(deviceId);
+
+	/*QString mac_address(reinterpret_cast<char*>(this->xdevice_ptr->GetMAC()));
 	QString firm_ver(reinterpret_cast<char*>(this->xdevice_ptr->GetFirmVer()));
 	QString cmd_port = QString::number(this->xdevice_ptr->GetCmdPort());
 	QString img_port = QString::number(this->xdevice_ptr->GetImgPort());
@@ -106,15 +134,10 @@ void QtGui::on_btn_connect_clicked() {
 	ui.deviceIpInput->setText(this->xdevice_ptr->GetIP());
 	ui.deviceTypeInput->setText(this->xdevice_ptr->GetDeviceType());
 	ui.deviceMacInput->setText(mac_address);
-	ui.deviceFinwareInput->setText(firm_ver);
-    ui.deviceCmdPortInput->setText(cmd_port);
+	ui.deviceFirmwareInput->setText(firm_ver);
+	ui.deviceCmdPortInput->setText(cmd_port);
 	ui.deviceImgPortInput->setText(img_port);
-	ui.deviceSerialInput->setText(this->xdevice_ptr->GetSerialNum());
-	*/
-	QMessageBox::information(this, "Connection", "Connecting to " + host_ip);
-
-	ui.hostIpInput->setDisabled(true);
-	ui.hostIpConnectBtn->setDisabled(true);
+	ui.deviceSerialInput->setText(this->xdevice_ptr->GetSerialNum()); */
 }
 
 QtGui::~QtGui()

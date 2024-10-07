@@ -22,7 +22,8 @@ public:
     ~QtGui();
 
 private slots:
-	void on_btn_connect_clicked();
+	void onBtnConnectClicked();
+    void onDeviceSelectChanged(int);
 
 private:
     Ui::QtGuiClass ui;
