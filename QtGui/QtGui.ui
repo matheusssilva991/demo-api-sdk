@@ -135,7 +135,7 @@ QPushButton:disabled {
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -770,7 +770,7 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="deviceSelectLabel_2">
+             <widget class="QLabel" name="acquisitionModeLabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -789,7 +789,7 @@ QPushButton:disabled {
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="deviceSelect_2">
+             <widget class="QComboBox" name="acquisitionModeInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -851,7 +851,7 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="deviceSelectLabel_4">
+             <widget class="QLabel" name="operationModeLabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -870,7 +870,7 @@ QPushButton:disabled {
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="deviceSelect_4">
+             <widget class="QComboBox" name="operationModeInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -925,7 +925,7 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="deviceSelectLabel_3">
+             <widget class="QLabel" name="TriggerModeLabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -944,7 +944,7 @@ QPushButton:disabled {
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="deviceSelect_3">
+             <widget class="QComboBox" name="TriggerModeInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -993,7 +993,7 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="deviceSelectLabel_5">
+             <widget class="QLabel" name="binningModeLabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1012,7 +1012,7 @@ QPushButton:disabled {
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="deviceSelect_5">
+             <widget class="QComboBox" name="binningModeInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1067,7 +1067,7 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="deviceSelectLabel_6">
+             <widget class="QLabel" name="gainModeLabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1086,7 +1086,7 @@ QPushButton:disabled {
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="deviceSelect_6">
+             <widget class="QComboBox" name="gainModeInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1135,14 +1135,14 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="deviceFirmwareLabel_3">
+             <widget class="QLabel" name="numCyclesLabel">
               <property name="text">
                <string>Número de ciclos</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="deviceFirmwareInput_3">
+             <widget class="QLineEdit" name="numCyclesInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1190,14 +1190,14 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="deviceFirmwareLabel_4">
+             <widget class="QLabel" name="cycleIntervalLabel">
               <property name="text">
                <string>Intervalo entre ciclos (s)</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="deviceFirmwareInput_4">
+             <widget class="QLineEdit" name="cycleIntervalInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1246,7 +1246,7 @@ QPushButton:disabled {
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="deviceFirmwareInput_5">
+             <widget class="QLineEdit" name="numFramesInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1294,14 +1294,14 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="deviceFirmwareLabel_6">
+             <widget class="QLabel" name="framesIntervalLabel">
               <property name="text">
                <string>Intervalo entre frames (s)</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="deviceFirmwareInput_6">
+             <widget class="QLineEdit" name="framesIntervalInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1343,14 +1343,14 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="deviceFirmwareLabel_7">
+             <widget class="QLabel" name="integrationTimeLabel">
               <property name="text">
                <string>Tempo de integração (u)</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="deviceFirmwareInput_7">
+             <widget class="QLineEdit" name="integrationTimeInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1397,7 +1397,7 @@ QPushButton:disabled {
            <number>10</number>
           </property>
           <item>
-           <widget class="QLabel" name="deviceFirmwareLabel_8">
+           <widget class="QLabel" name="fileNameLabel">
             <property name="text">
              <string>Local de salvamento</string>
             </property>
@@ -1406,7 +1406,7 @@ QPushButton:disabled {
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_17">
             <item>
-             <widget class="QLineEdit" name="deviceFirmwareInput_8">
+             <widget class="QLineEdit" name="fileNameInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1444,7 +1444,7 @@ QPushButton:disabled {
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="deviceInfoUpdateBtn_4">
+             <widget class="QPushButton" name="ChooseFileNameBtn">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1465,7 +1465,7 @@ QPushButton:disabled {
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_12">
             <item>
-             <widget class="QPushButton" name="deviceInfoUpdateBtn_2">
+             <widget class="QPushButton" name="grabBtn">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1475,7 +1475,7 @@ QPushButton:disabled {
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="deviceInfoUpdateBtn_3">
+             <widget class="QPushButton" name="stopGrabBtn">
               <property name="enabled">
                <bool>false</bool>
               </property>

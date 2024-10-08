@@ -22,9 +22,9 @@ public:
     ~QtGui();
 
 private slots:
-	void onConnectBtnClicked();
-    void onDeviceSelectChanged(int);
-    void onDeviceInfoUpdateBtnClicked();
+	void on_connect_btn_clicked();
+    void on_device_select_changed(int);
+    void on_device_info_update_btn_clicked();
 
 private:
     Ui::QtGuiClass ui;
@@ -39,4 +39,6 @@ private:
     XCommand* xcommand;
     XFrameTransfer* xtransfer;
     XAcquisition* xacquisition;
+
+	QString file_name;
 };

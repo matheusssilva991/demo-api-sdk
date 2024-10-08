@@ -1,6 +1,7 @@
 #include "QtGui.h"
 #include "QtDebug"
 #include "QMessageBox"
+#include "QFileDialog"
 
 #include "xsystem.h"
 #include "xdevice.h"
@@ -43,12 +44,12 @@ QtGui::QtGui(QWidget *parent)
 {
     ui.setupUi(this);
 
-	connect(ui.hostIpConnectBtn, SIGNAL(clicked()), this, SLOT(onConnectBtnClicked()));
-	connect(ui.deviceInfoUpdateBtn, SIGNAL(clicked()), this, SLOT(onDeviceInfoUpdateBtnClicked()));
-	connect(ui.deviceSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(onDeviceSelectChanged(int)));
+	connect(ui.hostIpConnectBtn, SIGNAL(clicked()), this, SLOT(on_connect_btn_clicked()));
+	connect(ui.deviceInfoUpdateBtn, SIGNAL(clicked()), this, SLOT(on_device_info_update_btn_clicked()));
+	connect(ui.deviceSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(on_device_select_changed(int)));
 }
 
-void QtGui::onConnectBtnClicked() {
+void QtGui::on_connect_btn_clicked() {
 	QString host_ip = ui.hostIpInput->text();
 	char host_ip_c[20];
 
@@ -110,9 +111,9 @@ void QtGui::onConnectBtnClicked() {
 	}
 }
 
-void QtGui::onDeviceSelectChanged(int index) {
-	QString selectedOption = ui.deviceSelect->itemText(index);
-	int deviceId = selectedOption.split(" ")[1].toInt() - 1;
+void QtGui::on_device_select_changed(int index) {
+	QString selected_option = ui.deviceSelect->itemText(index);
+	int device_id = selected_option.split(" ")[1].toInt() - 1;
 
 	if (this->xdevice_ptr != nullptr) {
 		this->xacquisition->Close();
@@ -146,8 +147,8 @@ void QtGui::onDeviceSelectChanged(int index) {
 	ui.deviceSerialInput->setText(this->xdevice_ptr->GetSerialNum()); */
 }
 
-void QtGui::onDeviceInfoUpdateBtnClicked() {
-	int deviceId = ui.deviceSelect->currentIndex() - 1;
+void QtGui::on_device_info_update_btn_clicked() {
+	int device_id = ui.deviceSelect->currentIndex() - 1;
 
 	/*QString ip = ui.deviceIpInput->text();
 	QString type = ui.deviceTypeInput->text();
@@ -167,7 +168,7 @@ void QtGui::onDeviceInfoUpdateBtnClicked() {
 
 	if (1 == this->xsystem->ConfigureDevice(xdevice_ptr))
 	{
-		this->xdevice_ptr = this->xsystem->GetDevice(deviceId);
+		this->xdevice_ptr = this->xsystem->GetDevice(device_id);
 	}
 	else
 	{
