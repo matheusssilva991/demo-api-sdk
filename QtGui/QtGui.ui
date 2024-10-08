@@ -45,12 +45,14 @@
        </sizepolicy>
       </property>
       <property name="autoFillBackground">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">* {
 	font-family: &quot;Arial&quot;;
     font-size: 9pt;
+	background-color: #FAFAFA;
+	color: #000;
 }
 
 QTabBar::tab {
@@ -58,11 +60,12 @@ QTabBar::tab {
     color: #000;
     padding: 8px 12px;
     border: 1px solid #B1B1B1;
-    border-bottom: none; /* Remove a borda inferior das abas */
+    border-bottom: none; /*Remove a borda inferior das abas */
 }
 
 QTabBar::tab:selected {
     background-color: #FAFAFA; /* Fundo da aba selecionada */
+	color: #000;
 }
 
 QTabWidget::pane {
@@ -79,7 +82,8 @@ QLineEdit {
 }
 
 QLineEdit:disabled {
-    background-color: #CBCBCB;
+    background-color: #D3D3D3; /* Fundo cinza */
+    color: #A9A9A9; /* Texto desbotado */
 }
 
 QComboBox {
@@ -91,7 +95,8 @@ QComboBox {
 }
 
 QComboBox:disabled {
-    background-color: #CBCBCB;
+    background-color: #D3D3D3; /* Fundo cinza */
+    color: #A9A9A9; /* Texto desbotado */
 }
 
 QComboBox::drop-down {
@@ -101,7 +106,8 @@ QComboBox::drop-down {
 }
 
 QComboBox::drop-down:disabled {
-	background-color: #CBCBCB;
+	background-color: #D3D3D3; /* Fundo cinza */
+    color: #A9A9A9; /* Texto desbotado */
 }
 
 QComboBox::down-arrow {
@@ -129,7 +135,7 @@ QPushButton:disabled {
 </string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
