@@ -46,7 +46,13 @@ QtGui::QtGui(QWidget *parent)
 
 	connect(ui.hostIpConnectBtn, SIGNAL(clicked()), this, SLOT(on_connect_btn_clicked()));
 	connect(ui.deviceInfoUpdateBtn, SIGNAL(clicked()), this, SLOT(on_device_info_update_btn_clicked()));
+	connect(ui.chooseFileNameBtn, SIGNAL(clicked()), this, SLOT(on_choose_file_name_btn_clicked()));
+	connect(ui.grabBtn, SIGNAL(clicked()), this, SLOT(on_grab_btn_clicked()));
+	connect(ui.stopGrabBtn, SIGNAL(clicked()), this, SLOT(on_stop_grap_btn_clicked()));
 	connect(ui.deviceSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(on_device_select_changed(int)));
+	connect(ui.acquisitionModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_acquisition_mode_changed(int)));
+	connect(ui.operationModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_operation_mode_changed(int)));
+	connect(ui.binningModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_binning_mode_changed(int)));
 }
 
 void QtGui::on_connect_btn_clicked() {
@@ -98,12 +104,22 @@ void QtGui::on_connect_btn_clicked() {
 	ui.deviceSelect->setDisabled(false);
 	ui.deviceCmdPortInput->setDisabled(false);
 	ui.deviceImgPortInput->setDisabled(false);
-	ui.deviceSerialInput->setDisabled(false);
-	ui.deviceTypeInput->setDisabled(false);
-	ui.deviceMacInput->setDisabled(false);
-	ui.deviceFirmwareInput->setDisabled(false);
 	ui.deviceIpInput->setDisabled(false);
 	ui.deviceInfoUpdateBtn->setDisabled(false);
+	ui.acquisitionModeInput->setDisabled(false);
+	ui.operationModeInput->setDisabled(false);
+	ui.TriggerModeInput->setDisabled(false);
+	ui.binningModeInput->setDisabled(false);
+	ui.gainModeInput->setDisabled(false);
+	ui.numCyclesInput->setDisabled(false);
+	ui.numFramesInput->setDisabled(false);
+	ui.cycleIntervalInput->setDisabled(false);
+	ui.framesIntervalInput->setDisabled(false);
+	ui.integrationTimeInput->setDisabled(false);
+	ui.fileNameInput->setDisabled(false);
+	ui.chooseFileNameBtn->setDisabled(false);
+	ui.grabBtn->setDisabled(false);
+	ui.stopGrabBtn->setDisabled(false);
 
 	int num_devices = 4;
 	for (int i = 0; i < num_devices; i++) {
@@ -176,6 +192,123 @@ void QtGui::on_device_info_update_btn_clicked() {
 		return;
 	}
 }
+
+void QtGui::on_choose_file_name_btn_clicked() {
+	this->file_name = QFileDialog::getSaveFileName(this, "Save file", "../images", "DAT files (*.dat);;All files (*.*)");
+	ui.fileNameInput->setText(this->file_name);
+}
+
+void QtGui::on_acquisition_mode_changed(int index) {
+	QString selected_acquisition_mode = ui.acquisitionModeInput->itemText(index);
+	int operation_mode_index = ui.operationModeInput->currentIndex();
+	QString selected_operation_mode = ui.operationModeInput->itemText(operation_mode_index);
+
+	if (selected_acquisition_mode == "Tomografia") {
+		ui.operationModeInput->setDisabled(false);
+		ui.TriggerModeInput->setDisabled(false);
+		ui.binningModeInput->setDisabled(false);
+		ui.gainModeInput->setDisabled(false);
+		ui.integrationTimeInput->setDisabled(false);
+
+		if (selected_operation_mode == QString("Cont\u00EDnuo")) {
+			ui.numCyclesInput->setDisabled(true);
+			ui.numFramesInput->setDisabled(true);
+			ui.cycleIntervalInput->setDisabled(true);
+			ui.framesIntervalInput->setDisabled(true);
+			ui.integrationTimeInput->setDisabled(true);
+		}
+		else {
+			ui.numCyclesInput->setDisabled(false);
+			ui.numFramesInput->setDisabled(false);
+			ui.cycleIntervalInput->setDisabled(false);
+			ui.framesIntervalInput->setDisabled(false);
+			ui.integrationTimeInput->setDisabled(false);
+		}
+
+	} else {
+		ui.operationModeInput->setDisabled(true);
+		ui.TriggerModeInput->setDisabled(false);
+		ui.binningModeInput->setDisabled(false);
+		ui.gainModeInput->setDisabled(false);
+		ui.numCyclesInput->setDisabled(true);
+		ui.numFramesInput->setDisabled(true);
+		ui.cycleIntervalInput->setDisabled(true);
+		ui.framesIntervalInput->setDisabled(true);
+		ui.integrationTimeInput->setDisabled(false);
+	}
+	return;
+}
+
+void QtGui::on_operation_mode_changed(int index) {
+	QString selected_operation_mode = ui.operationModeInput->itemText(index);
+
+	if (selected_operation_mode == QString("Cont\u00EDnuo")) {
+		ui.numCyclesInput->setDisabled(true);
+		ui.numFramesInput->setDisabled(true);
+		ui.cycleIntervalInput->setDisabled(true);
+		ui.framesIntervalInput->setDisabled(true);
+		ui.integrationTimeInput->setDisabled(true);
+	}
+	else {
+		ui.numCyclesInput->setDisabled(false);
+		ui.numFramesInput->setDisabled(false);
+		ui.cycleIntervalInput->setDisabled(false);
+		ui.framesIntervalInput->setDisabled(false);
+		ui.integrationTimeInput->setDisabled(false);
+	}
+
+	return;
+}
+
+void QtGui::on_binning_mode_changed(int index) {
+	QString selected_binning_mode = ui.binningModeInput->itemText(index);
+	string binning_mode = selected_binning_mode.toStdString() == "Normal" ? "0": "1";
+
+	if (this->xcommand->SetPara(XPARA_BINNING_MODE, binning_mode) != 1)
+	{
+		QMessageBox::critical(this, "Connection", "Falha ao definir o modo de binning");
+	}
+}
+
+void QtGui::on_gain_mode_changed(int index) {
+	QString selected_gain_mode = ui.gainModeInput->itemText(index);
+	string gain_mode = selected_gain_mode.toStdString() == "Alto" ? "256" : "1";
+
+	if (this->xcommand->SetPara(XPARA_GAIN_RANGE, gain_mode) != 1)
+	{
+		QMessageBox::critical(this, "Connection", "Falha ao definir o modo de ganho");
+	}
+}
+
+void QtGui::on_grab_btn_clicked() {
+	int acquisition_mode_index = ui.acquisitionModeInput->currentIndex();
+	QString selected_acquisition_mode = ui.acquisitionModeInput->itemText(acquisition_mode_index);
+	int operation_mode_index = ui.operationModeInput->currentIndex();
+	QString selected_operation_mode = ui.operationModeInput->itemText(operation_mode_index);
+
+
+	if (selected_acquisition_mode == "Tomografia") {
+		if (selected_operation_mode == QString("Cont\u00EDnuo")) {
+			
+			
+		}
+		else {
+
+		}
+	}
+	else {
+		int trigger_mode_index = ui.TriggerModeInput->currentIndex();
+		int binning_mode_index = ui.binningModeInput->currentIndex();
+		int gain_mode_index = ui.gainModeInput->currentIndex();
+		int integration_time = ui.integrationTimeInput->text().toInt();
+	}
+}
+
+void QtGui::on_stop_grab_btn_clicked() {
+	this->xacquisition->Stop();
+}
+
+
 
 QtGui::~QtGui()
 {}

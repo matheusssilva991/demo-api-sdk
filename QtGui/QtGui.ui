@@ -1444,7 +1444,7 @@ QPushButton:disabled {
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="ChooseFileNameBtn">
+             <widget class="QPushButton" name="chooseFileNameBtn">
               <property name="enabled">
                <bool>false</bool>
               </property>

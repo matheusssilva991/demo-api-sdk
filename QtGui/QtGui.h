@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QObject>
 #include "ui_QtGui.h"
 
 #include "CmdSink.h"
@@ -24,7 +25,14 @@ public:
 private slots:
 	void on_connect_btn_clicked();
     void on_device_select_changed(int);
+    void on_acquisition_mode_changed(int);
     void on_device_info_update_btn_clicked();
+    void on_choose_file_name_btn_clicked();
+	void on_operation_mode_changed(int);
+    void on_grab_btn_clicked();
+	void on_stop_grab_btn_clicked();
+    void on_binning_mode_changed(int);
+    void on_gain_mode_changed(int);
 
 private:
     Ui::QtGuiClass ui;
