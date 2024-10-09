@@ -33,6 +33,11 @@ private slots:
 	void on_stop_grab_btn_clicked();
     void on_binning_mode_changed(int);
     void on_gain_mode_changed(int);
+	void on_integration_time_changed();
+	void on_num_cycles_changed();
+    void on_cycles_interval_input_changed();
+	void on_num_frames_changed();
+    void on_frames_interval_input_changed();
 
 private:
     Ui::QtGuiClass ui;

@@ -53,6 +53,12 @@ QtGui::QtGui(QWidget *parent)
 	connect(ui.acquisitionModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_acquisition_mode_changed(int)));
 	connect(ui.operationModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_operation_mode_changed(int)));
 	connect(ui.binningModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_binning_mode_changed(int)));
+	connect(ui.gainModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_gain_mode_changed(int)));
+	connect(ui.integrationTimeInput, SIGNAL(editingFinished()), this, SLOT(on_integration_time_changed()));
+	connect(ui.numCyclesInput, SIGNAL(editingFinished()), this, SLOT(on_num_cycles_changed()));
+	connect(ui.cyclesIntervalInput, SIGNAL(editingFinished()), this, SLOT(on_cycles_interval_input_changed()));
+	connect(ui.numFramesInput, SIGNAL(editingFinished()), this, SLOT(on_num_frames_changed()));
+	connect(ui.framesIntervalInput, SIGNAL(editingFinished()), this, SLOT(on_frames_interval_input_changed()));
 }
 
 void QtGui::on_connect_btn_clicked() {
@@ -94,6 +100,14 @@ void QtGui::on_connect_btn_clicked() {
 		return;
 	}
 	*/
+
+	// Set default values
+	ui.integrationTimeInput->setText("10000000");
+	ui.numCyclesInput->setText("1");
+	ui.numFramesInput->setText("1");
+	ui.cyclesIntervalInput->setText("0");
+	ui.framesIntervalInput->setText("0");
+	ui.fileNameInput->setText("");
 	
 	QMessageBox::information(this, "Connection", "Connecting to " + host_ip);
 
@@ -111,11 +125,6 @@ void QtGui::on_connect_btn_clicked() {
 	ui.TriggerModeInput->setDisabled(false);
 	ui.binningModeInput->setDisabled(false);
 	ui.gainModeInput->setDisabled(false);
-	ui.numCyclesInput->setDisabled(false);
-	ui.numFramesInput->setDisabled(false);
-	ui.cycleIntervalInput->setDisabled(false);
-	ui.framesIntervalInput->setDisabled(false);
-	ui.integrationTimeInput->setDisabled(false);
 	ui.fileNameInput->setDisabled(false);
 	ui.chooseFileNameBtn->setDisabled(false);
 	ui.grabBtn->setDisabled(false);
@@ -213,14 +222,14 @@ void QtGui::on_acquisition_mode_changed(int index) {
 		if (selected_operation_mode == QString("Cont\u00EDnuo")) {
 			ui.numCyclesInput->setDisabled(true);
 			ui.numFramesInput->setDisabled(true);
-			ui.cycleIntervalInput->setDisabled(true);
+			ui.cyclesIntervalInput->setDisabled(true);
 			ui.framesIntervalInput->setDisabled(true);
 			ui.integrationTimeInput->setDisabled(true);
 		}
 		else {
 			ui.numCyclesInput->setDisabled(false);
 			ui.numFramesInput->setDisabled(false);
-			ui.cycleIntervalInput->setDisabled(false);
+			ui.cyclesIntervalInput->setDisabled(false);
 			ui.framesIntervalInput->setDisabled(false);
 			ui.integrationTimeInput->setDisabled(false);
 		}
@@ -232,7 +241,7 @@ void QtGui::on_acquisition_mode_changed(int index) {
 		ui.gainModeInput->setDisabled(false);
 		ui.numCyclesInput->setDisabled(true);
 		ui.numFramesInput->setDisabled(true);
-		ui.cycleIntervalInput->setDisabled(true);
+		ui.cyclesIntervalInput->setDisabled(true);
 		ui.framesIntervalInput->setDisabled(true);
 		ui.integrationTimeInput->setDisabled(false);
 	}
@@ -245,14 +254,14 @@ void QtGui::on_operation_mode_changed(int index) {
 	if (selected_operation_mode == QString("Cont\u00EDnuo")) {
 		ui.numCyclesInput->setDisabled(true);
 		ui.numFramesInput->setDisabled(true);
-		ui.cycleIntervalInput->setDisabled(true);
+		ui.cyclesIntervalInput->setDisabled(true);
 		ui.framesIntervalInput->setDisabled(true);
 		ui.integrationTimeInput->setDisabled(true);
 	}
 	else {
 		ui.numCyclesInput->setDisabled(false);
 		ui.numFramesInput->setDisabled(false);
-		ui.cycleIntervalInput->setDisabled(false);
+		ui.cyclesIntervalInput->setDisabled(false);
 		ui.framesIntervalInput->setDisabled(false);
 		ui.integrationTimeInput->setDisabled(false);
 	}
@@ -277,6 +286,61 @@ void QtGui::on_gain_mode_changed(int index) {
 	if (this->xcommand->SetPara(XPARA_GAIN_RANGE, gain_mode) != 1)
 	{
 		QMessageBox::critical(this, "Connection", "Falha ao definir o modo de ganho");
+	}
+}
+
+void QtGui::on_integration_time_changed() {
+	int integration_time = ui.integrationTimeInput->text().toInt();
+
+	if (integration_time < 0) {
+		ui.integrationTimeInput->setText("10000000");
+		QMessageBox::warning(this, "Connection", "Tempo de integra\u00E7\u00E3o deve ser positivo.");
+		return;
+	}
+
+	if (this->xcommand->SetPara(XPARA_FRAME_PERIOD, integration_time) != 1)
+	{
+		QMessageBox::critical(this, "Connection", "Falha ao definir o tempo de integra\u00E7\u00E3o.");
+	}
+}
+
+void QtGui::on_num_cycles_changed() {
+	int num_cycles = ui.numCyclesInput->text().toInt();
+
+	if (num_cycles < 0) {
+		ui.numCyclesInput->setText("1");
+		QMessageBox::warning(this, "Connection", "O n\u00FAmero de ciclos deve ser positivo.");
+		return;
+	}
+}
+
+void QtGui::on_cycles_interval_input_changed() {
+	int cycle_interval = ui.cyclesIntervalInput->text().toInt();
+
+	if (cycle_interval < 0) {
+		ui.cyclesIntervalInput->setText("0");
+		QMessageBox::warning(this, "Connection", "O intervalo entre ciclos n\u00E3o pode ser negativo.");
+		return;
+	}
+}
+
+void QtGui::on_num_frames_changed() {
+	int num_frames = ui.numFramesInput->text().toInt();
+
+	if (num_frames < 0) {
+		ui.numFramesInput->setText("1");
+		QMessageBox::warning(this, "Connection", "O n\u00FAmero de frames deve ser positivo.");
+		return;
+	}
+}
+
+void QtGui::on_frames_interval_input_changed() {
+	int frames_interval = ui.framesIntervalInput->text().toInt();
+
+	if (frames_interval < 0) {
+		ui.framesIntervalInput->setText("0");
+		QMessageBox::warning(this, "Connection", "O intervalo entre frames n\u00E3o pode ser negativo.");
+		return;
 	}
 }
 
@@ -307,8 +371,6 @@ void QtGui::on_grab_btn_clicked() {
 void QtGui::on_stop_grab_btn_clicked() {
 	this->xacquisition->Stop();
 }
-
-
 
 QtGui::~QtGui()
 {}

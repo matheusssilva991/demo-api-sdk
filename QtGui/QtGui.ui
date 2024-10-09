@@ -135,7 +135,7 @@ QPushButton:disabled {
 </string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1190,14 +1190,14 @@ QPushButton:disabled {
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="cycleIntervalLabel">
+             <widget class="QLabel" name="cyclesIntervalLabel">
               <property name="text">
                <string>Intervalo entre ciclos (s)</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="cycleIntervalInput">
+             <widget class="QLineEdit" name="cyclesIntervalInput">
               <property name="enabled">
                <bool>false</bool>
               </property>
