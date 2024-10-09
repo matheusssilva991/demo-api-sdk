@@ -45,6 +45,7 @@ private:
     CmdSink cmd_sink;
 	ImgSink img_sink;
     XImageHandler ximg_handle;
+	XEvent xevent;
 
     XGigFactory xfactory;
     XSystem* xsystem;

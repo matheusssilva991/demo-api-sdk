@@ -370,8 +370,6 @@ int main(int argc, char** argv)
 				}
 
 				cout << endl << "Ciclos completos" << endl;
-
-				xacquisition.Grab(cycle_frames);
 			}
 
 			break;

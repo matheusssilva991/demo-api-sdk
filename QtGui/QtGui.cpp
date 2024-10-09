@@ -349,22 +349,88 @@ void QtGui::on_grab_btn_clicked() {
 	QString selected_acquisition_mode = ui.acquisitionModeInput->itemText(acquisition_mode_index);
 	int operation_mode_index = ui.operationModeInput->currentIndex();
 	QString selected_operation_mode = ui.operationModeInput->itemText(operation_mode_index);
+	string save_file_name = this->file_name.toStdString();
 
+	this->img_sink.SetIsSave(true);
+	this->img_sink.resetCounters();
+
+	if (save_file_name.find(".dat") == string::npos)
+	{
+		save_file_name = save_file_name + ".dat";
+	}
 
 	if (selected_acquisition_mode == "Tomografia") {
 		if (selected_operation_mode == QString("Cont\u00EDnuo")) {
-			
-			
+			this->img_sink.SetSaveFileName(save_file_name);
+
+			if (!this->ximg_handle.OpenFile(save_file_name.c_str()))
+			{
+				QMessageBox::critical(this, "Connection", "Falha ao abrir o arquivo de imagem.");
+				return;
+			}
+
+			this->xacquisition->Grab(0);
 		}
 		else {
+			int cycle_num = ui.numCyclesInput->text().toInt();
+			int cycle_frames = ui.numFramesInput->text().toInt();
+			int cycle_frames_interval = ui.framesIntervalInput->text().toInt();
+			int cycle_interval = ui.cyclesIntervalInput->text().toInt();
 
+			if (cycle_num == 1) {
+				this->img_sink.SetSaveFileName(save_file_name);
+
+				if (!this->ximg_handle.OpenFile(save_file_name.c_str()))
+				{
+					QMessageBox::critical(this, "Connection", "Falha ao abrir o arquivo de imagem.");
+					return;
+				}
+
+				this->xacquisition->Grab(cycle_frames);
+
+				this->xevent.WaitTime(cycle_frames_interval);
+
+			}
+			else {
+				string save_file_name_base = save_file_name;
+
+				save_file_name_base = save_file_name_base.substr(0, save_file_name_base.find(".dat"));
+
+				for (int cycle_it = 0; cycle_it < cycle_num; cycle_it++)
+				{
+					this->img_sink.SetIsSave(true);
+					this->img_sink.resetCounters();
+
+					save_file_name = save_file_name_base + "_cycle_" + to_string(cycle_it) + ".dat";
+					this->img_sink.SetSaveFileName(save_file_name);
+
+					if (!ximg_handle.OpenFile(save_file_name.c_str()))
+					{
+						QMessageBox::critical(this, "Connection", "Falha ao abrir o arquivo de imagem.");
+						break;
+					}
+
+					this->xacquisition->Grab(cycle_frames);
+
+					this->xevent.WaitTime(cycle_frames_interval);
+
+					XSLEEP(cycle_interval * XSLEEP_UNIT);
+				}
+
+				QMessageBox::information(this, "Acquisition", "Ciclos completos.");
+			}
 		}
 	}
 	else {
-		int trigger_mode_index = ui.TriggerModeInput->currentIndex();
-		int binning_mode_index = ui.binningModeInput->currentIndex();
-		int gain_mode_index = ui.gainModeInput->currentIndex();
-		int integration_time = ui.integrationTimeInput->text().toInt();
+		this->img_sink.SetSaveFileName(save_file_name);
+
+		if (!this->ximg_handle.OpenFile(save_file_name.c_str()))
+		{
+			QMessageBox::critical(this, "Connection", "Falha ao abrir o arquivo de imagem.");
+			return;
+		}
+
+		this->xacquisition->Grab(1);
 	}
 }
 
