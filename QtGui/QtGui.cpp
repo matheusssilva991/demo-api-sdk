@@ -56,9 +56,19 @@ QtGui::QtGui(QWidget *parent)
 	connect(ui.gainModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_gain_mode_changed(int)));
 	connect(ui.integrationTimeInput, SIGNAL(editingFinished()), this, SLOT(on_integration_time_changed()));
 	connect(ui.numCyclesInput, SIGNAL(editingFinished()), this, SLOT(on_num_cycles_changed()));
-	connect(ui.cyclesIntervalInput, SIGNAL(editingFinished()), this, SLOT(on_cycles_interval_input_changed()));
 	connect(ui.numFramesInput, SIGNAL(editingFinished()), this, SLOT(on_num_frames_changed()));
 	connect(ui.framesIntervalInput, SIGNAL(editingFinished()), this, SLOT(on_frames_interval_input_changed()));
+	connect(ui.cyclesIntervalInput, SIGNAL(editingFinished()), this, SLOT(on_cycles_interval_input_changed()));
+}
+
+void QtGui::on_cycles_interval_input_changed() {
+	int cycle_interval = ui.cyclesIntervalInput->text().toInt();
+
+	if (cycle_interval < 0) {
+		ui.cyclesIntervalInput->setText("0");
+		QMessageBox::warning(this, "Connection", "O intervalo entre ciclos n\u00E3o pode ser negativo.");
+		return;
+	}
 }
 
 void QtGui::on_connect_btn_clicked() {
@@ -314,15 +324,7 @@ void QtGui::on_num_cycles_changed() {
 	}
 }
 
-void QtGui::on_cycles_interval_input_changed() {
-	int cycle_interval = ui.cyclesIntervalInput->text().toInt();
 
-	if (cycle_interval < 0) {
-		ui.cyclesIntervalInput->setText("0");
-		QMessageBox::warning(this, "Connection", "O intervalo entre ciclos n\u00E3o pode ser negativo.");
-		return;
-	}
-}
 
 void QtGui::on_num_frames_changed() {
 	int num_frames = ui.numFramesInput->text().toInt();
