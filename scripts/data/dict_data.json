@@ -1,0 +1,67 @@
+{
+    "src": {
+        "cmd_data_channel": [
+            "bcbc220200009246ea5dfcfc",
+            "bcbc230200004e2b70eafcfc",
+            "bcbc4002000015a61420fcfc",
+            "bcbc6402000083ba1ed4fcfc",
+            "bcbc4302000075d1a64efcfc",
+            "bcbcb00200007faed23afcfc",
+            "bcbcb1020000a3c3488dfcfc",
+            "bcbc6802000006a5cadbfcfc",
+            "bcbc78020000f1b1e778fcfc",
+            "bcbc6f0200001a2734b0fcfc",
+            "bcbc2701000100b1e2ca4cfcfc",
+            "bcbc60010001024549d968fcfc"
+        ],
+        "integration_time": [
+            "bcbc2001000400989680b8c9f1e1fcfc"
+        ],
+        "binnning_mode": [
+            "bcbc40010001004faee3a9fcfc"
+        ],
+        "gain_mode": [
+            "bcbc230100020001313d0117fcfc"
+        ],
+        "grab_image": [
+            "bcbc6402000083ba1ed4fcfc",
+            "bcbc4302000075d1a64efcfc",
+            "bcbc2701000100b1e2ca4cfcfc",
+            "bcbc2701000101b523d7fbfcfc"
+        ]
+    },
+    "rcv": {
+        "cmd_data_channel": [
+            "bcbc22000001000476b4f5fcfc",
+            "bcbc2300000200017830669afcfc",
+            "bcbc400000010093c3791efcfc",
+            "bcbc6400000404b00578259be719fcfc",
+            "bcbc43000001024156eae7fcfc",
+            "bcbcb000000100182a735ffcfc",
+            "bcbcb1000008000304ae00010578e75e3c99fcfc",
+            "bcbc680000020201fc7f976ffcfc",
+            "bcbc7800000400000abb6dfb2f0efcfc",
+            "bcbc6f00000400020002f07b7a26fcfc",
+            "bcbc27000000316f65e1fcfc",
+            "bcbc60000000fcfe0bdffcfc"
+        ],
+        "integration_time": [
+            "bcbc200000002ded9b8afcfc"
+        ],
+        "binnning_mode": [
+            "bcbc4000000016174d2efcfc"
+        ],
+        "gain_mode": [
+            "bcbc230000004d9a29e4fcfc"
+        ],
+        "heartbeat": [
+            "bcbcff000018030a077304dc027a00000000000000006c1f83a300eb0000c2aef73dfcfc"
+        ],
+        "grab_image": [
+            "bcbc6400000404b00578259be719fcfc",
+            "bcbc43000001024156eae7fcfc",
+            "bcbc27000000316f65e1fcfc",
+            "bcbc27000000316f65e1fcfc"
+        ]
+    }
+}

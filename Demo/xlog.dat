@@ -289,3 +289,446 @@ Time: 2024-10-16 20:40:30 ms:301 Level: LOG INFO     Message: [OM,R,0]
 Time: 2024-10-16 20:40:30 ms:304 Level: LOG INFO     Message: [2]
 Time: 2024-10-16 20:40:54 ms:116 Level: LOG INFO     Message: [OM,R,0]
 Time: 2024-10-16 20:40:54 ms:120 Level: LOG INFO     Message: [2]
+Time: 2024-10-19 10:01:15 ms:916 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:01:15 ms:932 Level: LOG INFO     Message: [2]
+Time: 2024-10-19 10:03:44 ms:435 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:04:04 ms:744 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 10:04:04 ms:747 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 10:04:52 ms:083 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:04:52 ms:086 Level: LOG INFO     Message: [2]
+Time: 2024-10-19 10:05:33 ms:551 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:05:54 ms:030 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 10:05:54 ms:032 Level: LOG INFO     Message: [11]
+Time: 2024-10-19 10:06:50 ms:346 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:07:10 ms:915 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 10:07:10 ms:919 Level: LOG INFO     Message: [11]
+Time: 2024-10-19 10:07:31 ms:195 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:07:51 ms:528 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 10:07:51 ms:537 Level: LOG INFO     Message: [11]
+Time: 2024-10-19 10:10:03 ms:979 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:10:03 ms:983 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:10:03 ms:983 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 10:10:24 ms:244 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 10:10:24 ms:247 Level: LOG INFO     Message: [11]
+Time: 2024-10-19 10:15:05 ms:843 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:15:05 ms:847 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:15:05 ms:847 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 10:15:26 ms:289 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 10:15:26 ms:296 Level: LOG INFO     Message: [11]
+Time: 2024-10-19 10:20:03 ms:900 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:20:03 ms:903 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:20:03 ms:903 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 10:20:09 ms:011 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 10:20:09 ms:011 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 10:20:09 ms:025 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:20:09 ms:026 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 10:20:09 ms:039 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 10:20:09 ms:039 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 10:20:14 ms:134 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 10:20:14 ms:134 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 10:20:34 ms:392 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 10:20:34 ms:395 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 10:42:43 ms:205 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:42:43 ms:208 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:42:43 ms:209 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 10:42:48 ms:299 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 10:42:48 ms:299 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 10:42:48 ms:302 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:42:48 ms:302 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 10:42:48 ms:307 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 10:42:48 ms:307 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 10:42:53 ms:336 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 10:42:53 ms:336 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 10:42:53 ms:344 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:42:53 ms:344 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 10:42:53 ms:347 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 10:42:53 ms:347 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 10:42:53 ms:352 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 10:42:53 ms:352 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 10:43:13 ms:514 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 10:43:13 ms:521 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 10:55:23 ms:140 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 10:55:23 ms:144 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:55:23 ms:144 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 10:55:28 ms:174 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 10:55:28 ms:174 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 10:55:28 ms:178 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:55:28 ms:178 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 10:55:28 ms:182 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 10:55:28 ms:182 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 10:55:33 ms:277 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 10:55:33 ms:277 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 10:55:33 ms:286 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 10:55:33 ms:286 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 10:55:33 ms:289 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 10:55:33 ms:289 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 10:55:33 ms:293 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 10:55:33 ms:293 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 10:55:33 ms:297 Level: LOG INFO     Message: [0,00000ABB]
+Time: 2024-10-19 10:55:33 ms:297 Level: LOG INFO     Message: [TY,R,0]
+Time: 2024-10-19 10:55:38 ms:434 Level: LOG INFO     Message: [0,00020002]
+Time: 2024-10-19 10:55:38 ms:434 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 10:55:38 ms:447 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 10:55:38 ms:449 Level: LOG INFO     Message: [TP,W,0,2]
+Time: 2024-10-19 10:55:38 ms:452 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 10:55:42 ms:545 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 10:55:46 ms:637 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 10:55:50 ms:710 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 10:55:54 ms:793 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 10:55:58 ms:875 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 10:56:02 ms:949 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 10:56:07 ms:042 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:28:22 ms:277 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 11:28:22 ms:281 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:28:22 ms:281 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 11:28:27 ms:371 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 11:28:27 ms:371 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 11:28:27 ms:374 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:28:27 ms:374 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 11:28:27 ms:378 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 11:28:27 ms:378 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 11:28:32 ms:400 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 11:28:32 ms:400 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 11:28:32 ms:438 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:28:32 ms:438 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 11:28:32 ms:445 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 11:28:32 ms:445 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 11:28:32 ms:456 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 11:28:32 ms:456 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 11:28:32 ms:461 Level: LOG INFO     Message: [0,00000ABB]
+Time: 2024-10-19 11:28:32 ms:461 Level: LOG INFO     Message: [TY,R,0]
+Time: 2024-10-19 11:28:37 ms:523 Level: LOG INFO     Message: [0,00020002]
+Time: 2024-10-19 11:28:37 ms:523 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 11:28:37 ms:551 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 11:28:37 ms:561 Level: LOG INFO     Message: [TP,W,0,2]
+Time: 2024-10-19 11:28:37 ms:561 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 11:28:43 ms:642 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:28:47 ms:753 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:28:51 ms:857 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:28:55 ms:952 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:00 ms:043 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:04 ms:141 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:08 ms:207 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:12 ms:296 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:16 ms:380 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:20 ms:463 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:24 ms:575 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:28 ms:662 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:32 ms:765 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:36 ms:846 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:40 ms:933 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:45 ms:024 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:49 ms:115 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:53 ms:220 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:29:57 ms:313 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:01 ms:370 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:05 ms:460 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:09 ms:561 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:13 ms:644 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:17 ms:738 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:21 ms:841 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:25 ms:920 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:30 ms:003 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:34 ms:104 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:38 ms:188 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:42 ms:284 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:46 ms:384 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:50 ms:496 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:54 ms:586 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:30:58 ms:674 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:02 ms:779 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:06 ms:869 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:10 ms:958 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:15 ms:045 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:19 ms:148 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:23 ms:256 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:27 ms:343 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:31 ms:422 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:35 ms:515 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:39 ms:616 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:43 ms:699 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:47 ms:790 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:51 ms:863 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:31:55 ms:962 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:00 ms:065 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:04 ms:169 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:08 ms:254 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:12 ms:354 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:16 ms:429 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:20 ms:526 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:24 ms:613 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:28 ms:702 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:32 ms:791 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:36 ms:876 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:40 ms:968 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:45 ms:071 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:49 ms:161 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:53 ms:250 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:32:57 ms:342 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:33:01 ms:445 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:33:05 ms:513 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:33:09 ms:623 Level: LOG ERROR    Message: XCmd fail to get heartbeat
+Time: 2024-10-19 11:40:04 ms:757 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 11:40:04 ms:760 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:40:04 ms:760 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 11:40:09 ms:783 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 11:40:09 ms:783 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 11:40:09 ms:797 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:40:09 ms:797 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 11:40:09 ms:808 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 11:40:09 ms:808 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 11:40:14 ms:839 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 11:40:14 ms:839 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 11:40:14 ms:844 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:40:14 ms:844 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 11:40:14 ms:849 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 11:40:14 ms:849 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 11:40:14 ms:855 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 11:40:14 ms:855 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 11:40:14 ms:859 Level: LOG INFO     Message: [0,00000ABB]
+Time: 2024-10-19 11:40:14 ms:859 Level: LOG INFO     Message: [TY,R,0]
+Time: 2024-10-19 11:40:19 ms:970 Level: LOG INFO     Message: [0,00020002]
+Time: 2024-10-19 11:40:19 ms:971 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 11:40:20 ms:005 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 11:40:20 ms:011 Level: LOG INFO     Message: [TP,W,0,2]
+Time: 2024-10-19 11:40:20 ms:018 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 11:43:06 ms:414 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 11:43:06 ms:417 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:43:06 ms:417 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 11:43:11 ms:483 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 11:43:11 ms:483 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 11:43:11 ms:486 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:43:11 ms:486 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 11:43:11 ms:491 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 11:43:11 ms:491 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 11:43:16 ms:583 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 11:43:16 ms:583 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 11:43:16 ms:587 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:43:16 ms:587 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 11:43:16 ms:589 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 11:43:16 ms:590 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 11:43:16 ms:594 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 11:43:16 ms:594 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 11:43:16 ms:599 Level: LOG INFO     Message: [0,00000ABB]
+Time: 2024-10-19 11:43:16 ms:600 Level: LOG INFO     Message: [TY,R,0]
+Time: 2024-10-19 11:43:21 ms:655 Level: LOG INFO     Message: [0,00020002]
+Time: 2024-10-19 11:43:21 ms:655 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 11:43:21 ms:660 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 11:43:21 ms:661 Level: LOG INFO     Message: [TP,W,0,2]
+Time: 2024-10-19 11:43:21 ms:663 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 11:47:22 ms:925 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 11:47:43 ms:188 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 11:47:43 ms:191 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 11:47:52 ms:708 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 11:47:52 ms:712 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:47:52 ms:712 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 11:47:57 ms:770 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 11:47:57 ms:770 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 11:47:57 ms:774 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:47:57 ms:774 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 11:47:57 ms:779 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 11:47:57 ms:779 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 11:48:02 ms:828 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 11:48:02 ms:828 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 11:48:02 ms:841 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:48:02 ms:841 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 11:48:02 ms:846 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 11:48:02 ms:846 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 11:48:02 ms:855 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 11:48:02 ms:855 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 11:48:02 ms:862 Level: LOG INFO     Message: [0,00000ABB]
+Time: 2024-10-19 11:48:02 ms:862 Level: LOG INFO     Message: [TY,R,0]
+Time: 2024-10-19 11:48:07 ms:897 Level: LOG INFO     Message: [0,00020002]
+Time: 2024-10-19 11:48:07 ms:897 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 11:48:07 ms:902 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 11:48:07 ms:905 Level: LOG INFO     Message: [TP,W,0,2]
+Time: 2024-10-19 11:48:07 ms:909 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 11:51:02 ms:205 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 11:51:22 ms:209 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 11:51:22 ms:212 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 11:52:06 ms:389 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 11:52:06 ms:392 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:52:06 ms:392 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 11:52:11 ms:501 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 11:52:11 ms:501 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 11:52:11 ms:511 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:52:11 ms:511 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 11:52:11 ms:524 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 11:52:11 ms:524 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 11:52:16 ms:616 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 11:52:16 ms:616 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 11:52:16 ms:637 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 11:52:16 ms:637 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 11:52:16 ms:648 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 11:52:16 ms:648 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 11:52:16 ms:655 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 11:52:16 ms:655 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 11:52:16 ms:660 Level: LOG INFO     Message: [0,00000ABB]
+Time: 2024-10-19 11:52:16 ms:660 Level: LOG INFO     Message: [TY,R,0]
+Time: 2024-10-19 11:52:21 ms:759 Level: LOG INFO     Message: [0,00020002]
+Time: 2024-10-19 11:52:21 ms:759 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 11:52:21 ms:768 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 11:52:21 ms:770 Level: LOG INFO     Message: [TP,W,0,2]
+Time: 2024-10-19 11:52:21 ms:774 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 15:32:37 ms:609 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:32:57 ms:841 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:32:57 ms:851 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 15:33:53 ms:960 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:34:14 ms:214 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:34:14 ms:217 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 15:34:45 ms:944 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:35:06 ms:260 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:35:06 ms:267 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 15:37:06 ms:832 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:37:26 ms:999 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:37:27 ms:001 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 15:39:09 ms:344 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:39:29 ms:638 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:39:29 ms:647 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 15:40:27 ms:592 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:40:47 ms:838 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:40:47 ms:845 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 15:41:26 ms:656 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:41:46 ms:987 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:41:46 ms:998 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 15:44:08 ms:968 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:44:29 ms:272 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:44:29 ms:282 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 15:44:58 ms:631 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:44:58 ms:636 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 15:44:58 ms:636 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 15:45:03 ms:711 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 15:45:03 ms:711 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 15:45:03 ms:719 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 15:45:49 ms:433 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:45:49 ms:437 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 15:45:49 ms:437 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 15:45:54 ms:543 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 15:45:54 ms:544 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 15:45:54 ms:552 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 15:46:31 ms:920 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:46:31 ms:926 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 15:46:31 ms:926 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 15:46:36 ms:970 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 15:46:36 ms:970 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 15:46:36 ms:975 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 15:46:56 ms:119 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:46:56 ms:123 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 15:46:56 ms:123 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 15:47:01 ms:237 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 15:47:01 ms:237 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 15:47:01 ms:242 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 15:56:51 ms:185 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:56:51 ms:189 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 15:56:51 ms:189 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 15:57:11 ms:490 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:57:11 ms:501 Level: LOG INFO     Message: [11]
+Time: 2024-10-19 15:58:02 ms:976 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:58:02 ms:979 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 15:58:02 ms:979 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 15:58:23 ms:269 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 15:58:23 ms:271 Level: LOG INFO     Message: [11]
+Time: 2024-10-19 15:59:35 ms:248 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 15:59:35 ms:252 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 15:59:35 ms:252 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 15:59:40 ms:357 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 15:59:40 ms:357 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 15:59:40 ms:367 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 15:59:40 ms:367 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 15:59:40 ms:375 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 15:59:40 ms:376 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 15:59:45 ms:483 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 15:59:45 ms:483 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 15:59:45 ms:495 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 15:59:45 ms:495 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 15:59:45 ms:499 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 15:59:45 ms:499 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 15:59:45 ms:503 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 15:59:45 ms:503 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 15:59:45 ms:508 Level: LOG INFO     Message: [0,00000ABB]
+Time: 2024-10-19 15:59:45 ms:508 Level: LOG INFO     Message: [TY,R,0]
+Time: 2024-10-19 15:59:50 ms:622 Level: LOG INFO     Message: [0,00020002]
+Time: 2024-10-19 15:59:50 ms:623 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 15:59:50 ms:628 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 15:59:50 ms:631 Level: LOG INFO     Message: [TP,W,0,2]
+Time: 2024-10-19 15:59:50 ms:636 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 15:59:53 ms:667 Level: LOG ERROR    Message: XCmd heartbeat voltage error
+Time: 2024-10-19 16:01:45 ms:329 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 16:01:45 ms:333 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 16:01:45 ms:333 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 16:01:50 ms:451 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 16:01:50 ms:451 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 16:01:50 ms:456 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 16:02:56 ms:937 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 16:02:56 ms:941 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 16:02:56 ms:941 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 16:03:17 ms:180 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 16:03:17 ms:181 Level: LOG INFO     Message: [11]
+Time: 2024-10-19 16:05:51 ms:729 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 16:06:11 ms:902 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 16:06:11 ms:910 Level: LOG INFO     Message: [9]
+Time: 2024-10-19 16:06:39 ms:352 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 16:06:39 ms:356 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 16:06:39 ms:356 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 16:06:59 ms:621 Level: LOG ERROR    Message: XCmdEngine socket receive timeout 
+Time: 2024-10-19 16:06:59 ms:624 Level: LOG INFO     Message: [11]
+Time: 2024-10-19 16:07:59 ms:489 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 16:07:59 ms:492 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 16:07:59 ms:493 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 16:08:04 ms:594 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 16:08:04 ms:594 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 16:08:04 ms:607 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 16:08:04 ms:607 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 16:08:04 ms:631 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 16:08:04 ms:631 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 16:08:09 ms:736 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 16:08:09 ms:736 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 16:08:09 ms:755 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 16:08:09 ms:755 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 16:08:09 ms:773 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 16:08:09 ms:773 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 16:08:09 ms:789 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 16:08:09 ms:789 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 16:08:09 ms:798 Level: LOG INFO     Message: [0,00000ABB]
+Time: 2024-10-19 16:08:09 ms:798 Level: LOG INFO     Message: [TY,R,0]
+Time: 2024-10-19 16:08:14 ms:910 Level: LOG INFO     Message: [0,00020002]
+Time: 2024-10-19 16:08:14 ms:910 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 16:08:14 ms:919 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 16:08:14 ms:921 Level: LOG INFO     Message: [TP,W,0,2]
+Time: 2024-10-19 16:08:14 ms:926 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 16:08:17 ms:954 Level: LOG ERROR    Message: XCmd heartbeat voltage error
+Time: 2024-10-19 16:12:51 ms:313 Level: LOG INFO     Message: [OM,R,0]
+Time: 2024-10-19 16:12:51 ms:317 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 16:12:51 ms:317 Level: LOG INFO     Message: [SG,R,0]
+Time: 2024-10-19 16:12:56 ms:429 Level: LOG INFO     Message: [0,0001]
+Time: 2024-10-19 16:12:56 ms:429 Level: LOG INFO     Message: [DA,R,0]
+Time: 2024-10-19 16:12:56 ms:440 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 16:12:56 ms:441 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 16:12:56 ms:462 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 16:12:56 ms:462 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 16:13:01 ms:475 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 16:13:01 ms:475 Level: LOG INFO     Message: [RE,R,0]
+Time: 2024-10-19 16:13:01 ms:480 Level: LOG INFO     Message: [0,00]
+Time: 2024-10-19 16:13:01 ms:480 Level: LOG INFO     Message: [RO,R,0]
+Time: 2024-10-19 16:13:01 ms:483 Level: LOG INFO     Message: [0,000304AE00010578]
+Time: 2024-10-19 16:13:01 ms:483 Level: LOG INFO     Message: [GF,R,0]
+Time: 2024-10-19 16:13:01 ms:494 Level: LOG INFO     Message: [0,0201]
+Time: 2024-10-19 16:13:01 ms:494 Level: LOG INFO     Message: [HG,R,0]
+Time: 2024-10-19 16:13:01 ms:497 Level: LOG INFO     Message: [0,00000ABB]
+Time: 2024-10-19 16:13:01 ms:497 Level: LOG INFO     Message: [TY,R,0]
+Time: 2024-10-19 16:13:06 ms:607 Level: LOG INFO     Message: [0,00020002]
+Time: 2024-10-19 16:13:06 ms:608 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 16:13:06 ms:614 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 16:13:06 ms:616 Level: LOG INFO     Message: [TP,W,0,2]
+Time: 2024-10-19 16:13:06 ms:619 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 16:13:09 ms:641 Level: LOG ERROR    Message: XCmd heartbeat voltage error
+Time: 2024-10-19 16:13:45 ms:671 Level: LOG INFO     Message: [ST,W,0,989680]
+Time: 2024-10-19 16:13:45 ms:725 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 16:13:53 ms:681 Level: LOG INFO     Message: [PN,R,0]
+Time: 2024-10-19 16:13:53 ms:711 Level: LOG INFO     Message: [0,04B00578]
+Time: 2024-10-19 16:13:53 ms:711 Level: LOG INFO     Message: [SR,R,0]
+Time: 2024-10-19 16:13:53 ms:745 Level: LOG INFO     Message: [0,02]
+Time: 2024-10-19 16:13:53 ms:746 Level: LOG INFO     Message: [SF,W,0,0]
+Time: 2024-10-19 16:13:53 ms:784 Level: LOG INFO     Message: [0]
+Time: 2024-10-19 16:13:53 ms:893 Level: LOG INFO     Message: [SF,W,0,1]
+Time: 2024-10-19 16:13:53 ms:929 Level: LOG INFO     Message: [0]
