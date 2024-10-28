@@ -32,7 +32,7 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_22">
+   <layout class="QVBoxLayout" name="verticalLayout_26">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="enabled">
@@ -56,7 +56,7 @@
 }
 
 QTabBar::tab {
-    background-color: #B1B1B1; /* Cor de fundo das abas */
+    background-color: #D3D3D3; /* Cor de fundo das abas */
     color: #000;
     padding: 8px 12px;
     border: 1px solid #B1B1B1;
@@ -1510,6 +1510,141 @@ QPushButton:disabled {
            <size>
             <width>20</width>
             <height>127</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Sobre</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_29">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_24">
+          <property name="topMargin">
+           <number>25</number>
+          </property>
+          <property name="bottomMargin">
+           <number>30</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>9</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Sobre o projeto:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Este software foi desenvolvido como parte de um projeto de pesquisa de Iniciação Cientifica na Universidade Estadual de Santa Cruz (UESC). O projeto teve como objetivo projetar e desenvolver um software para automatizar as operações do detector de raios-x flat-panel 1412i.</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignJustify|Qt::AlignmentFlag::AlignVCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_25">
+          <property name="bottomMargin">
+           <number>30</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>9</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Equipe:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_22">
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>• Matheus Santos Silva</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>• Dany Sanchez Dominguez</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_27">
+          <property name="bottomMargin">
+           <number>30</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>9</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Contato:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_28">
+            <item>
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>• mssilva.cic@uesc.br</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>• dsdominguez@uesc.br</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>259</height>
            </size>
           </property>
          </spacer>
