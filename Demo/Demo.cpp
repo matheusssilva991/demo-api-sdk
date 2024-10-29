@@ -332,8 +332,6 @@ int main(int argc, char** argv)
 			cout << "Por favor coloque o nome do arquivo para salvar, *.dat \n";
 			cin >> save_file_name;
 
-			save_file_name = "..//images//" + getCurrentDateStr() + "//" + save_file_name;
-
 			if (cycle_num == 1) {
 
 				if (!ximg_handle.OpenFile(save_file_name.c_str()))
@@ -354,7 +352,7 @@ int main(int argc, char** argv)
 				{
 					cout << "Ciclo " << cycle_it << " completo" << endl;
 
-					save_file_name = "..//images//" + getCurrentDateStr() + "//" + save_file_name_base + "_cycle_" + to_string(cycle_it) + ".dat";
+					save_file_name = save_file_name_base + "_cycle_" + to_string(cycle_it) + ".dat";
 
 					if (!ximg_handle.OpenFile(save_file_name.c_str()))
 					{
@@ -591,14 +589,4 @@ void displayMenu()
 
 void clearBuffer() {
 	cin.ignore(10000, '\n');
-}
-
-string getCurrentDateStr() {
-	auto now = chrono::system_clock::now();
-	auto in_time_t = chrono::system_clock::to_time_t(now);
-
-	stringstream date_stream;
-	date_stream << put_time(localtime(&in_time_t), "%d%m%Y");
-
-	return date_stream.str();
 }

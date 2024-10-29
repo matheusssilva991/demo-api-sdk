@@ -18,16 +18,21 @@
             "bcbc2001000400989680b8c9f1e1fcfc"
         ],
         "binnning_mode": [
-            "bcbc40010001004faee3a9fcfc"
+            "bcbc40010001004faee3a9fcfc",
+            "bcbc40010001014b6ffe1efcfc"
         ],
         "gain_mode": [
-            "bcbc230100020001313d0117fcfc"
+            "bcbc230100020001313d0117fcfc",
+            "bcbc230100020100e7e5dd7cfcfc"
         ],
         "grab_image": [
             "bcbc6402000083ba1ed4fcfc",
             "bcbc4302000075d1a64efcfc",
             "bcbc2701000100b1e2ca4cfcfc",
             "bcbc2701000101b523d7fbfcfc"
+        ],
+        "close_device": [
+            "bcbc60010001004ccbe206fcfc"
         ]
     },
     "rcv": {
@@ -49,9 +54,11 @@
             "bcbc200000002ded9b8afcfc"
         ],
         "binnning_mode": [
+            "bcbc4000000016174d2efcfc",
             "bcbc4000000016174d2efcfc"
         ],
         "gain_mode": [
+            "bcbc230000004d9a29e4fcfc",
             "bcbc230000004d9a29e4fcfc"
         ],
         "heartbeat": [
@@ -62,6 +69,9 @@
             "bcbc43000001024156eae7fcfc",
             "bcbc27000000316f65e1fcfc",
             "bcbc27000000316f65e1fcfc"
+        ],
+        "close_device": [
+            "bcbc60000000fcfe0bdffcfc"
         ]
     }
 }

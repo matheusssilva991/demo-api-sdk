@@ -7,7 +7,7 @@ import json
 target_ip = "192.168.1.2"
 cmd_port = 3000
 img_port = 4001
-source_ip = "192.168.0.100"
+source_ip = "192.168.0.103"
 channels_open = False
 
 with open("scripts/data/dict_data.json", "r") as fd:
