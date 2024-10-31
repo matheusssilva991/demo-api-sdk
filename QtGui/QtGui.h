@@ -50,9 +50,9 @@ private:
     XGigFactory xfactory;
     XSystem* xsystem;
     XDevice* xdevice_ptr;
-    XCommand* xcommand;
-    XFrameTransfer* xtransfer;
-    XAcquisition* xacquisition;
+    XCommand xcommand;
+    XFrameTransfer xtransfer;
+    XAcquisition xacquisition;
 
 	QString file_name;
 };

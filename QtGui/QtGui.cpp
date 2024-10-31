@@ -37,19 +37,19 @@ QtGui::QtGui(QWidget *parent)
     : QMainWindow(parent),
 	xsystem(nullptr),
 	xdevice_ptr(nullptr),
-	xcommand(nullptr),
-	xtransfer(nullptr),
-	xacquisition(nullptr),
-	xfactory()
+	xtransfer(),
+	xfactory(),
+	xcommand(&xfactory),
+	xacquisition(&xfactory)
 {
     ui.setupUi(this);
 
 	connect(ui.hostIpConnectBtn, SIGNAL(clicked()), this, SLOT(on_connect_btn_clicked()));
+	connect(ui.deviceSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(on_device_select_changed(int)));
 	connect(ui.deviceInfoUpdateBtn, SIGNAL(clicked()), this, SLOT(on_device_info_update_btn_clicked()));
 	connect(ui.chooseFileNameBtn, SIGNAL(clicked()), this, SLOT(on_choose_file_name_btn_clicked()));
 	connect(ui.grabBtn, SIGNAL(clicked()), this, SLOT(on_grab_btn_clicked()));
 	connect(ui.stopGrabBtn, SIGNAL(clicked()), this, SLOT(on_stop_grap_btn_clicked()));
-	connect(ui.deviceSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(on_device_select_changed(int)));
 	connect(ui.acquisitionModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_acquisition_mode_changed(int)));
 	connect(ui.operationModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_operation_mode_changed(int)));
 	connect(ui.binningModeInput, SIGNAL(currentIndexChanged(int)), this, SLOT(on_binning_mode_changed(int)));
@@ -86,16 +86,16 @@ void QtGui::on_connect_btn_clicked() {
 	this->xsystem = new XSystem(host_ip_c);
 	this->xsystem->RegisterEventSink(&this->cmd_sink);
 
-	this->xcommand = new XCommand(&this->xfactory);
-	this->xcommand->RegisterEventSink(&this->cmd_sink);
+	//this->xcommand = new XCommand(&this->xfactory);
+	this->xcommand.RegisterEventSink(&this->cmd_sink);
 
-	this->xtransfer = new XFrameTransfer();
-	this->xtransfer->RegisterEventSink(&this->img_sink);
+	//this->xtransfer = new XFrameTransfer();
+	this->xtransfer.RegisterEventSink(&this->img_sink);
 
-	this->xacquisition = new XAcquisition(&this->xfactory);
+	//this->xacquisition = new XAcquisition(&this->xfactory);
 
-	this->xacquisition->RegisterEventSink(&this->img_sink);
-	this->xacquisition->RegisterFrameTransfer(this->xtransfer);
+	this->xacquisition.RegisterEventSink(&this->img_sink);
+	this->xacquisition.RegisterFrameTransfer(&this->xtransfer);
 
 	// Open system connection
 	if (!this->xsystem->Open()) {
@@ -150,25 +150,25 @@ void QtGui::on_device_select_changed(int index) {
 	int device_id = selected_option.split(" ")[1].toInt() - 1;
 
 	if (this->xdevice_ptr != nullptr) {
-		this->xacquisition->Close();
-		this->xcommand->Close();
+		this->xacquisition.Close();
+		this->xcommand.Close();
 		delete this->xdevice_ptr;
 	}
 
-	//this->xdevice_ptr = this->xsystem->GetDevice(device_id);
-	//this->xdevice_ptr = new XDevice(this->xsystem);
-	//this->xdevice_ptr->SetIP("192.168.1.2");
-	//this->xdevice_ptr->SetCmdPort(3000);
-	//this->xdevice_ptr->SetImgPort(4001);
-	//this->xdevice_ptr->SetDeviceType("1412_KOSTI");
-	//this->xdevice_ptr->SetSerialNum("1234567890", 10);
-	//this->xdevice_ptr->SetMAC((uint8_t*)"123456");
-	//this->xdevice_ptr->SetFirmBuildVer(123);
-	//this->xdevice_ptr->SetFirmVer(123);
+	this->xdevice_ptr = this->xsystem->GetDevice(device_id);
+	/*this->xdevice_ptr = new XDevice(this->xsystem);
+	this->xdevice_ptr->SetIP("192.168.1.2");
+	this->xdevice_ptr->SetCmdPort(3000);
+	this->xdevice_ptr->SetImgPort(4001);
+	this->xdevice_ptr->SetDeviceType("1412_KOSTI");
+	this->xdevice_ptr->SetSerialNum("1234567890", 10);
+	this->xdevice_ptr->SetMAC((uint8_t*)"123456");
+	this->xdevice_ptr->SetFirmBuildVer(123);
+	this->xdevice_ptr->SetFirmVer(123);*/
 
 	// Open acquisition connection
-	if (this->xcommand->Open(this->xdevice_ptr)) {
-		if (!this->xacquisition->Open(this->xdevice_ptr, this->xcommand)) {
+	if (this->xcommand.Open(this->xdevice_ptr)) {
+		if (!this->xacquisition.Open(this->xdevice_ptr, &this->xcommand)) {
 			QMessageBox::critical(this, "Connection", "Failed to open acquisition");
 		}
 	}
@@ -283,7 +283,7 @@ void QtGui::on_binning_mode_changed(int index) {
 	QString selected_binning_mode = ui.binningModeInput->itemText(index);
 	string binning_mode = selected_binning_mode.toStdString() == "Normal" ? "0": "1";
 
-	if (this->xcommand->SetPara(XPARA_BINNING_MODE, binning_mode) != 1)
+	if (1 != this->xcommand.SetPara(XPARA_BINNING_MODE, binning_mode))
 	{
 		QMessageBox::critical(this, "Connection", "Falha ao definir o modo de binning");
 	}
@@ -293,7 +293,7 @@ void QtGui::on_gain_mode_changed(int index) {
 	QString selected_gain_mode = ui.gainModeInput->itemText(index);
 	string gain_mode = selected_gain_mode.toStdString() == "Alto" ? "256" : "1";
 
-	if (this->xcommand->SetPara(XPARA_GAIN_RANGE, gain_mode) != 1)
+	if (this->xcommand.SetPara(XPARA_GAIN_RANGE, gain_mode) != 1)
 	{
 		QMessageBox::critical(this, "Connection", "Falha ao definir o modo de ganho");
 	}
@@ -308,7 +308,7 @@ void QtGui::on_integration_time_changed() {
 		return;
 	}
 
-	if (this->xcommand->SetPara(XPARA_FRAME_PERIOD, integration_time) != 1)
+	if (this->xcommand.SetPara(XPARA_FRAME_PERIOD, integration_time) != 1)
 	{
 		QMessageBox::critical(this, "Connection", "Falha ao definir o tempo de integra\u00E7\u00E3o.");
 	}
@@ -323,8 +323,6 @@ void QtGui::on_num_cycles_changed() {
 		return;
 	}
 }
-
-
 
 void QtGui::on_num_frames_changed() {
 	int num_frames = ui.numFramesInput->text().toInt();
@@ -371,7 +369,7 @@ void QtGui::on_grab_btn_clicked() {
 				return;
 			}
 
-			this->xacquisition->Grab(0);
+			this->xacquisition.Grab(0);
 		}
 		else {
 			int cycle_num = ui.numCyclesInput->text().toInt();
@@ -388,7 +386,7 @@ void QtGui::on_grab_btn_clicked() {
 					return;
 				}
 
-				this->xacquisition->Grab(cycle_frames);
+				this->xacquisition.Grab(cycle_frames);
 
 				this->xevent.WaitTime(cycle_frames_interval);
 
@@ -412,7 +410,7 @@ void QtGui::on_grab_btn_clicked() {
 						break;
 					}
 
-					this->xacquisition->Grab(cycle_frames);
+					this->xacquisition.Grab(cycle_frames);
 
 					this->xevent.WaitTime(cycle_frames_interval);
 
@@ -432,12 +430,12 @@ void QtGui::on_grab_btn_clicked() {
 			return;
 		}
 
-		this->xacquisition->Grab(1);
+		this->xacquisition.Grab(1);
 	}
 }
 
 void QtGui::on_stop_grab_btn_clicked() {
-	this->xacquisition->Stop();
+	this->xacquisition.Stop();
 }
 
 QtGui::~QtGui()
