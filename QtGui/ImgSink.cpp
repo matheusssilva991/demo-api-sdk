@@ -1,5 +1,4 @@
 #include "ImgSink.h"
-
 #include <iostream>
 
 void ImgSink::OnXError(uint32_t err_id, const char* err_msg_)

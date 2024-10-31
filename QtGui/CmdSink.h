@@ -1,5 +1,5 @@
 #pragma once
-#include "iximg_sink.h"
+#include "ixcmd_sink.h"
 
 //Uma classe para manipular eventos de comando do dispositivo
 class CmdSink : public IXCmdSink

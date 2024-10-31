@@ -97,7 +97,7 @@ void QtGui::on_connect_btn_clicked() {
 	this->xacquisition->RegisterEventSink(&this->img_sink);
 	this->xacquisition->RegisterFrameTransfer(this->xtransfer);
 
-	/*// Open system connection
+	// Open system connection
 	if (!this->xsystem->Open()) {
 		QMessageBox::critical(this, "Connection", "Failed to connect to " + host_ip);
 		return;
@@ -105,11 +105,11 @@ void QtGui::on_connect_btn_clicked() {
 
 	// Find device
 	int num_devices = this->xsystem->FindDevice();
+	//int num_devices = 1;
 	if (num_devices <= 0) {
 		QMessageBox::critical(this, "Connection", "No device found on " + host_ip);
 		return;
 	}
-	*/
 
 	// Set default values
 	ui.integrationTimeInput->setText("10000000");
@@ -140,7 +140,6 @@ void QtGui::on_connect_btn_clicked() {
 	ui.grabBtn->setDisabled(false);
 	ui.stopGrabBtn->setDisabled(false);
 
-	int num_devices = 4;
 	for (int i = 0; i < num_devices; i++) {
 		ui.deviceSelect->addItem("Dispositivo " + QString::number(i + 1));
 	}
@@ -156,19 +155,28 @@ void QtGui::on_device_select_changed(int index) {
 		delete this->xdevice_ptr;
 	}
 
-	//this->xdevice_ptr = this->xsystem->GetDevice(deviceId);
+	//this->xdevice_ptr = this->xsystem->GetDevice(device_id);
+	//this->xdevice_ptr = new XDevice(this->xsystem);
+	//this->xdevice_ptr->SetIP("192.168.1.2");
+	//this->xdevice_ptr->SetCmdPort(3000);
+	//this->xdevice_ptr->SetImgPort(4001);
+	//this->xdevice_ptr->SetDeviceType("1412_KOSTI");
+	//this->xdevice_ptr->SetSerialNum("1234567890", 10);
+	//this->xdevice_ptr->SetMAC((uint8_t*)"123456");
+	//this->xdevice_ptr->SetFirmBuildVer(123);
+	//this->xdevice_ptr->SetFirmVer(123);
 
 	// Open acquisition connection
-	/*if (this->xcommand->Open(this->xdevice_ptr)) {
+	if (this->xcommand->Open(this->xdevice_ptr)) {
 		if (!this->xacquisition->Open(this->xdevice_ptr, this->xcommand)) {
 			QMessageBox::critical(this, "Connection", "Failed to open acquisition");
 		}
 	}
 	else {
 		QMessageBox::critical(this, "Connection", "Failed to open command");
-	}*/
+	}
 
-	/*QString mac_address(reinterpret_cast<char*>(this->xdevice_ptr->GetMAC()));
+	QString mac_address(reinterpret_cast<char*>(this->xdevice_ptr->GetMAC()));
 	QString firm_ver(reinterpret_cast<char*>(this->xdevice_ptr->GetFirmVer()));
 	QString cmd_port = QString::number(this->xdevice_ptr->GetCmdPort());
 	QString img_port = QString::number(this->xdevice_ptr->GetImgPort());
@@ -179,27 +187,19 @@ void QtGui::on_device_select_changed(int index) {
 	ui.deviceFirmwareInput->setText(firm_ver);
 	ui.deviceCmdPortInput->setText(cmd_port);
 	ui.deviceImgPortInput->setText(img_port);
-	ui.deviceSerialInput->setText(this->xdevice_ptr->GetSerialNum()); */
+	ui.deviceSerialInput->setText(this->xdevice_ptr->GetSerialNum());
 }
 
 void QtGui::on_device_info_update_btn_clicked() {
 	int device_id = ui.deviceSelect->currentIndex() - 1;
 
-	/*QString ip = ui.deviceIpInput->text();
-	QString type = ui.deviceTypeInput->text();
-	QString mac = ui.deviceMacInput->text();
-	QString firmware = ui.deviceFirmwareInput->text();
+	QString ip = ui.deviceIpInput->text();
 	QString cmd_port = ui.deviceCmdPortInput->text();
 	QString img_port = ui.deviceImgPortInput->text();
-	QString serial = ui.deviceSerialInput->text();
 
 	this->xdevice_ptr->SetIP(ip.toStdString().c_str());
-	this->xdevice_ptr->SetDeviceType(type.toStdString().c_str());
-	this->xdevice_ptr->SetMAC(mac.toStdString().c_str());
-	this->xdevice_ptr->SetFirmVer(firmware.toStdString().c_str());
 	this->xdevice_ptr->SetCmdPort(cmd_port.toInt());
 	this->xdevice_ptr->SetImgPort(img_port.toInt());
-	this->xdevice_ptr->SetSerialNum(serial.toStdString().c_str()); */
 
 	if (1 == this->xsystem->ConfigureDevice(xdevice_ptr))
 	{
