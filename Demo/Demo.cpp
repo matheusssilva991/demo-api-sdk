@@ -62,7 +62,6 @@ uint32_t frame_buffer_size = 400;
 
 void displayMenu();
 void clearBuffer();
-string getCurrentDateStr();
 
 //Uma classe para manipular eventos de comando do dispositivo
 class CmdSink :public IXCmdSink
@@ -342,6 +341,10 @@ int main(int argc, char** argv)
 
 				xacquisition.Grab(cycle_frames);
 
+				while (xacquisition.GetIsGrabbing()) {
+					cout << "Modo de Aquisição" << endl;
+				}
+
 				frame_complete.WaitTime(cycle_frames_interval);
 
 			}
@@ -526,24 +529,26 @@ int main(int argc, char** argv)
 
 		case 'C':
 		case 'c':
+			int tmp_input;
+
 			frame_count = 0;
 			lost_frame_count = 0;
 
 			cout << "Por favor insira o número de quadros do ciclo\n";
-			cin >> cycle_frames;
-			cycle_frames = cycle_frames <= 0 ? 1 : cycle_frames;
+			cin >> tmp_input;
+			cycle_frames = tmp_input <= 0 ? 1 : tmp_input;
 
 			cout << "Por favor insira o intervalo de quadros do ciclo (s)\n";
-			cin >> cycle_frames_interval;
-			cycle_frames_interval = cycle_frames_interval < 0 ? 1 : cycle_frames_interval;
+			cin >> tmp_input;
+			cycle_frames_interval = tmp_input < 0 ? 0 : tmp_input;
 
 			cout << "Por favor insira o número de ciclos\n";
-			cin >> cycle_num;
-			cycle_num = cycle_num <= 0 ? 1 : cycle_num;
+			cin >> tmp_input;
+			cycle_num = tmp_input <= 0 ? 1 : tmp_input;
 
 			cout << "Por favor insira o intervalo de ciclo (s)\n";
-			cin >> cycle_interval;
-			cycle_interval = cycle_interval < 0 ? 1 : cycle_interval;
+			cin >> tmp_input;
+			cycle_interval = tmp_input < 0 ? 0 : tmp_input;
 
 			cout << endl;
 

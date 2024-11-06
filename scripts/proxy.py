@@ -8,7 +8,7 @@ import time
 target_ip = "192.168.1.2"
 cmd_port = 3000
 img_port = 4001
-source_ip = "192.168.0.103"
+source_ip = "192.168.0.106"
 channels_open = False
 
 with open("scripts/data/dict_data.json", "r") as fd:
@@ -42,7 +42,7 @@ def packet_callback(packet):
         if channels_open:
             data = bytes.fromhex(dict_data["rcv"]["heartbeat"][0])
 
-            time.sleep(1)
+            # time.sleep(1)
             send_udp_data(
                 data=data, target_ip=source_ip, source_ip=target_ip, port=cmd_port
             )
