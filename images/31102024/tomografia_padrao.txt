@@ -1,4 +1,4 @@
-ImageFileName=tomografia_padrao.dat
+ImageFileName=tomografia_padrao1.dat
 SerialNumber=3000030367-23380001
 Firmware=020100000ABB
 Width=1400
