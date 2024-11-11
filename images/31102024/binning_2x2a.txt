@@ -1,0 +1,9 @@
+ImageFileName=binning_2x2a.dat
+SerialNumber=3000030367-23380001
+Firmware=020100000ABB
+Width=700
+Height=600
+PixelDepth=16
+NumberOfImages=1
+GainRange=LFW
+BinningMode=2x2

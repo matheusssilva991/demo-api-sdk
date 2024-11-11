@@ -43,6 +43,7 @@ QtGui::QtGui(QWidget *parent)
 	xacquisition(&xfactory)
 {
     ui.setupUi(this);
+	this->setWindowTitle("Auto Detector Dti 1412i");
 
 	connect(ui.hostIpConnectBtn, SIGNAL(clicked()), this, SLOT(on_connect_btn_clicked()));
 	connect(ui.deviceSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(on_device_select_changed(int)));
@@ -57,18 +58,7 @@ QtGui::QtGui(QWidget *parent)
 	connect(ui.integrationTimeInput, SIGNAL(editingFinished()), this, SLOT(on_integration_time_changed()));
 	connect(ui.numCyclesInput, SIGNAL(editingFinished()), this, SLOT(on_num_cycles_changed()));
 	connect(ui.numFramesInput, SIGNAL(editingFinished()), this, SLOT(on_num_frames_changed()));
-	connect(ui.framesIntervalInput, SIGNAL(editingFinished()), this, SLOT(on_frames_interval_input_changed()));
 	connect(ui.cyclesIntervalInput, SIGNAL(editingFinished()), this, SLOT(on_cycles_interval_input_changed()));
-}
-
-void QtGui::on_cycles_interval_input_changed() {
-	int cycle_interval = ui.cyclesIntervalInput->text().toInt();
-
-	if (cycle_interval < 0) {
-		ui.cyclesIntervalInput->setText("0");
-		QMessageBox::warning(this, "Connection", "O intervalo entre ciclos n\u00E3o pode ser negativo.");
-		return;
-	}
 }
 
 void QtGui::on_connect_btn_clicked() {
@@ -76,7 +66,7 @@ void QtGui::on_connect_btn_clicked() {
 	char host_ip_c[20];
 
 	if (!isValidIP(host_ip.toStdString())) {
-		QMessageBox::warning(this, "Connection", "Invalid IP address");
+		QMessageBox::warning(this, "Aviso", "Endereço de IP inválido.");
 		return;
 	}
 
@@ -99,7 +89,7 @@ void QtGui::on_connect_btn_clicked() {
 
 	// Open system connection
 	if (!this->xsystem->Open()) {
-		QMessageBox::critical(this, "Connection", "Failed to connect to " + host_ip);
+		QMessageBox::critical(this, "Erro", "Falha ao conectar ao host " + host_ip + ".");
 		return;
 	}
 
@@ -107,7 +97,7 @@ void QtGui::on_connect_btn_clicked() {
 	int num_devices = this->xsystem->FindDevice();
 	//int num_devices = 1;
 	if (num_devices <= 0) {
-		QMessageBox::critical(this, "Connection", "No device found on " + host_ip);
+		QMessageBox::critical(this, "Erro", "Nenhum dispositivo encontrado.");
 		return;
 	}
 
@@ -116,10 +106,9 @@ void QtGui::on_connect_btn_clicked() {
 	ui.numCyclesInput->setText("1");
 	ui.numFramesInput->setText("1");
 	ui.cyclesIntervalInput->setText("0");
-	ui.framesIntervalInput->setText("0");
 	ui.fileNameInput->setText("");
 	
-	QMessageBox::information(this, "Connection", "Connecting to " + host_ip);
+	QMessageBox::information(this, "Status", "Conectado com sucesso ao host " + host_ip + ".");
 
 	ui.hostIpInput->setDisabled(true);
 	ui.hostIpConnectBtn->setDisabled(true);
@@ -155,8 +144,8 @@ void QtGui::on_device_select_changed(int index) {
 		delete this->xdevice_ptr;
 	}
 
-	this->xdevice_ptr = this->xsystem->GetDevice(device_id);
-	/*this->xdevice_ptr = new XDevice(this->xsystem);
+	//this->xdevice_ptr = this->xsystem->GetDevice(device_id);
+	this->xdevice_ptr = new XDevice(this->xsystem);
 	this->xdevice_ptr->SetIP("192.168.1.2");
 	this->xdevice_ptr->SetCmdPort(3000);
 	this->xdevice_ptr->SetImgPort(4001);
@@ -164,16 +153,16 @@ void QtGui::on_device_select_changed(int index) {
 	this->xdevice_ptr->SetSerialNum("1234567890", 10);
 	this->xdevice_ptr->SetMAC((uint8_t*)"123456");
 	this->xdevice_ptr->SetFirmBuildVer(123);
-	this->xdevice_ptr->SetFirmVer(123);*/
+	this->xdevice_ptr->SetFirmVer(123);
 
 	// Open acquisition connection
 	if (this->xcommand.Open(this->xdevice_ptr)) {
 		if (!this->xacquisition.Open(this->xdevice_ptr, &this->xcommand)) {
-			QMessageBox::critical(this, "Connection", "Failed to open acquisition");
+			QMessageBox::critical(this, "Erro", "Falha ao abrir o canal de aquisição.");
 		}
 	}
 	else {
-		QMessageBox::critical(this, "Connection", "Failed to open command");
+		QMessageBox::critical(this, "Erro", "Falha ao abrir o canal de comando.");
 	}
 
 	QString mac_address(reinterpret_cast<char*>(this->xdevice_ptr->GetMAC()));
@@ -207,7 +196,7 @@ void QtGui::on_device_info_update_btn_clicked() {
 	}
 	else
 	{
-		QMessageBox::critical(this, "Connection", "Failed to configure device");
+		QMessageBox::critical(this, "Erro", "Falha ao configurar dispositivo.");
 		return;
 	}
 }
@@ -233,14 +222,12 @@ void QtGui::on_acquisition_mode_changed(int index) {
 			ui.numCyclesInput->setDisabled(true);
 			ui.numFramesInput->setDisabled(true);
 			ui.cyclesIntervalInput->setDisabled(true);
-			ui.framesIntervalInput->setDisabled(true);
 			ui.integrationTimeInput->setDisabled(true);
 		}
 		else {
 			ui.numCyclesInput->setDisabled(false);
 			ui.numFramesInput->setDisabled(false);
 			ui.cyclesIntervalInput->setDisabled(false);
-			ui.framesIntervalInput->setDisabled(false);
 			ui.integrationTimeInput->setDisabled(false);
 		}
 
@@ -252,7 +239,6 @@ void QtGui::on_acquisition_mode_changed(int index) {
 		ui.numCyclesInput->setDisabled(true);
 		ui.numFramesInput->setDisabled(true);
 		ui.cyclesIntervalInput->setDisabled(true);
-		ui.framesIntervalInput->setDisabled(true);
 		ui.integrationTimeInput->setDisabled(false);
 	}
 	return;
@@ -265,14 +251,12 @@ void QtGui::on_operation_mode_changed(int index) {
 		ui.numCyclesInput->setDisabled(true);
 		ui.numFramesInput->setDisabled(true);
 		ui.cyclesIntervalInput->setDisabled(true);
-		ui.framesIntervalInput->setDisabled(true);
 		ui.integrationTimeInput->setDisabled(true);
 	}
 	else {
 		ui.numCyclesInput->setDisabled(false);
 		ui.numFramesInput->setDisabled(false);
 		ui.cyclesIntervalInput->setDisabled(false);
-		ui.framesIntervalInput->setDisabled(false);
 		ui.integrationTimeInput->setDisabled(false);
 	}
 
@@ -334,12 +318,12 @@ void QtGui::on_num_frames_changed() {
 	}
 }
 
-void QtGui::on_frames_interval_input_changed() {
-	int frames_interval = ui.framesIntervalInput->text().toInt();
+void QtGui::on_cycles_interval_input_changed() {
+	int cycle_interval = ui.cyclesIntervalInput->text().toInt();
 
-	if (frames_interval < 0) {
-		ui.framesIntervalInput->setText("0");
-		QMessageBox::warning(this, "Connection", "O intervalo entre frames n\u00E3o pode ser negativo.");
+	if (cycle_interval < 0) {
+		ui.cyclesIntervalInput->setText("0");
+		QMessageBox::warning(this, "Connection", "O intervalo entre ciclos n\u00E3o pode ser negativo.");
 		return;
 	}
 }
@@ -374,7 +358,6 @@ void QtGui::on_grab_btn_clicked() {
 		else {
 			int cycle_num = ui.numCyclesInput->text().toInt();
 			int cycle_frames = ui.numFramesInput->text().toInt();
-			int cycle_frames_interval = ui.framesIntervalInput->text().toInt();
 			int cycle_interval = ui.cyclesIntervalInput->text().toInt();
 
 			if (cycle_num == 1) {
@@ -387,8 +370,6 @@ void QtGui::on_grab_btn_clicked() {
 				}
 
 				this->xacquisition.Grab(cycle_frames);
-
-				this->xevent.WaitTime(cycle_frames_interval);
 
 			}
 			else {
@@ -412,9 +393,7 @@ void QtGui::on_grab_btn_clicked() {
 
 					this->xacquisition.Grab(cycle_frames);
 
-					this->xevent.WaitTime(cycle_frames_interval);
-
-					XSLEEP(cycle_interval * XSLEEP_UNIT);
+					this->xevent.WaitTime(cycle_interval);
 				}
 
 				QMessageBox::information(this, "Acquisition", "Ciclos completos.");

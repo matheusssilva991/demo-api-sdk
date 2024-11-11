@@ -29,7 +29,7 @@ class Ui_QtGuiClass
 {
 public:
     QWidget *centralWidget;
-    QVBoxLayout *verticalLayout_26;
+    QHBoxLayout *horizontalLayout_34;
     QTabWidget *tabWidget;
     QWidget *tab;
     QVBoxLayout *verticalLayout_10;
@@ -80,12 +80,13 @@ public:
     QSpacerItem *horizontalSpacer_3;
     QSpacerItem *verticalSpacer;
     QWidget *tab_2;
-    QVBoxLayout *verticalLayout_23;
+    QVBoxLayout *verticalLayout_20;
     QHBoxLayout *horizontalLayout_9;
     QVBoxLayout *verticalLayout_12;
     QLabel *acquisitionModeLabel;
     QComboBox *acquisitionModeInput;
     QSpacerItem *horizontalSpacer_9;
+    QVBoxLayout *verticalLayout_26;
     QHBoxLayout *horizontalLayout_10;
     QVBoxLayout *verticalLayout_14;
     QLabel *operationModeLabel;
@@ -110,19 +111,15 @@ public:
     QVBoxLayout *verticalLayout_18;
     QLabel *cyclesIntervalLabel;
     QLineEdit *cyclesIntervalInput;
-    QHBoxLayout *horizontalLayout_16;
+    QHBoxLayout *horizontalLayout_33;
     QVBoxLayout *verticalLayout_19;
     QLabel *deviceFirmwareLabel_5;
     QLineEdit *numFramesInput;
     QSpacerItem *horizontalSpacer_15;
-    QVBoxLayout *verticalLayout_20;
-    QLabel *framesIntervalLabel;
-    QLineEdit *framesIntervalInput;
     QHBoxLayout *horizontalLayout_14;
     QVBoxLayout *verticalLayout_21;
     QLabel *integrationTimeLabel;
     QLineEdit *integrationTimeInput;
-    QSpacerItem *horizontalSpacer_13;
     QVBoxLayout *verticalLayout_11;
     QLabel *fileNameLabel;
     QHBoxLayout *horizontalLayout_17;
@@ -167,10 +164,10 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(centralWidget->sizePolicy().hasHeightForWidth());
         centralWidget->setSizePolicy(sizePolicy);
-        verticalLayout_26 = new QVBoxLayout(centralWidget);
-        verticalLayout_26->setSpacing(6);
-        verticalLayout_26->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_26->setObjectName("verticalLayout_26");
+        horizontalLayout_34 = new QHBoxLayout(centralWidget);
+        horizontalLayout_34->setSpacing(6);
+        horizontalLayout_34->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_34->setObjectName("horizontalLayout_34");
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName("tabWidget");
         tabWidget->setEnabled(true);
@@ -589,10 +586,10 @@ public:
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName("tab_2");
-        verticalLayout_23 = new QVBoxLayout(tab_2);
-        verticalLayout_23->setSpacing(6);
-        verticalLayout_23->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_23->setObjectName("verticalLayout_23");
+        verticalLayout_20 = new QVBoxLayout(tab_2);
+        verticalLayout_20->setSpacing(6);
+        verticalLayout_20->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_20->setObjectName("verticalLayout_20");
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setSpacing(6);
         horizontalLayout_9->setObjectName("horizontalLayout_9");
@@ -628,8 +625,11 @@ public:
         horizontalLayout_9->addItem(horizontalSpacer_9);
 
 
-        verticalLayout_23->addLayout(horizontalLayout_9);
+        verticalLayout_20->addLayout(horizontalLayout_9);
 
+        verticalLayout_26 = new QVBoxLayout();
+        verticalLayout_26->setSpacing(6);
+        verticalLayout_26->setObjectName("verticalLayout_26");
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setSpacing(6);
         horizontalLayout_10->setObjectName("horizontalLayout_10");
@@ -691,7 +691,7 @@ public:
         horizontalLayout_10->addLayout(verticalLayout_13);
 
 
-        verticalLayout_23->addLayout(horizontalLayout_10);
+        verticalLayout_26->addLayout(horizontalLayout_10);
 
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setSpacing(6);
@@ -754,7 +754,7 @@ public:
         horizontalLayout_11->addLayout(verticalLayout_16);
 
 
-        verticalLayout_23->addLayout(horizontalLayout_11);
+        verticalLayout_26->addLayout(horizontalLayout_11);
 
         horizontalLayout_15 = new QHBoxLayout();
         horizontalLayout_15->setSpacing(6);
@@ -809,12 +809,12 @@ public:
         horizontalLayout_15->addLayout(verticalLayout_18);
 
 
-        verticalLayout_23->addLayout(horizontalLayout_15);
+        verticalLayout_26->addLayout(horizontalLayout_15);
 
-        horizontalLayout_16 = new QHBoxLayout();
-        horizontalLayout_16->setSpacing(6);
-        horizontalLayout_16->setObjectName("horizontalLayout_16");
-        horizontalLayout_16->setContentsMargins(-1, -1, -1, 10);
+        horizontalLayout_33 = new QHBoxLayout();
+        horizontalLayout_33->setSpacing(6);
+        horizontalLayout_33->setObjectName("horizontalLayout_33");
+        horizontalLayout_33->setContentsMargins(-1, -1, -1, 10);
         verticalLayout_19 = new QVBoxLayout();
         verticalLayout_19->setSpacing(6);
         verticalLayout_19->setObjectName("verticalLayout_19");
@@ -835,41 +835,16 @@ public:
         verticalLayout_19->addWidget(numFramesInput);
 
 
-        horizontalLayout_16->addLayout(verticalLayout_19);
+        horizontalLayout_33->addLayout(verticalLayout_19);
 
         horizontalSpacer_15 = new QSpacerItem(18, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_16->addItem(horizontalSpacer_15);
-
-        verticalLayout_20 = new QVBoxLayout();
-        verticalLayout_20->setSpacing(6);
-        verticalLayout_20->setObjectName("verticalLayout_20");
-        verticalLayout_20->setContentsMargins(0, -1, -1, 0);
-        framesIntervalLabel = new QLabel(tab_2);
-        framesIntervalLabel->setObjectName("framesIntervalLabel");
-
-        verticalLayout_20->addWidget(framesIntervalLabel);
-
-        framesIntervalInput = new QLineEdit(tab_2);
-        framesIntervalInput->setObjectName("framesIntervalInput");
-        framesIntervalInput->setEnabled(false);
-        sizePolicy2.setHeightForWidth(framesIntervalInput->sizePolicy().hasHeightForWidth());
-        framesIntervalInput->setSizePolicy(sizePolicy2);
-        framesIntervalInput->setMinimumSize(QSize(200, 0));
-        framesIntervalInput->setMaximumSize(QSize(200, 16777215));
-
-        verticalLayout_20->addWidget(framesIntervalInput);
-
-
-        horizontalLayout_16->addLayout(verticalLayout_20);
-
-
-        verticalLayout_23->addLayout(horizontalLayout_16);
+        horizontalLayout_33->addItem(horizontalSpacer_15);
 
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setSpacing(6);
         horizontalLayout_14->setObjectName("horizontalLayout_14");
-        horizontalLayout_14->setContentsMargins(-1, -1, -1, 10);
+        horizontalLayout_14->setContentsMargins(-1, -1, -1, 0);
         verticalLayout_21 = new QVBoxLayout();
         verticalLayout_21->setSpacing(6);
         verticalLayout_21->setObjectName("verticalLayout_21");
@@ -892,12 +867,11 @@ public:
 
         horizontalLayout_14->addLayout(verticalLayout_21);
 
-        horizontalSpacer_13 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_14->addItem(horizontalSpacer_13);
+        horizontalLayout_33->addLayout(horizontalLayout_14);
 
 
-        verticalLayout_23->addLayout(horizontalLayout_14);
+        verticalLayout_26->addLayout(horizontalLayout_33);
 
         verticalLayout_11 = new QVBoxLayout();
         verticalLayout_11->setSpacing(6);
@@ -935,7 +909,7 @@ public:
         verticalLayout_11->addLayout(horizontalLayout_17);
 
 
-        verticalLayout_23->addLayout(verticalLayout_11);
+        verticalLayout_26->addLayout(verticalLayout_11);
 
         horizontalLayout_13 = new QHBoxLayout();
         horizontalLayout_13->setSpacing(6);
@@ -964,11 +938,14 @@ public:
         horizontalLayout_13->addItem(horizontalSpacer_12);
 
 
-        verticalLayout_23->addLayout(horizontalLayout_13);
+        verticalLayout_26->addLayout(horizontalLayout_13);
 
         verticalSpacer_2 = new QSpacerItem(20, 127, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
-        verticalLayout_23->addItem(verticalSpacer_2);
+        verticalLayout_26->addItem(verticalSpacer_2);
+
+
+        verticalLayout_20->addLayout(verticalLayout_26);
 
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
@@ -1065,7 +1042,7 @@ public:
 
         tabWidget->addTab(tab_3, QString());
 
-        verticalLayout_26->addWidget(tabWidget);
+        horizontalLayout_34->addWidget(tabWidget);
 
         QtGuiClass->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(QtGuiClass);
@@ -1074,7 +1051,7 @@ public:
 
         retranslateUi(QtGuiClass);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(QtGuiClass);
@@ -1123,9 +1100,8 @@ public:
 
         gainModeInput->setPlaceholderText(QString());
         numCyclesLabel->setText(QCoreApplication::translate("QtGuiClass", "N\303\272mero de ciclos", nullptr));
-        cyclesIntervalLabel->setText(QCoreApplication::translate("QtGuiClass", "Intervalo entre ciclos (s)", nullptr));
+        cyclesIntervalLabel->setText(QCoreApplication::translate("QtGuiClass", "Intervalo entre ciclos (ms)", nullptr));
         deviceFirmwareLabel_5->setText(QCoreApplication::translate("QtGuiClass", "N\303\272mero de frames", nullptr));
-        framesIntervalLabel->setText(QCoreApplication::translate("QtGuiClass", "Intervalo entre frames (s)", nullptr));
         integrationTimeLabel->setText(QCoreApplication::translate("QtGuiClass", "Tempo de integra\303\247\303\243o (u)", nullptr));
         fileNameLabel->setText(QCoreApplication::translate("QtGuiClass", "Local de salvamento", nullptr));
         chooseFileNameBtn->setText(QCoreApplication::translate("QtGuiClass", "...", nullptr));

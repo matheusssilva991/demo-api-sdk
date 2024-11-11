@@ -31,6 +31,7 @@
 #include <sstream>
 #include <chrono>
 #include <ctime>
+#include <windows.h>
 
 #ifdef _WIN64
 #pragma comment(lib, "..\\lib\\x64\\XLibDllKosti.lib")
@@ -108,8 +109,9 @@ class ImgSink : public IXImgSink
 	// Parâmetros image_: Ponteiro para o quadro
 	void OnFrameReady(XImage* image_) override
 	{
-		printf("Frame %u ready, width %u, height %d,  lost line %u\n",
+		printf("\nFrame %u ready, width %u, height %d,  lost line %u\n",
 			frame_count++, image_->_width, image_->_height, lost_frame_count);
+		//Beep( 750, 300 );
 
 		if (is_save)
 		{
@@ -200,8 +202,7 @@ int main(int argc, char** argv)
 
 	//For cycling test
 	uint32_t cycle_num = 1;
-	uint32_t cycle_frames = 1;
-	uint32_t cycle_frames_interval = 0;
+	uint32_t frame_num = 1;
 	uint32_t cycle_interval = 0;
 	uint32_t cycle_it = 0;
 
@@ -232,8 +233,8 @@ int main(int argc, char** argv)
 			}
 
 			//Get the first device
-			//xdevice_ptr = xsystem.GetDevice(0);
-			xdevice_ptr = new XDevice(&xsystem);
+			xdevice_ptr = xsystem.GetDevice(0);
+			/*xdevice_ptr = new XDevice(&xsystem);
 			xdevice_ptr->SetIP("192.168.1.2");
 			xdevice_ptr->SetCmdPort(3000);
 			xdevice_ptr->SetImgPort(4001);
@@ -241,7 +242,7 @@ int main(int argc, char** argv)
 			xdevice_ptr->SetSerialNum("1234567890", 10);
 			xdevice_ptr->SetMAC((uint8_t*)"123456");
 			xdevice_ptr->SetFirmBuildVer(123);
-			xdevice_ptr->SetFirmVer(123);
+			xdevice_ptr->SetFirmVer(123);*/
 
 			cout << "Dispositivo encontrado: " << xdevice_ptr->GetIP() << endl;
 			cout << "Porta de comando: " << xdevice_ptr->GetCmdPort() << endl;
@@ -331,6 +332,8 @@ int main(int argc, char** argv)
 			cout << "Por favor coloque o nome do arquivo para salvar, *.dat \n";
 			cin >> save_file_name;
 
+			clearBuffer();
+
 			if (cycle_num == 1) {
 
 				if (!ximg_handle.OpenFile(save_file_name.c_str()))
@@ -339,14 +342,9 @@ int main(int argc, char** argv)
 					break;
 				}
 
-				xacquisition.Grab(cycle_frames);
+				xacquisition.Grab(frame_num);
 
-				while (xacquisition.GetIsGrabbing()) {
-					cout << "Modo de Aquisição" << endl;
-				}
-
-				frame_complete.WaitTime(cycle_frames_interval);
-
+				//frame_complete.Wait();
 			}
 			else {
 				string save_file_name_base = save_file_name.substr(0, save_file_name.find(".dat"));
@@ -363,11 +361,10 @@ int main(int argc, char** argv)
 						break;
 					}
 
-					xacquisition.Grab(cycle_frames);
+					xacquisition.Grab(frame_num);
 
-					frame_complete.WaitTime(cycle_frames_interval);
-
-					XSLEEP(cycle_interval * XSLEEP_UNIT);
+					frame_complete.WaitTime(cycle_interval);
+					//frame_complete.Wait();
 				}
 
 				cout << endl << "Ciclos completos" << endl;
@@ -534,21 +531,20 @@ int main(int argc, char** argv)
 			frame_count = 0;
 			lost_frame_count = 0;
 
-			cout << "Por favor insira o número de quadros do ciclo\n";
+			cout << "Por favor insira o número de quadros\n";
 			cin >> tmp_input;
-			cycle_frames = tmp_input <= 0 ? 1 : tmp_input;
-
-			cout << "Por favor insira o intervalo de quadros do ciclo (s)\n";
-			cin >> tmp_input;
-			cycle_frames_interval = tmp_input < 0 ? 0 : tmp_input;
+			frame_num = tmp_input <= 0 ? 1 : tmp_input;
 
 			cout << "Por favor insira o número de ciclos\n";
 			cin >> tmp_input;
 			cycle_num = tmp_input <= 0 ? 1 : tmp_input;
 
-			cout << "Por favor insira o intervalo de ciclo (s)\n";
-			cin >> tmp_input;
-			cycle_interval = tmp_input < 0 ? 0 : tmp_input;
+			if (cycle_num > 1)
+			{
+				cout << "Por favor insira o intervalo entre os ciclos (ms)\n";
+				cin >> tmp_input;
+				cycle_interval = tmp_input < 0 ? 0 : tmp_input;
+			}
 
 			cout << endl;
 

@@ -1,0 +1,9 @@
+ImageFileName=teste4.dat
+SerialNumber=3000030367-23380001
+Firmware=020100000ABB
+Width=1400
+Height=1200
+PixelDepth=14
+NumberOfImages=1
+GainRange=LFW
+BinningMode=1x1

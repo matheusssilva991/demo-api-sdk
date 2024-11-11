@@ -37,7 +37,6 @@ private slots:
 	void on_num_cycles_changed();
     void on_cycles_interval_input_changed();
 	void on_num_frames_changed();
-    void on_frames_interval_input_changed();
 
 private:
     Ui::QtGuiClass ui;
