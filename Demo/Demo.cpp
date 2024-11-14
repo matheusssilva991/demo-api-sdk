@@ -111,7 +111,7 @@ class ImgSink : public IXImgSink
 	{
 		printf("\nFrame %u ready, width %u, height %d,  lost line %u\n",
 			frame_count++, image_->_width, image_->_height, lost_frame_count);
-		//Beep( 750, 300 );
+		Beep( 750, 300 );
 
 		if (is_save)
 		{
