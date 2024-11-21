@@ -1,16 +1,19 @@
 #pragma once
 #include "iximg_sink.h"
-#include "ximage_handler.h"
-#include "xthread_win.h"
+#include <QObject>
+#include <QMessageBox>
 
 #include <iostream>
+
+
+class QtGui;
 
 //Uma classe para manipular eventos de imagem
 class ImgSink : public IXImgSink
 {
 
 public:
-	ImgSink() : lost_frame_count(0), frame_count(0), is_save(false) {}
+	explicit ImgSink(QtGui* parent);
 
 	// Manipulação de erro
 	// Parâmetros err_id: ID do error, err_msg_: Mensagem de erro
@@ -29,24 +32,6 @@ public:
 	// Manipulação de quadros completos
 	void OnFrameComplete() override;
 
-	// Getters
-	uint32_t GetLostFrameCount() const;
-	uint32_t GetFrameCount() const;
-	std::string GetSaveFileName() const;
-	bool GetIsSave() const;
-
-	// Setters
-	void SetSaveFileName(const std::string& save_file_name_);
-	void SetIsSave(bool is_save_);
-    
-	// Utilitários
-	void resetCounters();
-
 private:
-	uint32_t lost_frame_count; // Contagem de quadros perdidos
-	uint32_t frame_count; // Contagem de quadros
-	XImageHandler ximg_handle; // Manipulador de imagem
-	bool is_save; // Flag para salvar
-	std::string save_file_name; // Nome do arquivo para salvar
-	XEvent frame_complete; // Evento de quadro completo
+	QtGui* parent_;
 };

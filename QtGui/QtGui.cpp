@@ -50,7 +50,9 @@ QtGui::QtGui(QWidget *parent)
 	xtransfer(),
 	xfactory(),
 	xcommand(&xfactory),
-	xacquisition(&xfactory)
+	xacquisition(&xfactory),
+	cmd_sink(new CmdSink(this)),
+	img_sink(new ImgSink(this))
 {
     ui.setupUi(this);
 	this->setWindowTitle("Auto Detector Dti 1412i");
@@ -84,17 +86,13 @@ void QtGui::on_connect_btn_clicked() {
 
 	// Create objects
 	this->xsystem = new XSystem(host_ip_c);
-	this->xsystem->RegisterEventSink(&this->cmd_sink);
+	this->xsystem->RegisterEventSink(this->cmd_sink);
 
-	//this->xcommand = new XCommand(&this->xfactory);
-	this->xcommand.RegisterEventSink(&this->cmd_sink);
+	this->xcommand.RegisterEventSink(this->cmd_sink);
 
-	//this->xtransfer = new XFrameTransfer();
-	this->xtransfer.RegisterEventSink(&this->img_sink);
+	this->xtransfer.RegisterEventSink(this->img_sink);
 
-	//this->xacquisition = new XAcquisition(&this->xfactory);
-
-	this->xacquisition.RegisterEventSink(&this->img_sink);
+	this->xacquisition.RegisterEventSink(this->img_sink);
 	this->xacquisition.RegisterFrameTransfer(&this->xtransfer);
 
 	// Open system connection
@@ -338,8 +336,9 @@ void QtGui::on_grab_btn_clicked() {
 	QString selected_operation_mode = ui.operationModeInput->itemText(operation_mode_index);
 	string save_file_name = this->file_name.toStdString();
 
-	this->img_sink.SetIsSave(true);
-	this->img_sink.resetCounters();
+	this->set_is_save(true);
+	this->set_frame_count(0);
+	this->set_lost_frame_count(0);
 
 	if (save_file_name.find(".dat") == string::npos)
 	{
@@ -347,8 +346,8 @@ void QtGui::on_grab_btn_clicked() {
 	}
 
 	if (selected_acquisition_mode == "Tomografia") {
-		if (selected_operation_mode == QString("Cont\u00EDnuo")) {
-			this->img_sink.SetSaveFileName(save_file_name);
+		if (selected_operation_mode != QString("Cont\u00EDnuo")) {
+			this->set_save_file_name(save_file_name);
 
 			if (!this->ximg_handle.OpenFile(save_file_name.c_str()))
 			{
@@ -364,7 +363,7 @@ void QtGui::on_grab_btn_clicked() {
 			int cycle_interval = ui.cyclesIntervalInput->text().toInt();
 
 			if (cycle_num == 1) {
-				this->img_sink.SetSaveFileName(save_file_name);
+				this->set_save_file_name(save_file_name);
 
 				if (!this->ximg_handle.OpenFile(save_file_name.c_str()))
 				{
@@ -382,11 +381,12 @@ void QtGui::on_grab_btn_clicked() {
 
 				for (int cycle_it = 0; cycle_it < cycle_num; cycle_it++)
 				{
-					this->img_sink.SetIsSave(true);
-					this->img_sink.resetCounters();
+					this->set_is_save(true);
+					this->set_frame_count(0);
+					this->set_lost_frame_count(0);
 
 					save_file_name = save_file_name_base + "_cycle_" + to_string(cycle_it) + ".dat";
-					this->img_sink.SetSaveFileName(save_file_name);
+					this->set_save_file_name(save_file_name);
 
 					if (!ximg_handle.OpenFile(save_file_name.c_str()))
 					{
@@ -404,7 +404,7 @@ void QtGui::on_grab_btn_clicked() {
 		}
 	}
 	else {
-		this->img_sink.SetSaveFileName(save_file_name);
+		this->set_save_file_name(save_file_name);
 
 		if (!this->ximg_handle.OpenFile(save_file_name.c_str()))
 		{
@@ -418,6 +418,51 @@ void QtGui::on_grab_btn_clicked() {
 
 void QtGui::on_stop_grab_btn_clicked() {
 	this->xacquisition.Stop();
+}
+
+QString QtGui::get_file_name() {
+	return this->file_name;
+}
+
+uint32_t QtGui::get_frame_count() {
+	return this->frame_count;
+}
+
+uint32_t QtGui::get_lost_frame_count() {
+	return this->lost_frame_count;
+}
+
+bool QtGui::get_is_save() {
+	return this->is_save;
+}
+
+std::string QtGui::get_save_file_name() {
+	return this->save_file_name;
+}
+
+XImageHandler* QtGui::get_ximage_handler() { 
+	return &ximg_handle; 
+}
+
+XEvent* QtGui::get_xevent() 
+{
+	return &this->xevent;
+}
+
+void QtGui::set_frame_count(uint32_t frame_count) {
+	this->frame_count = frame_count;
+}
+
+void QtGui::set_lost_frame_count(uint32_t lost_frame_count) {
+	this->lost_frame_count = lost_frame_count;
+}
+
+void QtGui::set_is_save(bool is_save) {
+	this->is_save = is_save;
+}
+
+void QtGui::set_save_file_name(std::string save_file_name) {
+	this->save_file_name = save_file_name;
 }
 
 QtGui::~QtGui()
