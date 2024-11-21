@@ -93,8 +93,8 @@ public:
     QComboBox *operationModeInput;
     QSpacerItem *horizontalSpacer_10;
     QVBoxLayout *verticalLayout_13;
-    QLabel *TriggerModeLabel;
-    QComboBox *TriggerModeInput;
+    QLabel *triggerModeLabel;
+    QComboBox *triggerModeInput;
     QHBoxLayout *horizontalLayout_11;
     QVBoxLayout *verticalLayout_15;
     QLabel *binningModeLabel;
@@ -668,24 +668,24 @@ public:
         verticalLayout_13->setSpacing(6);
         verticalLayout_13->setObjectName("verticalLayout_13");
         verticalLayout_13->setContentsMargins(-1, -1, 0, 0);
-        TriggerModeLabel = new QLabel(tab_2);
-        TriggerModeLabel->setObjectName("TriggerModeLabel");
-        sizePolicy2.setHeightForWidth(TriggerModeLabel->sizePolicy().hasHeightForWidth());
-        TriggerModeLabel->setSizePolicy(sizePolicy2);
-        TriggerModeLabel->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
-        TriggerModeLabel->setMargin(0);
+        triggerModeLabel = new QLabel(tab_2);
+        triggerModeLabel->setObjectName("triggerModeLabel");
+        sizePolicy2.setHeightForWidth(triggerModeLabel->sizePolicy().hasHeightForWidth());
+        triggerModeLabel->setSizePolicy(sizePolicy2);
+        triggerModeLabel->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+        triggerModeLabel->setMargin(0);
 
-        verticalLayout_13->addWidget(TriggerModeLabel);
+        verticalLayout_13->addWidget(triggerModeLabel);
 
-        TriggerModeInput = new QComboBox(tab_2);
-        TriggerModeInput->addItem(QString());
-        TriggerModeInput->addItem(QString());
-        TriggerModeInput->setObjectName("TriggerModeInput");
-        TriggerModeInput->setEnabled(false);
-        TriggerModeInput->setMinimumSize(QSize(200, 0));
-        TriggerModeInput->setMaximumSize(QSize(200, 16777215));
+        triggerModeInput = new QComboBox(tab_2);
+        triggerModeInput->addItem(QString());
+        triggerModeInput->addItem(QString());
+        triggerModeInput->setObjectName("triggerModeInput");
+        triggerModeInput->setEnabled(false);
+        triggerModeInput->setMinimumSize(QSize(200, 0));
+        triggerModeInput->setMaximumSize(QSize(200, 16777215));
 
-        verticalLayout_13->addWidget(TriggerModeInput);
+        verticalLayout_13->addWidget(triggerModeInput);
 
 
         horizontalLayout_10->addLayout(verticalLayout_13);
@@ -1051,7 +1051,7 @@ public:
 
         retranslateUi(QtGuiClass);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(QtGuiClass);
@@ -1084,11 +1084,11 @@ public:
         operationModeInput->setItemText(1, QCoreApplication::translate("QtGuiClass", "N\303\243o cont\303\255nuo", nullptr));
 
         operationModeInput->setPlaceholderText(QString());
-        TriggerModeLabel->setText(QCoreApplication::translate("QtGuiClass", "Modo de gatilho de entrada", nullptr));
-        TriggerModeInput->setItemText(0, QCoreApplication::translate("QtGuiClass", "Externo", nullptr));
-        TriggerModeInput->setItemText(1, QCoreApplication::translate("QtGuiClass", "Interno", nullptr));
+        triggerModeLabel->setText(QCoreApplication::translate("QtGuiClass", "Modo de gatilho de entrada", nullptr));
+        triggerModeInput->setItemText(0, QCoreApplication::translate("QtGuiClass", "Interno", nullptr));
+        triggerModeInput->setItemText(1, QCoreApplication::translate("QtGuiClass", "Externo", nullptr));
 
-        TriggerModeInput->setPlaceholderText(QString());
+        triggerModeInput->setPlaceholderText(QString());
         binningModeLabel->setText(QCoreApplication::translate("QtGuiClass", "Modo de binning", nullptr));
         binningModeInput->setItemText(0, QCoreApplication::translate("QtGuiClass", "Normal", nullptr));
         binningModeInput->setItemText(1, QCoreApplication::translate("QtGuiClass", "2x2", nullptr));

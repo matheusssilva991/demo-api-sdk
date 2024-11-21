@@ -129,13 +129,17 @@ void QtGui::on_connect_btn_clicked() {
 	ui.deviceInfoUpdateBtn->setDisabled(false);
 	ui.acquisitionModeInput->setDisabled(false);
 	ui.operationModeInput->setDisabled(false);
-	ui.TriggerModeInput->setDisabled(false);
+	ui.triggerModeInput->setDisabled(false);
 	ui.binningModeInput->setDisabled(false);
 	ui.gainModeInput->setDisabled(false);
 	ui.fileNameInput->setDisabled(false);
 	ui.chooseFileNameBtn->setDisabled(false);
 	ui.grabBtn->setDisabled(false);
 	ui.stopGrabBtn->setDisabled(false);
+	ui.numCyclesInput->setDisabled(false);
+	ui.numFramesInput->setDisabled(false);
+	ui.cyclesIntervalInput->setDisabled(false);
+	ui.integrationTimeInput->setDisabled(false);
 
 	for (int i = 0; i < num_devices; i++) {
 		ui.deviceSelect->addItem("Dispositivo " + QString::number(i + 1));
@@ -222,32 +226,17 @@ void QtGui::on_choose_file_name_btn_clicked() {
 
 void QtGui::on_acquisition_mode_changed(int index) {
 	QString selected_acquisition_mode = ui.acquisitionModeInput->itemText(index);
-	int operation_mode_index = ui.operationModeInput->currentIndex();
-	QString selected_operation_mode = ui.operationModeInput->itemText(operation_mode_index);
 
 	if (selected_acquisition_mode == "Tomografia") {
 		ui.operationModeInput->setDisabled(false);
-		ui.TriggerModeInput->setDisabled(false);
+		ui.triggerModeInput->setDisabled(false);
 		ui.binningModeInput->setDisabled(false);
 		ui.gainModeInput->setDisabled(false);
 		ui.integrationTimeInput->setDisabled(false);
 
-		if (selected_operation_mode != QString("Cont\u00EDnuo")) {
-			ui.numCyclesInput->setDisabled(true);
-			ui.numFramesInput->setDisabled(true);
-			ui.cyclesIntervalInput->setDisabled(true);
-			ui.integrationTimeInput->setDisabled(true);
-		}
-		else {
-			ui.numCyclesInput->setDisabled(false);
-			ui.numFramesInput->setDisabled(false);
-			ui.cyclesIntervalInput->setDisabled(false);
-			ui.integrationTimeInput->setDisabled(false);
-		}
-
 	} else {
 		ui.operationModeInput->setDisabled(true);
-		ui.TriggerModeInput->setDisabled(false);
+		ui.triggerModeInput->setDisabled(false);
 		ui.binningModeInput->setDisabled(false);
 		ui.gainModeInput->setDisabled(false);
 		ui.numCyclesInput->setDisabled(true);

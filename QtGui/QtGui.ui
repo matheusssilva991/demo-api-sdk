@@ -135,7 +135,7 @@ QPushButton:disabled {
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -927,7 +927,7 @@ QPushButton:disabled {
                <number>0</number>
               </property>
               <item>
-               <widget class="QLabel" name="TriggerModeLabel">
+               <widget class="QLabel" name="triggerModeLabel">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -946,7 +946,7 @@ QPushButton:disabled {
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="TriggerModeInput">
+               <widget class="QComboBox" name="triggerModeInput">
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
@@ -967,12 +967,12 @@ QPushButton:disabled {
                 </property>
                 <item>
                  <property name="text">
-                  <string>Externo</string>
+                  <string>Interno</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Interno</string>
+                  <string>Externo</string>
                  </property>
                 </item>
                </widget>
