@@ -3,6 +3,8 @@
 #include "QMessageBox"
 #include "QFileDialog"
 
+#include "stdafx.h"
+
 #include "xsystem.h"
 #include "xdevice.h"
 #include "xcommand.h"
@@ -32,6 +34,14 @@
 #pragma comment(lib, "..\\lib\\x64\\XLibDllKosti.lib")
 
 using namespace std;
+
+//The allocated buffer size for the grabbed frames
+#if defined(_WIN64)
+uint32_t frame_buffer_size = 700;
+#else
+uint32_t frame_buffer_size = 400;
+#endif
+
 
 QtGui::QtGui(QWidget *parent)
     : QMainWindow(parent),
@@ -94,8 +104,8 @@ void QtGui::on_connect_btn_clicked() {
 	}
 
 	// Find device
-	int num_devices = this->xsystem->FindDevice();
-	//int num_devices = 1;
+	//int num_devices = this->xsystem->FindDevice();
+	int num_devices = 1;
 	if (num_devices <= 0) {
 		QMessageBox::critical(this, "Erro", "Nenhum dispositivo encontrado.");
 		return;
@@ -107,8 +117,6 @@ void QtGui::on_connect_btn_clicked() {
 	ui.numFramesInput->setText("1");
 	ui.cyclesIntervalInput->setText("0");
 	ui.fileNameInput->setText("");
-	
-	QMessageBox::information(this, "Status", "Conectado com sucesso ao host " + host_ip + ".");
 
 	ui.hostIpInput->setDisabled(true);
 	ui.hostIpConnectBtn->setDisabled(true);
@@ -132,6 +140,8 @@ void QtGui::on_connect_btn_clicked() {
 	for (int i = 0; i < num_devices; i++) {
 		ui.deviceSelect->addItem("Dispositivo " + QString::number(i + 1));
 	}
+
+	QMessageBox::information(this, "Status", "Conectado com sucesso ao host " + host_ip + ".");
 }
 
 void QtGui::on_device_select_changed(int index) {
@@ -157,26 +167,30 @@ void QtGui::on_device_select_changed(int index) {
 
 	// Open acquisition connection
 	if (this->xcommand.Open(this->xdevice_ptr)) {
+		QMessageBox::information(this, "Status", "Canal de comando aberto com sucesso.");
 		if (!this->xacquisition.Open(this->xdevice_ptr, &this->xcommand)) {
 			QMessageBox::critical(this, "Erro", "Falha ao abrir o canal de aquisição.");
+		}
+		else {
+			QMessageBox::information(this, "Status", "Canal de imagem aberto com sucesso.");
 		}
 	}
 	else {
 		QMessageBox::critical(this, "Erro", "Falha ao abrir o canal de comando.");
 	}
 
-	QString mac_address(reinterpret_cast<char*>(this->xdevice_ptr->GetMAC()));
-	QString firm_ver(reinterpret_cast<char*>(this->xdevice_ptr->GetFirmVer()));
+	//QString mac_address(reinterpret_cast<char*>(this->xdevice_ptr->GetMAC()));
+	//QString firm_ver(reinterpret_cast<char*>(this->xdevice_ptr->GetFirmVer()));
 	QString cmd_port = QString::number(this->xdevice_ptr->GetCmdPort());
 	QString img_port = QString::number(this->xdevice_ptr->GetImgPort());
 
 	ui.deviceIpInput->setText(this->xdevice_ptr->GetIP());
-	ui.deviceTypeInput->setText(this->xdevice_ptr->GetDeviceType());
-	ui.deviceMacInput->setText(mac_address);
-	ui.deviceFirmwareInput->setText(firm_ver);
+	//ui.deviceTypeInput->setText(this->xdevice_ptr->GetDeviceType());
+	//ui.deviceMacInput->setText(mac_address);
+	//ui.deviceFirmwareInput->setText(firm_ver);
 	ui.deviceCmdPortInput->setText(cmd_port);
 	ui.deviceImgPortInput->setText(img_port);
-	ui.deviceSerialInput->setText(this->xdevice_ptr->GetSerialNum());
+	//ui.deviceSerialInput->setText(this->xdevice_ptr->GetSerialNum());
 }
 
 void QtGui::on_device_info_update_btn_clicked() {
@@ -218,7 +232,7 @@ void QtGui::on_acquisition_mode_changed(int index) {
 		ui.gainModeInput->setDisabled(false);
 		ui.integrationTimeInput->setDisabled(false);
 
-		if (selected_operation_mode == QString("Cont\u00EDnuo")) {
+		if (selected_operation_mode != QString("Cont\u00EDnuo")) {
 			ui.numCyclesInput->setDisabled(true);
 			ui.numFramesInput->setDisabled(true);
 			ui.cyclesIntervalInput->setDisabled(true);
@@ -248,16 +262,16 @@ void QtGui::on_operation_mode_changed(int index) {
 	QString selected_operation_mode = ui.operationModeInput->itemText(index);
 
 	if (selected_operation_mode == QString("Cont\u00EDnuo")) {
-		ui.numCyclesInput->setDisabled(true);
-		ui.numFramesInput->setDisabled(true);
-		ui.cyclesIntervalInput->setDisabled(true);
-		ui.integrationTimeInput->setDisabled(true);
-	}
-	else {
 		ui.numCyclesInput->setDisabled(false);
 		ui.numFramesInput->setDisabled(false);
 		ui.cyclesIntervalInput->setDisabled(false);
 		ui.integrationTimeInput->setDisabled(false);
+	}
+	else {
+		ui.numCyclesInput->setDisabled(true);
+		ui.numFramesInput->setDisabled(true);
+		ui.cyclesIntervalInput->setDisabled(true);
+		ui.integrationTimeInput->setDisabled(true);
 	}
 
 	return;
@@ -265,7 +279,7 @@ void QtGui::on_operation_mode_changed(int index) {
 
 void QtGui::on_binning_mode_changed(int index) {
 	QString selected_binning_mode = ui.binningModeInput->itemText(index);
-	string binning_mode = selected_binning_mode.toStdString() == "Normal" ? "0": "1";
+	int binning_mode = selected_binning_mode.toStdString() == "Normal" ? 0: 1;
 
 	if (1 != this->xcommand.SetPara(XPARA_BINNING_MODE, binning_mode))
 	{
@@ -275,7 +289,7 @@ void QtGui::on_binning_mode_changed(int index) {
 
 void QtGui::on_gain_mode_changed(int index) {
 	QString selected_gain_mode = ui.gainModeInput->itemText(index);
-	string gain_mode = selected_gain_mode.toStdString() == "Alto" ? "256" : "1";
+	int gain_mode = selected_gain_mode.toStdString() == "Alto" ? 256 : 1;
 
 	if (this->xcommand.SetPara(XPARA_GAIN_RANGE, gain_mode) != 1)
 	{

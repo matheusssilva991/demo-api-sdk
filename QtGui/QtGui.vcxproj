@@ -113,6 +113,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Demo\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../include/</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="Utils.cpp" />
     <QtRcc Include="QtGui.qrc" />
     <QtUic Include="QtGui.ui" />
@@ -123,6 +129,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Demo\stdafx.h" />
+    <ClInclude Include="..\Demo\targetver.h" />
     <ClInclude Include="CmdSink.h" />
     <ClInclude Include="ImgSink.h" />
     <ClInclude Include="resource.h" />
