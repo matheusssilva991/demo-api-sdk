@@ -31,6 +31,24 @@ Software para interação com o detector X-Panel 1412i, desenvolvido em C++. Ele
       - [Instanciar e registrar eventos](#instanciar-e-registrar-eventos-de-aquisição-e-transferência)
       - [Abrir e fechar canal de imagem](#abrir-e-fechar-canal-de-imagem)
       - [Capturar imagens](#capturar-imagens)
+- [Documentação Interface gráfica](#documentação-interface-gráfica)
+  - [Personalizar a interface gráfica](#personalizar-a-interface-gráfica)
+  - [Manipulação de eventos da interface gráfica](#manipulação-de-eventos-da-interface-gráfica)
+  - [Slots do projeto](#slots-do-projeto)
+    - [on_connect_btn_clicked](#slot-1---on_connect_btn_clicked)
+    - [on_device_select_changed](#slot-2---on_device_select_changed)
+    - [on_device_info_update_btn_clicked](#slot-3---on_device_info_update_btn_clicked)
+    - [on_choose_file_name_btn_clicked](#slot-4---on_choose_file_name_btn_clicked)
+    - [on_acquisition_mode_changed](#slot-5---on_acquisition_mode_changed)
+    - [on_operation_mode_changed (Não implementado](#slot-6---on_operation_mode_changed-não-implementado)
+    - [on_binning_mode_changed](#slot-7---on_binning_mode_changed)
+    - [on_gain_mode_changed](#slot-8---on_gain_mode_changed)
+    - [on_integration_time_changed](#slot-9---on_integration_time_changed)
+    - [on_num_cycles_changed](#slot-10---on_num_cycles_changed)
+    - [on_num_frames_changed](#slot-11---on_num_frames_changed)
+    - [on_cycles_interval_input_changed](#slot-12---on_cycles_interval_input_changed)
+    - [on_grab_btn_clicked](#slot-13---on_grab_btn_clicked)
+    - [on_stop_grab_btn_clicked](#slot-14---on_stop_grab_btn_clicked)
 
 ## Requisitos
 
@@ -506,6 +524,6 @@ Além disso, o slot executa uma validação para garantir que o valor não seja 
 
 O slot 13 é responsável por manipular o evento de clique do botão Iniciar captura na tela de Operação. Ao clicar no botão, o slot envia um comando diretamente ao detector para iniciar aquisição de imagens.
 
-#### Slot 13 - on_stop_grab_btn_clicked
+#### Slot 14 - on_stop_grab_btn_clicked
 
 O slot 13 é responsável por manipular o evento de clique do botão Parar captura na tela de Operação. Ao clicar no botão, o slot envia um comando diretamente ao detector para parar a aquisição de imagens.
