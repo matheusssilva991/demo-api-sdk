@@ -426,7 +426,7 @@ Com a extensão ``Visual Studio Tools`` instalada, acesse o arquivo ``QtGui.ui``
 
 Na aba aberta do QtGui.ui, é possível personalizar elementos da interface arrastando e soltando componentes. Além disso, há a opção de incluir código CSS para estilização.
 
-### Manipulação de eventos
+### Manipulação de eventos da interface gráfica
 
 A manipulação de eventos que ocorrem na interface pode ser feita por meio de slots na classe ``QtGui``. A classe ``QtGui`` está dividida em dois arquivos: ``QtGui.h`` e ``QtGui.cpp``. O arquivo ``QtGui.h`` contém o cabeçalho da classe, enquanto o arquivo ``QtGui.cpp`` possui a definição da classe.
 
@@ -441,3 +441,71 @@ Em seguida, vincule a função com o evento da interface no construtor da classe
 Por fim, implemente a função para manipular o evento da interface como um método da classe ``QtGui``.
 
 ![Exemplo de implementação de slot](./images/doc/exemplo_slot.png)
+
+### Slots do projeto
+
+Esse projeto contém 14 slots. A seguir são descritos cada um deles.
+
+#### Slot 1 - on_connect_btn_clicked
+
+O slot 1 é responsável por manipular o evento de clique do botão Conectar na tela de Conexão e dispositivos. Ao clicar no botão Conectar, esse slot verifica se o endereço IP do host informado é válido, realiza a configuração inicial com a API do detector e executa uma busca por dispositivos detectores na rede.
+
+#### Slot 2 - on_device_select_changed
+
+O slot 2 é responsável por manipular o evento de mudança de índice na caixa de seleção Selecionar dispositivo na tela de Conexão e Dispositivos. Ao selecionar um novo dispositivo, esse slot deleta a referência ao dispositivo anterior, busca o novo dispositivo e suas informações, e preenche os campos correspondentes na tela de Conexão e Dispositivos.
+
+#### Slot 3 - on_device_info_update_btn_clicked
+
+O slot 3 é responsável por manipular o evento de clique do botão Atualizar na tela de Conexão e dispositivos. Ao clicar no botão Atualizar, esse slot atualiza os campos com as informações mais recentes e envia esses dados atualizados para o detector.
+
+#### Slot 4 - on_choose_file_name_btn_clicked
+
+O slot 4 é responsável por manipular o evento de clique do botão Selecionar nome do arquivo na tela de Operação. Ao clicar no botão, o slot abre uma janela para que o usuário selecione um arquivo com extensão .dat.
+
+#### Slot 5 - on_acquisition_mode_changed
+
+O slot 5 manipula a mudança de índice na caixa de seleção Modo de aquisição na tela de Operação. Quando um novo modo de aquisição é selecionado, o slot ajusta a interface ativando ou desativando campos conforme o modo escolhido. Por exemplo, campos como número de ciclos e intervalo entre ciclos podem ser habilitados no modo de tomografia e desabilitados no modo de radiografia.
+
+#### Slot 6 - on_operation_mode_changed (Não implementado)
+
+O slot 6 manipula a mudança de índice na caixa de seleção Modo de operação na tela de Operação. Esse slot não foi implementado devido a falta de documentação da API do detector para essa operação.
+
+#### Slot 7 - on_binning_mode_changed
+
+O slot 7 manipula a mudança de índice na caixa de seleção Modo de binning na tela de Operação. Quando um novo modo de binning é selecionado, esse slot envia um comando diretamente ao detector, instruindo-o a alterar o modo de binning para o valor escolhido.
+
+#### Slot 8 - on_gain_mode_changed
+
+O slot 8 manipula a mudança de índice na caixa de seleção Modo de ganho na tela de Operação. Quando um novo modo de ganho é selecionado, esse slot envia um comando diretamente ao detector, instruindo-o a alterar o modo de ganho para o valor escolhido.
+
+#### Slot 9 - on_integration_time_changed
+
+O slot 9 manipula o evento de finalização de edição no campo de texto Tempo de integração na tela de Operação. Quando um novo valor é digitado e confirmado, o slot envia um comando diretamente ao detector, instruindo-o a ajustar o tempo de integração para o valor inserido.
+
+Além disso, o slot executa uma validação para garantir que o valor não seja negativo, evitando assim falhas na operação do detector. Caso um valor inválido seja detectado, o sistema pode alertar o usuário ou reverter o campo para o último valor válido.
+
+#### Slot 10 - on_num_cycles_changed
+
+O slot 10 manipula o evento de finalização de edição no campo de texto Número de ciclos na tela de Operação. Quando um novo valor é digitado e confirmado, o slot envia um comando diretamente ao detector, instruindo-o a ajustar o número de ciclos para o valor inserido.
+
+Além disso, o slot executa uma validação para garantir que o valor não seja negativo, evitando assim falhas na operação do detector. Caso um valor inválido seja detectado, o sistema pode alertar o usuário ou reverter o campo para o último valor válido.
+
+#### Slot 11 - on_num_frames_changed
+
+O slot 11 manipula o evento de finalização de edição no campo de texto Número de frames na tela de Operação. Quando um novo valor é digitado e confirmado, o slot envia um comando diretamente ao detector, instruindo-o a ajustar o número de frames para o valor inserido.
+
+Além disso, o slot executa uma validação para garantir que o valor não seja negativo, evitando assim falhas na operação do detector. Caso um valor inválido seja detectado, o sistema pode alertar o usuário ou reverter o campo para o último valor válido.
+
+#### Slot 12 - on_cycles_interval_input_changed
+
+O slot 12 manipula o evento de finalização de edição no campo de texto Intervalo entre ciclos na tela de Operação. Quando um novo valor é digitado e confirmado, o slot envia um comando diretamente ao detector, instruindo-o a ajustar o intervalo entre ciclos para o valor inserido.
+
+Além disso, o slot executa uma validação para garantir que o valor não seja negativo, evitando assim falhas na operação do detector. Caso um valor inválido seja detectado, o sistema pode alertar o usuário ou reverter o campo para o último valor válido.
+
+#### Slot 13 - on_grab_btn_clicked
+
+O slot 13 é responsável por manipular o evento de clique do botão Iniciar captura na tela de Operação. Ao clicar no botão, o slot envia um comando diretamente ao detector para iniciar aquisição de imagens.
+
+#### Slot 13 - on_stop_grab_btn_clicked
+
+O slot 13 é responsável por manipular o evento de clique do botão Parar captura na tela de Operação. Ao clicar no botão, o slot envia um comando diretamente ao detector para parar a aquisição de imagens.
