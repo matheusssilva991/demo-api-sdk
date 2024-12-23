@@ -1,59 +1,55 @@
 ﻿   Qt/MSBuild: 3.3.0.13
    Qt: 6.7.2
-  stdafx.cpp
-  Utils.cpp
   CmdSink.cpp
   ImgSink.cpp
   QtGui.cpp
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\QtGui.cpp(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0xaba que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\Utils.cpp(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x72 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x117 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x10e que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'ImgSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\Utils.cpp(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x8b que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x12b que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x122 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'ImgSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\Utils.cpp(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x92 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1b3 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1aa que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'ImgSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\Utils.cpp(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x14f que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\QtGui.cpp(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0xac6 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1ca que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1c1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'ImgSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\QtGui.cpp(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x173d que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x2f1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'ImgSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\Utils.cpp(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x15c que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x310 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'ImgSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x374 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'ImgSink.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\Utils.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x2b que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'Utils.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\Utils.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x3a que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'Utils.cpp')
-  
   main.cpp
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x117 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x12b que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1b3 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1ca que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x10e que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'ImgSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x122 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'ImgSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1aa que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'ImgSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1c1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'ImgSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x2f1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'ImgSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x310 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'ImgSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x374 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'ImgSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x117 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'main.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x12b que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'main.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1b3 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'main.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1ca que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'main.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x117 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
   (compilando o arquivo fonte 'QtGui.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x12b que é inválido no conjunto de caracteres de origem atual (página de código 65001).
@@ -66,49 +62,49 @@ D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: 
   (compilando o arquivo fonte 'QtGui.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x10e que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'QtGui.cpp')
+  (compilando o arquivo fonte 'main.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x122 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'QtGui.cpp')
+  (compilando o arquivo fonte 'main.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1aa que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'QtGui.cpp')
+  (compilando o arquivo fonte 'main.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1c1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'QtGui.cpp')
+  (compilando o arquivo fonte 'main.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x2f1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'QtGui.cpp')
+  (compilando o arquivo fonte 'main.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x310 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'QtGui.cpp')
+  (compilando o arquivo fonte 'main.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x374 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'QtGui.cpp')
+  (compilando o arquivo fonte 'main.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x10e que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
+  (compilando o arquivo fonte 'QtGui.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x122 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
+  (compilando o arquivo fonte 'QtGui.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1aa que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
+  (compilando o arquivo fonte 'QtGui.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1c1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
+  (compilando o arquivo fonte 'QtGui.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x2f1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
+  (compilando o arquivo fonte 'QtGui.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x310 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
+  (compilando o arquivo fonte 'QtGui.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x374 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'CmdSink.cpp')
+  (compilando o arquivo fonte 'QtGui.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\include\xacquisition.h(26,27): warning C4309: 'argumento padrão': truncamento de valor constante
-  (compilando o arquivo fonte 'CmdSink.cpp')
+  (compilando o arquivo fonte 'main.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\include\xacquisition.h(26,27): warning C4309: 'argumento padrão': truncamento de valor constante
   (compilando o arquivo fonte 'QtGui.cpp')
@@ -127,6 +123,30 @@ D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: 
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\include\xacquisition.h(26,27): warning C4309: 'argumento padrão': truncamento de valor constante
   (compilando o arquivo fonte 'ImgSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x10e que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x122 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1aa que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1c1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x2f1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x310 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x374 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
+  (compilando o arquivo fonte 'CmdSink.cpp')
+  
+D:\mathe\Documents\Meus Codes\demo-api-sdk\include\xacquisition.h(26,27): warning C4309: 'argumento padrão': truncamento de valor constante
+  (compilando o arquivo fonte 'CmdSink.cpp')
   
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\utils.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x2b que é inválido no conjunto de caracteres de origem atual (página de código 65001).
   (compilando o arquivo fonte 'QtGui.cpp')
@@ -134,43 +154,6 @@ D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\utils.h(1,1): warning C4828: O 
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\utils.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x3a que é inválido no conjunto de caracteres de origem atual (página de código 65001).
   (compilando o arquivo fonte 'QtGui.cpp')
   
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x117 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x12b que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1b3 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1ca que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x10e que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x122 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1aa que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x1c1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x2f1 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x310 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\ImgSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x374 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
-  (compilando o arquivo fonte 'main.cpp')
-  
-D:\mathe\Documents\Meus Codes\demo-api-sdk\include\xacquisition.h(26,27): warning C4309: 'argumento padrão': truncamento de valor constante
-  (compilando o arquivo fonte 'main.cpp')
-  
-  qrc_QtGui.cpp
   moc_QtGui.cpp
 D:\mathe\Documents\Meus Codes\demo-api-sdk\QtGui\CmdSink.h(1,1): warning C4828: O arquivo contém um caractere começando com o deslocamento 0x117 que é inválido no conjunto de caracteres de origem atual (página de código 65001).
   (compilando o arquivo fonte 'x64/Release/qt/moc/moc_QtGui.cpp')
@@ -211,7 +194,8 @@ D:\mathe\Documents\Meus Codes\demo-api-sdk\include\xacquisition.h(26,27): warnin
 LINK : warning LNK4075: ignorando '/INCREMENTAL' devido a especificação '/LTCG'
      Criando biblioteca D:\mathe\Documents\Meus Codes\demo-api-sdk\x64\Release\QtGui.lib e objeto D:\mathe\Documents\Meus Codes\demo-api-sdk\x64\Release\QtGui.exp
   Gerando código
-  Previous IPDB was built with incompatible compiler, fall back to full compilation.
-  All 1154 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  2 of 1154 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finalizada a geração de código
   QtGui.vcxproj -> D:\mathe\Documents\Meus Codes\demo-api-sdk\x64\Release\QtGui.exe

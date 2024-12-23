@@ -46,6 +46,14 @@ public:
     QLabel *deviceSelectLabel;
     QComboBox *deviceSelect;
     QSpacerItem *horizontalSpacer_8;
+    QHBoxLayout *horizontalLayout_7;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *deviceIpLabel;
+    QLineEdit *deviceIpInput;
+    QSpacerItem *horizontalSpacer_4;
+    QVBoxLayout *verticalLayout_6;
+    QLabel *deviceTypeLabel;
+    QLineEdit *deviceTypeInput;
     QHBoxLayout *horizontalLayout_6;
     QVBoxLayout *verticalLayout_3;
     QLabel *deviceMacLabel;
@@ -55,25 +63,17 @@ public:
     QLabel *deviceFirmwareLabel;
     QLineEdit *deviceFirmwareInput;
     QHBoxLayout *horizontalLayout_5;
-    QVBoxLayout *verticalLayout_5;
-    QLabel *deviceSerialLabel;
-    QLineEdit *deviceSerialInput;
-    QSpacerItem *horizontalSpacer_4;
-    QVBoxLayout *verticalLayout_6;
-    QLabel *deviceTypeLabel;
-    QLineEdit *deviceTypeInput;
-    QHBoxLayout *horizontalLayout_4;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *deviceIpLabel;
-    QLineEdit *deviceIpInput;
+    QVBoxLayout *verticalLayout_4;
+    QLabel *deviceCmdPortLabel;
+    QLineEdit *deviceCmdPortInput;
     QSpacerItem *horizontalSpacer_6;
     QVBoxLayout *verticalLayout_8;
     QLabel *deviceImgPortLabel;
     QLineEdit *deviceImgPortInput;
-    QHBoxLayout *horizontalLayout_7;
-    QVBoxLayout *verticalLayout_4;
-    QLabel *deviceCmdPortLabel;
-    QLineEdit *deviceCmdPortInput;
+    QHBoxLayout *horizontalLayout_4;
+    QVBoxLayout *verticalLayout_5;
+    QLabel *deviceSerialLabel;
+    QLineEdit *deviceSerialInput;
     QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout;
     QPushButton *deviceInfoUpdateBtn;
@@ -179,7 +179,7 @@ public:
         tabWidget->setAutoFillBackground(false);
         tabWidget->setStyleSheet(QString::fromUtf8("* {\n"
 "	font-family: \"Arial\";\n"
-"    font-size: 9pt;\n"
+"    font-size: 12px;\n"
 "	background-color: #FAFAFA;\n"
 "	color: #000;\n"
 "}\n"
@@ -217,8 +217,8 @@ public:
 "\n"
 "QComboBox {\n"
 "	border: 1px solid #B1B1B1;\n"
-"	border-"
-                        "radius: 20px;\n"
+"	border"
+                        "-radius: 20px;\n"
 "	color: #000;\n"
 "	backgroundColor: #FAFAFA;\n"
 "	padding: 2px 4px 2px 4px;\n"
@@ -295,7 +295,6 @@ public:
         hostIpInput->setMaximumSize(QSize(200, 16777215));
         QFont font;
         font.setFamilies({QString::fromUtf8("Arial")});
-        font.setPointSize(9);
         hostIpInput->setFont(font);
         hostIpInput->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         hostIpInput->setAutoFillBackground(false);
@@ -364,6 +363,61 @@ public:
 
         verticalLayout_10->addLayout(horizontalLayout_8);
 
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        horizontalLayout_7->setContentsMargins(-1, -1, -1, 10);
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalLayout_2->setContentsMargins(-1, -1, 0, -1);
+        deviceIpLabel = new QLabel(tab);
+        deviceIpLabel->setObjectName("deviceIpLabel");
+
+        verticalLayout_2->addWidget(deviceIpLabel);
+
+        deviceIpInput = new QLineEdit(tab);
+        deviceIpInput->setObjectName("deviceIpInput");
+        deviceIpInput->setEnabled(false);
+        sizePolicy2.setHeightForWidth(deviceIpInput->sizePolicy().hasHeightForWidth());
+        deviceIpInput->setSizePolicy(sizePolicy2);
+        deviceIpInput->setMinimumSize(QSize(200, 0));
+        deviceIpInput->setMaximumSize(QSize(200, 16777215));
+
+        verticalLayout_2->addWidget(deviceIpInput);
+
+
+        horizontalLayout_7->addLayout(verticalLayout_2);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer_4);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setObjectName("verticalLayout_6");
+        verticalLayout_6->setContentsMargins(0, -1, -1, -1);
+        deviceTypeLabel = new QLabel(tab);
+        deviceTypeLabel->setObjectName("deviceTypeLabel");
+
+        verticalLayout_6->addWidget(deviceTypeLabel);
+
+        deviceTypeInput = new QLineEdit(tab);
+        deviceTypeInput->setObjectName("deviceTypeInput");
+        deviceTypeInput->setEnabled(false);
+        sizePolicy2.setHeightForWidth(deviceTypeInput->sizePolicy().hasHeightForWidth());
+        deviceTypeInput->setSizePolicy(sizePolicy2);
+        deviceTypeInput->setMinimumSize(QSize(200, 0));
+        deviceTypeInput->setMaximumSize(QSize(200, 16777215));
+
+        verticalLayout_6->addWidget(deviceTypeInput);
+
+
+        horizontalLayout_7->addLayout(verticalLayout_6);
+
+
+        verticalLayout_10->addLayout(horizontalLayout_7);
+
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName("horizontalLayout_6");
@@ -423,86 +477,31 @@ public:
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName("horizontalLayout_5");
         horizontalLayout_5->setContentsMargins(-1, -1, -1, 10);
-        verticalLayout_5 = new QVBoxLayout();
-        verticalLayout_5->setSpacing(6);
-        verticalLayout_5->setObjectName("verticalLayout_5");
-        verticalLayout_5->setContentsMargins(-1, -1, 0, 0);
-        deviceSerialLabel = new QLabel(tab);
-        deviceSerialLabel->setObjectName("deviceSerialLabel");
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setObjectName("verticalLayout_4");
+        verticalLayout_4->setContentsMargins(-1, -1, 0, 0);
+        deviceCmdPortLabel = new QLabel(tab);
+        deviceCmdPortLabel->setObjectName("deviceCmdPortLabel");
 
-        verticalLayout_5->addWidget(deviceSerialLabel);
+        verticalLayout_4->addWidget(deviceCmdPortLabel);
 
-        deviceSerialInput = new QLineEdit(tab);
-        deviceSerialInput->setObjectName("deviceSerialInput");
-        deviceSerialInput->setEnabled(false);
-        sizePolicy2.setHeightForWidth(deviceSerialInput->sizePolicy().hasHeightForWidth());
-        deviceSerialInput->setSizePolicy(sizePolicy2);
-        deviceSerialInput->setMinimumSize(QSize(200, 0));
-        deviceSerialInput->setMaximumSize(QSize(200, 16777215));
+        deviceCmdPortInput = new QLineEdit(tab);
+        deviceCmdPortInput->setObjectName("deviceCmdPortInput");
+        deviceCmdPortInput->setEnabled(false);
+        sizePolicy2.setHeightForWidth(deviceCmdPortInput->sizePolicy().hasHeightForWidth());
+        deviceCmdPortInput->setSizePolicy(sizePolicy2);
+        deviceCmdPortInput->setMinimumSize(QSize(200, 0));
+        deviceCmdPortInput->setMaximumSize(QSize(200, 16777215));
 
-        verticalLayout_5->addWidget(deviceSerialInput);
-
-
-        horizontalLayout_5->addLayout(verticalLayout_5);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_4);
-
-        verticalLayout_6 = new QVBoxLayout();
-        verticalLayout_6->setSpacing(6);
-        verticalLayout_6->setObjectName("verticalLayout_6");
-        verticalLayout_6->setContentsMargins(0, -1, -1, -1);
-        deviceTypeLabel = new QLabel(tab);
-        deviceTypeLabel->setObjectName("deviceTypeLabel");
-
-        verticalLayout_6->addWidget(deviceTypeLabel);
-
-        deviceTypeInput = new QLineEdit(tab);
-        deviceTypeInput->setObjectName("deviceTypeInput");
-        deviceTypeInput->setEnabled(false);
-        sizePolicy2.setHeightForWidth(deviceTypeInput->sizePolicy().hasHeightForWidth());
-        deviceTypeInput->setSizePolicy(sizePolicy2);
-        deviceTypeInput->setMinimumSize(QSize(200, 0));
-        deviceTypeInput->setMaximumSize(QSize(200, 16777215));
-
-        verticalLayout_6->addWidget(deviceTypeInput);
+        verticalLayout_4->addWidget(deviceCmdPortInput);
 
 
-        horizontalLayout_5->addLayout(verticalLayout_6);
-
-
-        verticalLayout_10->addLayout(horizontalLayout_5);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        horizontalLayout_4->setContentsMargins(-1, -1, -1, 10);
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalLayout_2->setContentsMargins(-1, -1, 0, -1);
-        deviceIpLabel = new QLabel(tab);
-        deviceIpLabel->setObjectName("deviceIpLabel");
-
-        verticalLayout_2->addWidget(deviceIpLabel);
-
-        deviceIpInput = new QLineEdit(tab);
-        deviceIpInput->setObjectName("deviceIpInput");
-        deviceIpInput->setEnabled(false);
-        sizePolicy2.setHeightForWidth(deviceIpInput->sizePolicy().hasHeightForWidth());
-        deviceIpInput->setSizePolicy(sizePolicy2);
-        deviceIpInput->setMinimumSize(QSize(200, 0));
-        deviceIpInput->setMaximumSize(QSize(200, 16777215));
-
-        verticalLayout_2->addWidget(deviceIpInput);
-
-
-        horizontalLayout_4->addLayout(verticalLayout_2);
+        horizontalLayout_5->addLayout(verticalLayout_4);
 
         horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_4->addItem(horizontalSpacer_6);
+        horizontalLayout_5->addItem(horizontalSpacer_6);
 
         verticalLayout_8 = new QVBoxLayout();
         verticalLayout_8->setSpacing(6);
@@ -524,43 +523,43 @@ public:
         verticalLayout_8->addWidget(deviceImgPortInput);
 
 
-        horizontalLayout_4->addLayout(verticalLayout_8);
+        horizontalLayout_5->addLayout(verticalLayout_8);
 
 
-        verticalLayout_10->addLayout(horizontalLayout_4);
+        verticalLayout_10->addLayout(horizontalLayout_5);
 
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setSpacing(6);
-        horizontalLayout_7->setObjectName("horizontalLayout_7");
-        horizontalLayout_7->setContentsMargins(-1, -1, -1, 10);
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setSpacing(6);
-        verticalLayout_4->setObjectName("verticalLayout_4");
-        verticalLayout_4->setContentsMargins(-1, -1, 0, 0);
-        deviceCmdPortLabel = new QLabel(tab);
-        deviceCmdPortLabel->setObjectName("deviceCmdPortLabel");
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName("horizontalLayout_4");
+        horizontalLayout_4->setContentsMargins(-1, -1, -1, 10);
+        verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setSpacing(6);
+        verticalLayout_5->setObjectName("verticalLayout_5");
+        verticalLayout_5->setContentsMargins(-1, -1, 0, 0);
+        deviceSerialLabel = new QLabel(tab);
+        deviceSerialLabel->setObjectName("deviceSerialLabel");
 
-        verticalLayout_4->addWidget(deviceCmdPortLabel);
+        verticalLayout_5->addWidget(deviceSerialLabel);
 
-        deviceCmdPortInput = new QLineEdit(tab);
-        deviceCmdPortInput->setObjectName("deviceCmdPortInput");
-        deviceCmdPortInput->setEnabled(false);
-        sizePolicy2.setHeightForWidth(deviceCmdPortInput->sizePolicy().hasHeightForWidth());
-        deviceCmdPortInput->setSizePolicy(sizePolicy2);
-        deviceCmdPortInput->setMinimumSize(QSize(200, 0));
-        deviceCmdPortInput->setMaximumSize(QSize(200, 16777215));
+        deviceSerialInput = new QLineEdit(tab);
+        deviceSerialInput->setObjectName("deviceSerialInput");
+        deviceSerialInput->setEnabled(false);
+        sizePolicy2.setHeightForWidth(deviceSerialInput->sizePolicy().hasHeightForWidth());
+        deviceSerialInput->setSizePolicy(sizePolicy2);
+        deviceSerialInput->setMinimumSize(QSize(200, 0));
+        deviceSerialInput->setMaximumSize(QSize(200, 16777215));
 
-        verticalLayout_4->addWidget(deviceCmdPortInput);
+        verticalLayout_5->addWidget(deviceSerialInput);
 
 
-        horizontalLayout_7->addLayout(verticalLayout_4);
+        horizontalLayout_4->addLayout(verticalLayout_5);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_7->addItem(horizontalSpacer);
+        horizontalLayout_4->addItem(horizontalSpacer);
 
 
-        verticalLayout_10->addLayout(horizontalLayout_7);
+        verticalLayout_10->addLayout(horizontalLayout_4);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -962,7 +961,6 @@ public:
         label->setObjectName("label");
         QFont font1;
         font1.setFamilies({QString::fromUtf8("Arial")});
-        font1.setPointSize(9);
         font1.setBold(true);
         label->setFont(font1);
 
@@ -1065,13 +1063,13 @@ public:
         hostIpConnectBtn->setText(QCoreApplication::translate("QtGuiClass", "Conectar", nullptr));
         deviceSelectLabel->setText(QCoreApplication::translate("QtGuiClass", "Selecionar dispositivo", nullptr));
         deviceSelect->setPlaceholderText(QString());
+        deviceIpLabel->setText(QCoreApplication::translate("QtGuiClass", "Endere\303\247o de IP do dispositivo", nullptr));
+        deviceTypeLabel->setText(QCoreApplication::translate("QtGuiClass", "Tipo de dispositivo", nullptr));
         deviceMacLabel->setText(QCoreApplication::translate("QtGuiClass", "Endere\303\247o MAC", nullptr));
         deviceFirmwareLabel->setText(QCoreApplication::translate("QtGuiClass", "Vers\303\243o do Firmware", nullptr));
-        deviceSerialLabel->setText(QCoreApplication::translate("QtGuiClass", "N\303\272mero Serial", nullptr));
-        deviceTypeLabel->setText(QCoreApplication::translate("QtGuiClass", "Tipo de dispositivo", nullptr));
-        deviceIpLabel->setText(QCoreApplication::translate("QtGuiClass", "Endere\303\247o de IP do dispositivo", nullptr));
-        deviceImgPortLabel->setText(QCoreApplication::translate("QtGuiClass", "Porta de imagem", nullptr));
         deviceCmdPortLabel->setText(QCoreApplication::translate("QtGuiClass", "Porta de comando", nullptr));
+        deviceImgPortLabel->setText(QCoreApplication::translate("QtGuiClass", "Porta de imagem", nullptr));
+        deviceSerialLabel->setText(QCoreApplication::translate("QtGuiClass", "N\303\272mero Serial", nullptr));
         deviceInfoUpdateBtn->setText(QCoreApplication::translate("QtGuiClass", "Atualizar", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("QtGuiClass", "Conex\303\243o e dispositivos", nullptr));
         acquisitionModeLabel->setText(QCoreApplication::translate("QtGuiClass", "Modo de aquisi\303\247\303\243o", nullptr));

@@ -2,5 +2,6 @@
     <qresource prefix="/QtGui"/>
     <qresource prefix="/Assets">
         <file>assets/select_arrow.png</file>
+        <file>assets/x-ray.png</file>
     </qresource>
 </RCC>

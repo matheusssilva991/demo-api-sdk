@@ -55,7 +55,6 @@ QtGui::QtGui(QWidget *parent)
 	img_sink(new ImgSink(this))
 {
     ui.setupUi(this);
-	this->setWindowTitle("Auto Detector Dti 1412i");
 
 	connect(ui.hostIpConnectBtn, SIGNAL(clicked()), this, SLOT(on_connect_btn_clicked()));
 	connect(ui.deviceSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(on_device_select_changed(int)));
@@ -78,7 +77,7 @@ void QtGui::on_connect_btn_clicked() {
 	char host_ip_c[20];
 
 	if (!isValidIP(host_ip.toStdString())) {
-		QMessageBox::warning(this, "Aviso", "Endereço de IP inválido.");
+		QMessageBox::warning(this, "Aviso", "Endere\u00E7o de IP inv\u00E1lido.");
 		return;
 	}
 
@@ -105,14 +104,14 @@ void QtGui::on_connect_btn_clicked() {
 	//int num_devices = this->xsystem->FindDevice();
 	int num_devices = 1;
 	if (num_devices <= 0) {
-		QMessageBox::critical(this, "Erro", "Nenhum dispositivo encontrado.");
+		QMessageBox::warning(this, "Aviso", "Nenhum dispositivo encontrado.");
 		return;
 	}
 
 	// Set default values
 	ui.integrationTimeInput->setText("10000000");
-	ui.numCyclesInput->setText("1");
-	ui.numFramesInput->setText("1");
+	ui.numCyclesInput->setText("0");
+	ui.numFramesInput->setText("0");
 	ui.cyclesIntervalInput->setText("0");
 	ui.fileNameInput->setText("");
 
@@ -169,12 +168,12 @@ void QtGui::on_device_select_changed(int index) {
 
 	// Open acquisition connection
 	if (this->xcommand.Open(this->xdevice_ptr)) {
-		QMessageBox::information(this, "Status", "Canal de comando aberto com sucesso.");
+		//QMessageBox::information(this, "Status", "Canal de comando aberto com sucesso.");
 		if (!this->xacquisition.Open(this->xdevice_ptr, &this->xcommand)) {
-			QMessageBox::critical(this, "Erro", "Falha ao abrir o canal de aquisição.");
+			QMessageBox::critical(this, "Erro", "Falha ao abrir o canal de aquisiï¿½ï¿½o.");
 		}
 		else {
-			QMessageBox::information(this, "Status", "Canal de imagem aberto com sucesso.");
+			//QMessageBox::information(this, "Status", "Canal de imagem aberto com sucesso.");
 		}
 	}
 	else {
@@ -188,7 +187,9 @@ void QtGui::on_device_select_changed(int index) {
 
 	ui.deviceIpInput->setText(this->xdevice_ptr->GetIP());
 	//ui.deviceTypeInput->setText(this->xdevice_ptr->GetDeviceType());
+	ui.deviceTypeInput->setText("1412_KOSTI");
 	//ui.deviceMacInput->setText(mac_address);
+	ui.deviceMacInput->setText("");
 	//ui.deviceFirmwareInput->setText(firm_ver);
 	ui.deviceCmdPortInput->setText(cmd_port);
 	ui.deviceImgPortInput->setText(img_port);
@@ -280,7 +281,7 @@ void QtGui::on_gain_mode_changed(int index) {
 
 	if (this->xcommand.SetPara(XPARA_GAIN_RANGE, gain_mode) != 1)
 	{
-		QMessageBox::critical(this, "Connection", "Falha ao definir o modo de ganho");
+		QMessageBox::critical(this, "Erro", "Falha ao definir o modo de ganho.");
 	}
 }
 
@@ -289,13 +290,13 @@ void QtGui::on_integration_time_changed() {
 
 	if (integration_time < 0) {
 		ui.integrationTimeInput->setText("10000000");
-		QMessageBox::warning(this, "Connection", "Tempo de integra\u00E7\u00E3o deve ser positivo.");
+		QMessageBox::warning(this, "Aviso", "O tempo de integra\u00E7\u00E3o deve ser positivo.");
 		return;
 	}
 
 	if (this->xcommand.SetPara(XPARA_FRAME_PERIOD, integration_time) != 1)
 	{
-		QMessageBox::critical(this, "Connection", "Falha ao definir o tempo de integra\u00E7\u00E3o.");
+		QMessageBox::critical(this, "Erro", "Falha ao definir o tempo de integra\u00E7\u00E3o.");
 	}
 }
 
@@ -303,8 +304,8 @@ void QtGui::on_num_cycles_changed() {
 	int num_cycles = ui.numCyclesInput->text().toInt();
 
 	if (num_cycles < 0) {
-		ui.numCyclesInput->setText("1");
-		QMessageBox::warning(this, "Connection", "O n\u00FAmero de ciclos deve ser positivo.");
+		ui.numCyclesInput->setText("0");
+		QMessageBox::warning(this, "Aviso", "O n\u00FAmero de ciclos deve ser positivo.");
 		return;
 	}
 }
@@ -313,8 +314,8 @@ void QtGui::on_num_frames_changed() {
 	int num_frames = ui.numFramesInput->text().toInt();
 
 	if (num_frames < 0) {
-		ui.numFramesInput->setText("1");
-		QMessageBox::warning(this, "Connection", "O n\u00FAmero de frames deve ser positivo.");
+		ui.numFramesInput->setText("0");
+		QMessageBox::warning(this, "Aviso", "O n\u00FAmero de frames deve ser positivo.");
 		return;
 	}
 }
@@ -324,7 +325,7 @@ void QtGui::on_cycles_interval_input_changed() {
 
 	if (cycle_interval < 0) {
 		ui.cyclesIntervalInput->setText("0");
-		QMessageBox::warning(this, "Connection", "O intervalo entre ciclos n\u00E3o pode ser negativo.");
+		QMessageBox::warning(this, "Aviso", "O intervalo entre ciclos deve ser positivo.");
 		return;
 	}
 }
@@ -440,11 +441,11 @@ std::string QtGui::get_save_file_name() {
 	return this->save_file_name;
 }
 
-XImageHandler* QtGui::get_ximage_handler() { 
-	return &ximg_handle; 
+XImageHandler* QtGui::get_ximage_handler() {
+	return &ximg_handle;
 }
 
-XEvent* QtGui::get_xevent() 
+XEvent* QtGui::get_xevent()
 {
 	return &this->xevent;
 }

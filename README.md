@@ -8,6 +8,8 @@ Software para interação com o detector X-Panel 1412i, desenvolvido em C++. Ele
 - [Instalação](#instalação)
   - [MinGW](#mingw-compiler)
   - [Visual Studio](#visual-studio)
+  - [Qt](#qt)
+  - [API do detector](#api-do-detector)
 - [Como Rodar](#como-rodar)
 - [Documentação API](#documentação-api)
   - [Manipular eventos](#manipular-eventos)
@@ -35,6 +37,8 @@ Software para interação com o detector X-Panel 1412i, desenvolvido em C++. Ele
 - **MinGW Compiler**: Versão mínima 8.1.0
 - **Visual Studio**: Recomendado Visual Studio 2019 ou posterior
 - **MSYS2**: Para gerenciamento de pacotes no Windows
+- **Qt**: Para interface gráfica
+- **Qt Visual Studio tools**: Extensão para integrar Qt ao Visual Studio 2019
 
 ## Instalação
 
@@ -59,27 +63,30 @@ Software para interação com o detector X-Panel 1412i, desenvolvido em C++. Ele
 
 3. Após a instalação, configure o ambiente de desenvolvimento para trabalhar com o C++.
 
-## Como rodar
+### Qt
 
-Para rodar o projeto, basta abrir o arquivo de solução ``Demo_C++2017.sln`` no Visual Studio e compilar o projeto. O executável será gerado na pasta ``bin``.
+1. Baixar o Qt: [Qt - Framework para desenvolvimento de interfaces gráficas em C++](https://www.qt.io/download-dev).
+2. Instalar Qt e a extensão Visual Studio tools no Visual Studio 2019.
 
-Caso tenha problemas ao compilar o código no Visual Studio, pode ser necessário configurar o ambiente de desenvolvimento para que o compilador encontre as bibliotecas necessárias. Para isso, siga os passos abaixo:
+### API do detector
+
+Pode ser necessário configurar o ambiente de desenvolvimento para que o compilador encontre as bibliotecas necessárias. Para isso, siga os passos abaixo:
 
 1. Abra o arquivo de solução ``Demo_C++2017.sln`` no Visual Studio.
 
-2. Clique com o botão direito no projeto ``Demo_C++2017`` e selecione a opção ``Propriedades``.
+2. Clique com o botão direito no projeto ``QtGui`` e selecione a opção ``Propriedades``.
 
 3. No menu lateral, em ``Geral``, defina o valor ``bin\$(Platform)\$(Configuration)\`` para ``Diretório de saída`` e ``Diretório intermediário`` .
 
-4. No menu lateral, selecione a opção ``C\C++``, ``Geral`` e depois coloque o valor ``../include/`` em ``Diretórios de inclusão adicionais``.
+4. No menu lateral, selecione a opção ``C\C++``, ``Geral`` e depois coloque o valor ``%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_);../include/`` em ``Diretórios de inclusão adicionais``.
 
 5. No menu lateral, selecione a opção ``Linker``, ``Geral`` e depois coloque o valor ``../lib/x64`` em ``Diretórios de biblioteca adicionais``.
 
-6. No menu lateral, selecione a opção ``Linker``, ``Entrada`` e depois coloque o valor ``kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)`` em ``Dependências adicionais``.
+6. No menu lateral, selecione a opção ``Linker``, ``Entrada`` e depois coloque o valor ``$(CoreLibraryDependencies);%(AdditionalDependencies);$(Qt_LIBS_);kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;`` em ``Dependências adicionais`` caso o projeto selecionado seja o ``Demo_C++2017`` ou .
 
 7. Clique em ``Aplicar`` e depois em ``OK``.
 
-8. Clique com o botão direito no arquivo ``Demo.cpp`` e selecione a opção ``Propriedades``.
+8. Clique com o botão direito no arquivo ``main.cpp``, dependendo do projeto, e selecione a opção ``Propriedades``.
 
 9. No menu lateral, selecione a opção ``C\C++``, ``Cabeçalhos Pré-compilados`` e depois coloque o valor ``Usar (/Yu)`` em ``Diretórios de inclusão adicionais``.
 
@@ -87,7 +94,9 @@ Caso tenha problemas ao compilar o código no Visual Studio, pode ser necessári
 
 11. Repita os passos 8 a 10 para o arquivo ``stdafx.h``, contudo, no passo 9 coloque o valor ``Criar (/Yu)``.
 
-Após seguir esses passos, compile o projeto novamente e o executável será gerado na pasta ``bin``.
+## Como rodar
+
+Para rodar o projeto, basta abrir o arquivo de solução ``Demo_C++2017.sln`` no Visual Studio e compilar o projeto. O executável do projeto ``QtGui`` será gerado na pasta ``x64/Release``.
 
 ## Documentação API
 
@@ -406,3 +415,29 @@ A API fornece duas classes para gerenciar o processo de aquisição de imagens e
   // Iniciar captura de 15 frames
   xacquisition.Grab(num_frames);
 ```
+
+## Documentação interface gráfica
+
+### Personalizar a interface gráfica
+
+Com a extensão ``Visual Studio Tools`` instalada, acesse o arquivo ``QtGui.ui`` na pasta lógica ``Form Files``, localizada dentro da solução no ``Visual Studio 2019``.
+
+ ![form ui](./images/doc/form_ui.png)
+
+Na aba aberta do QtGui.ui, é possível personalizar elementos da interface arrastando e soltando componentes. Além disso, há a opção de incluir código CSS para estilização.
+
+### Manipulação de eventos
+
+A manipulação de eventos que ocorrem na interface pode ser feita por meio de slots na classe ``QtGui``. A classe ``QtGui`` está dividida em dois arquivos: ``QtGui.h`` e ``QtGui.cpp``. O arquivo ``QtGui.h`` contém o cabeçalho da classe, enquanto o arquivo ``QtGui.cpp`` possui a definição da classe.
+
+Para adicionar um slot, primeiro adicione o cabeçalho da função que manipulará o evento no cabeçalho da classe ``QtGui``, localizado no arquivo ``QtGui.h``.
+
+![slot no cabeçalho da classe QtGui](./images/doc/slot_cabecalho_QtGui.png)
+
+Em seguida, vincule a função com o evento da interface no construtor da classe ``QtGui`` no arquivo ``QtGui.cpp``.
+
+![Vincular slot por meio de signal](./images/doc/signal_slot.png)
+
+Por fim, implemente a função para manipular o evento da interface como um método da classe ``QtGui``.
+
+![Exemplo de implementação de slot](./images/doc/exemplo_slot.png)

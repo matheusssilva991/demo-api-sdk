@@ -21,7 +21,6 @@ class QtGui : public QMainWindow
 public:
     QtGui(QWidget *parent = nullptr);
     ~QtGui();
-
     QString get_file_name();
     uint32_t get_frame_count();
     uint32_t get_lost_frame_count();
@@ -29,7 +28,6 @@ public:
     std::string get_save_file_name();
     XImageHandler* get_ximage_handler();
     XEvent* get_xevent();
-
     void set_frame_count(uint32_t);
     void set_lost_frame_count(uint32_t);
     void set_is_save(bool);
@@ -53,19 +51,16 @@ private slots:
 
 private:
     Ui::QtGuiClass ui;
-
     CmdSink* cmd_sink;
 	ImgSink* img_sink;
     XImageHandler ximg_handle;
 	XEvent xevent;
-
     XGigFactory xfactory;
     XSystem* xsystem;
     XDevice* xdevice_ptr;
     XCommand xcommand;
     XFrameTransfer xtransfer;
     XAcquisition xacquisition;
-
 	QString file_name;
     uint32_t lost_frame_count; // Contagem de quadros perdidos
     uint32_t frame_count; // Contagem de quadros
