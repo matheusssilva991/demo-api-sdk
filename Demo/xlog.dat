@@ -1063,3 +1063,4 @@ Time: 2024-11-10 10:37:07 ms:504 Level: LOG INFO     Message: [0]
 Time: 2024-11-10 10:37:36 ms:812 Level: LOG ERROR    Message: XImg engine stop abnormally
 Time: 2024-11-10 10:37:37 ms:811 Level: LOG INFO     Message: [TP,W,0,0]
 Time: 2024-11-10 10:37:37 ms:889 Level: LOG INFO     Message: [0]
+Time: 2025-03-14 10:49:49 ms:385 Level: LOG ERROR    Message: XSystem socket fail to send command

@@ -223,8 +223,8 @@ int main(int argc, char** argv)
     			return 0;  // Termina a execução se não conseguir conectar
 			}
 
-			// device_count = xsystem.FindDevice();
-			device_count = 1;
+			device_count = xsystem.FindDevice();
+			// device_count = 1;
 
 			if (device_count <= 0)
 			{
