@@ -7,8 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Demo_C++2017", "Demo\Demo_C
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtGui", "QtGui\QtGui.vcxproj", "{A5FA458E-7658-468F-9F9B-2C1119134FD6}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QtGuiSetup", "QtGuiSetup\QtGuiSetup.vdproj", "{FA88C6D9-B621-4D0E-82F5-07C1B2907917}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,10 +31,6 @@ Global
 		{A5FA458E-7658-468F-9F9B-2C1119134FD6}.Release|x64.Build.0 = Release|x64
 		{A5FA458E-7658-468F-9F9B-2C1119134FD6}.Release|x86.ActiveCfg = Release|x64
 		{A5FA458E-7658-468F-9F9B-2C1119134FD6}.Release|x86.Build.0 = Release|x64
-		{FA88C6D9-B621-4D0E-82F5-07C1B2907917}.Debug|x64.ActiveCfg = Debug
-		{FA88C6D9-B621-4D0E-82F5-07C1B2907917}.Debug|x86.ActiveCfg = Debug
-		{FA88C6D9-B621-4D0E-82F5-07C1B2907917}.Release|x64.ActiveCfg = Release
-		{FA88C6D9-B621-4D0E-82F5-07C1B2907917}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
