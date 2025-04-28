@@ -39,6 +39,10 @@
 #pragma comment(lib, "..\\lib\\x86\\XLibDllKosti.lib")
 #endif
 
+#include <string>
+#include <thread> 
+#include <fstream>
+
 using namespace std;
 
 //Global variables
@@ -63,6 +67,10 @@ uint32_t frame_buffer_size = 400;
 
 void displayMenu();
 void clearBuffer();
+uint64_t getImageAverage(string file_name);
+HANDLE abrirPortaSerial(const char* porta);
+void enviarComando(HANDLE hSerial, const std::string& comando);
+
 
 //Uma classe para manipular eventos de comando do dispositivo
 class CmdSink :public IXCmdSink
@@ -190,8 +198,6 @@ int main(int argc, char** argv)
 	string send_str;
 	string recv_str;
 
-	displayMenu();
-
 	int input_char;
 
 	string offset_file;
@@ -204,7 +210,20 @@ int main(int argc, char** argv)
 	uint32_t cycle_num = 1;
 	uint32_t frame_num = 1;
 	uint32_t cycle_interval = 0;
-	uint32_t cycle_it = 0;
+	//uint32_t cycle_it = 0;
+	int32_t cycle_it = 0;
+
+	//Arduino Connection
+	const char* portaSerial = "\\\\.\\COM6";
+	HANDLE hSerial = abrirPortaSerial(portaSerial);
+	if (hSerial == INVALID_HANDLE_VALUE) {
+		cout << "Falha na conexão com o arduino\n\n";
+	}
+	else {
+		cout << "Conexão estabelecida com o Arduino\n\n";
+	}
+
+	displayMenu();
 
 	do
 	{
@@ -344,27 +363,47 @@ int main(int argc, char** argv)
 
 				xacquisition.Grab(frame_num);
 
-				//frame_complete.Wait();
+				frame_complete.Wait();
 			}
 			else {
+				uint64_t media_minima = 10000;
 				string save_file_name_base = save_file_name.substr(0, save_file_name.find(".dat"));
 
 				for (cycle_it = 0; cycle_it < cycle_num; cycle_it++)
 				{
-					cout << "Ciclo " << cycle_it << " completo" << endl;
 
 					save_file_name = save_file_name_base + "_cycle_" + to_string(cycle_it) + ".dat";
 
 					if (!ximg_handle.OpenFile(save_file_name.c_str()))
 					{
-						cout << "Falha ao abrir o arquivo de imagem, retornando ao menu principal" << endl;
-						break;
+						cout << "Falha ao abrir imagem, repetindo ciclo..." << endl;
+						cycle_it--;
+						continue;
 					}
 
-					xacquisition.Grab(frame_num);
+					//Isso aqui muda de ordem dependendo se o comportamento do grab() for sincrono ou não,
+					// coisa que não sei ainda
+					//MANDAR COMANDO PRO ARDUINO DISPARAR A FONTE (comando == 2)
+					enviarComando(hSerial, "2");
+					xacquisition.Grab(2);					
+					
+					
+					if (getImageAverage(save_file_name) < media_minima) {
+						cout << "Imagem abaixo da media desejada, repetindo ciclo..." << endl;
+						frame_complete.WaitTime(cycle_interval);
+						ximg_handle.CloseFile();
+						std::remove(save_file_name.c_str());
+						cycle_it--;
+						continue;
+					}
 
+					//MANDAR COMANDO PRO ARDUINO GIRAR A AMOSTRA EM X GRAUS (comando == 1)
+					enviarComando(hSerial, "1"); // envia o comando 1 primeiro
+					Sleep(100); // pequeno atraso para garantir separação dos comandos
+					enviarComando(hSerial, "72"); // envia o valor de graus depois
+
+					cout << "Ciclo " << cycle_it << " completo" << endl;
 					frame_complete.WaitTime(cycle_interval);
-					//frame_complete.Wait();
 				}
 
 				cout << endl << "Ciclos completos" << endl;
@@ -552,6 +591,23 @@ int main(int argc, char** argv)
 
 			break;
 
+		case 'A':
+		case 'a':
+			//Isso era pra tentar barrar uma conexão caso o arduino já estivesse conectado, mas não funcionou
+			/*if (hSerial != INVALID_HANDLE_VALUE) {
+				cout << "Arduino já está conectado à porta serial\n\n";
+				break;
+			}*/
+
+			hSerial = abrirPortaSerial(portaSerial);
+			if (hSerial == INVALID_HANDLE_VALUE) {
+				cout << "Falha na conexão com o arduino\n\n";
+			}
+			else {
+				cout << "Conexão estabelecida com o Arduino\n\n";
+			}
+			break;
+
 		default:
 			break;
 
@@ -564,6 +620,8 @@ int main(int argc, char** argv)
 	xcommand.Close();
 
 	xsystem.Close();
+
+	CloseHandle(hSerial);
 
 	return 1;
 }
@@ -585,9 +643,90 @@ void displayMenu()
 	cout << "C- Parâmetros de ciclo\n";
 	cout << "G- Ganho\n";
 	cout << "I- Tempo de integração\n";
+	cout << "A- Conectar ao arduino\n";
 	cout << "q- Sair do programa\n\n\n";
 }
 
 void clearBuffer() {
 	cin.ignore(10000, '\n');
 }
+
+HANDLE abrirPortaSerial(const char* porta) {
+	HANDLE hSerial = CreateFileA(porta, GENERIC_WRITE, 0, 0, OPEN_EXISTING, 0, 0);
+	if (hSerial == INVALID_HANDLE_VALUE) {
+		std::cerr << "Erro ao abrir a porta serial!" << std::endl;
+		return INVALID_HANDLE_VALUE;
+	}
+
+	DCB dcbSerialParams = { 0 };
+	dcbSerialParams.DCBlength = sizeof(dcbSerialParams);
+
+	if (!GetCommState(hSerial, &dcbSerialParams)) {
+		std::cerr << "Erro ao obter configurações da porta serial!" << std::endl;
+		CloseHandle(hSerial);
+		return INVALID_HANDLE_VALUE;
+	}
+
+	dcbSerialParams.BaudRate = CBR_9600;
+	dcbSerialParams.ByteSize = 8;
+	dcbSerialParams.StopBits = ONESTOPBIT;
+	dcbSerialParams.Parity = NOPARITY;
+
+	if (!SetCommState(hSerial, &dcbSerialParams)) {
+		std::cerr << "Erro ao configurar a porta serial!" << std::endl;
+		CloseHandle(hSerial);
+		return INVALID_HANDLE_VALUE;
+	}
+
+	return hSerial;
+}
+
+void enviarComando(HANDLE hSerial, const std::string& comando) {
+	if (hSerial == INVALID_HANDLE_VALUE) return;
+
+	std::string comandoFinal = comando + "\n";
+	DWORD bytesEnviados;
+	WriteFile(hSerial, comandoFinal.c_str(), comandoFinal.length(), &bytesEnviados, NULL);
+	std::cout << "Comando enviado: " << comando << std::endl;
+}
+
+uint64_t getImageAverage(string file_name) {
+	std::ifstream imagemDat;
+	uint32_t wait_seconds = 10;
+
+	for (int i = 0; i < wait_seconds; i++) {
+		imagemDat.open(file_name, std::ios::binary);
+		if (imagemDat.good())
+			break;
+
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+	}
+
+	if (!imagemDat.good()) {
+		return 0;
+	}
+
+	imagemDat.seekg(0, std::ios::end);
+	if (imagemDat.tellg() == 0) {
+		return 0;
+	}
+
+	uint64_t soma_total = 0;
+	uint16_t valor;
+
+	//ignorando 2 bits e ignorando o primeiro frame. pode depois ser substituido por sizeof(uint16_t)
+	imagemDat.ignore(2);
+	imagemDat.ignore(1200 * 1400 * 2);
+
+	for (int y = 0; y < 1200; y++) {
+		for (int x = 0; x < 1400; x++) {
+			imagemDat.read(reinterpret_cast<char*>(&valor), sizeof(valor));
+			soma_total += valor;
+		}
+	}
+
+	uint64_t media = soma_total / (1400 * 1200);
+	return media;
+}
+
+
