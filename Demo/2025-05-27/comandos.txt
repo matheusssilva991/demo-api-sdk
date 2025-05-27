@@ -1,0 +1,104 @@
+Por favor, insira o IP do host
+192.168.1.100
+
+Conexão estabelecida com o Arduino
+
+Bem-vindo ao programa de demonstração do X-LIB
+
+Por favor, escolha uma opção a partir das seguintes:
+
+1- Encontrar dispositivo
+2- Configurar dispositivo
+3- Abrir dispositivo
+4- Enviar comando ASII
+5- Capturar
+6- Parar
+7- Capturar e salvar
+8- Arquivo corrigido
+9- Fechar dispositivo
+B- Modo de binning
+C- Parâmetros de ciclo
+G- Ganho
+I- Tempo de integração
+A- Conectar ao arduino
+T- Tomografia
+q- Sair do programa
+
+
+Por favor, escolha uma opção: 1
+
+Dispositivo encontrado: 192.168.1.2
+Porta de comando: 3000
+Porta de imagem: 4001
+Por favor, escolha uma opção: 3
+
+Canal de comando aberto com sucesso
+Canal de imagem aberto com sucesso
+Por favor, escolha uma opção: c
+
+Por favor insira o número de quadros
+1
+Por favor insira o número de ciclos
+1
+
+Por favor, escolha uma opção: i
+
+Por favor insira o tempo de integração (us)
+10000000
+Tempo de integração definido com sucesso
+
+Por favor, escolha uma opção: g
+
+Por favor insira o modo de ganho:
+ 1: Baixo ganho
+ 256: Alto ganho
+1
+Ganho definido com sucesso
+
+Por favor, escolha uma opção: t
+
+Esperando 5 segundos (segurança)
+
+
+Grab 2025-05-27/imgH1.dat
+Comando enviado: 2
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Passou do wait
+Media de 2025-05-27/imgH1.txt: 2573
+Imagem abaixo da media
+Comando enviado: 1
+Comando enviado: 45
+Esperando 15 segundos...
+
+Grab 2025-05-27/imgH2.dat
+Comando enviado: 2
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Passou do wait
+Media de 2025-05-27/imgH2.txt: 2573
+Imagem abaixo da media
+Comando enviado: 1
+Comando enviado: 45
+Esperando 15 segundos...
+
+Grab 2025-05-27/imgH3.dat
+Comando enviado: 2
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Passou do wait
+Media de 2025-05-27/imgH3.txt: 2573
+Imagem abaixo da media
+Comando enviado: 1
+Comando enviado: 45
+Esperando 15 segundos...Por favor, escolha uma opção: q
+
+
+C:\Users\Administrador\Desktop\demo-api-sdk 2025-05-27\Demo\bin\x64\Debug\Demo_C++2017.exe (processo 20992) encerrado com o código 1 (0x1).
+Pressione qualquer tecla para fechar esta janela...

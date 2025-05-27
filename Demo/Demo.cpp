@@ -214,14 +214,14 @@ int main(int argc, char** argv)
 	int32_t cycle_it = 0;
 
 	//Arduino Connection
-	/*const char* portaSerial = "\\\\.\\COM6";
+	const char* portaSerial = "\\\\.\\COM5";
 	HANDLE hSerial = abrirPortaSerial(portaSerial);
 	if (hSerial == INVALID_HANDLE_VALUE) {
 		cout << "Falha na conexão com o arduino\n\n";
 	}
 	else {
 		cout << "Conexão estabelecida com o Arduino\n\n";
-	}*/
+	}
 
 	displayMenu();
 
@@ -364,6 +364,7 @@ int main(int argc, char** argv)
 				xacquisition.Grab(frame_num);
 
 				frame_complete.Wait();
+				std::cout << "Imagem criada: " << save_file_name << endl;
 			}
 			else {
 				uint64_t media_minima = 10000;
@@ -603,46 +604,54 @@ int main(int argc, char** argv)
 
 		case 'T':
 		case 't': {
-			frame_count = 0;
-			lost_frame_count = 0;
-			is_save = 1;
+			
 
 			ifstream text_file;
 			string text_file_name;
 			uint64_t media;
 
-			for (int i = 1; i <= 3; i++) {
+			cout << "Esperando 5 segundos (segurança)" << endl;
+			Sleep(5000);
+			
 
-				save_file_name = ("img" + (std::to_string(i)) + ".dat");
+			for (int i = 1; i <= 3; i++) {
+				frame_count = 0;
+				lost_frame_count = 0;
+				is_save = 1;
+
+				save_file_name = ("2025-05-27/imgH" + (std::to_string(i)) + ".dat");
 				if (!ximg_handle.OpenFile(save_file_name.c_str()))
 				{
 					cout << "Falha ao abrir o arquivo de imagem, retornando ao menu principal" << endl;
 					break;
 				}
 
-				std::cout << "Grab " << save_file_name << std::endl;
-				//xacquisition.Grab(frame_num);
-				//frame_complete.WaitTime(cycle_interval);
+				std::cout << endl<< endl << "Grab " << save_file_name << std::endl;
 				xacquisition.Grab(1);
-				frame_complete.WaitTime(3000);
+				//enviarComando(hSerial, "1"); // envia o comando 1 primeiro
+				Sleep(3000);
+				enviarComando(hSerial, "2"); // envia o comando 1 primeiro
+				frame_complete.Wait();
 
-				text_file_name = ("img" + (std::to_string(i)) + ".txt");
-				text_file.open(text_file_name, std::ios::binary);
+				Sleep(5000);
+				cout << "Passou do wait";
 
-				std::cout << "Esperando Grab Complete";
-				while (!text_file.good()) {
-					std::cout << ".";
-					std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-					text_file.open(text_file_name, std::ios::binary);
-				}
-				
 				media = getImageAverage(save_file_name);
 
 				std::cout << "\nMedia de "<< save_file_name << ": " << media << std::endl;
 				if (media < 10000)
 					std::cout << "Imagem abaixo da media" << std::endl;
 				else
-					std::cout << "Imagem igual ou acima da media" << std::endl;
+					std::cout << "Imagem igual ou acima da media" << std::endl<<endl<<endl;
+
+				////MANDAR COMANDO PRO ARDUINO GIRAR A AMOSTRA EM X GRAUS (comando == 1)
+				enviarComando(hSerial, "1"); // envia o comando 1 primeiro
+				Sleep(1000); // pequeno atraso para garantir separação dos comandos
+				enviarComando(hSerial, "45"); // envia o valor de graus depois
+
+				std::cout << "Esperando 15 segundos...";
+				Sleep(15000); // pequeno atraso para garantir separação dos comandos
+
 			}
 
 			break;
@@ -661,7 +670,7 @@ int main(int argc, char** argv)
 
 	xsystem.Close();
 
-	//CloseHandle(hSerial);
+	CloseHandle(hSerial);
 
 	return 1;
 }
@@ -683,7 +692,7 @@ void displayMenu()
 	cout << "C- Parâmetros de ciclo\n";
 	cout << "G- Ganho\n";
 	cout << "I- Tempo de integração\n";
-	//cout << "A- Conectar ao arduino\n";
+	cout << "A- Conectar ao arduino\n";
 	cout << "T- Tomografia\n";
 	cout << "q- Sair do programa\n\n\n";
 
