@@ -382,15 +382,6 @@ int main(int argc, char** argv)
 						continue;
 					}
 
-					//MANDAR COMANDO PRO ARDUINO DISPARAR A FONTE (comando == 2)
-					/*enviarComando(hSerial, "2");
-					xacquisition.Grab(2);	*/				
-
-					////MANDAR COMANDO PRO ARDUINO GIRAR A AMOSTRA EM X GRAUS (comando == 1)
-					//enviarComando(hSerial, "1"); // envia o comando 1 primeiro
-					//Sleep(100); // pequeno atraso para garantir separação dos comandos
-					//enviarComando(hSerial, "72"); // envia o valor de graus depois
-
 					cout << "Ciclo " << cycle_it << " completo" << endl;
 					frame_complete.WaitTime(cycle_interval);
 
@@ -605,14 +596,12 @@ int main(int argc, char** argv)
 		case 'T':
 		case 't': {
 			
-
 			ifstream text_file;
 			string text_file_name;
 			uint64_t media;
 
 			cout << "Esperando 5 segundos (segurança)" << endl;
 			Sleep(5000);
-			
 
 			for (int i = 1; i <= 3; i++) {
 				frame_count = 0;
@@ -626,34 +615,31 @@ int main(int argc, char** argv)
 					break;
 				}
 
-				std::cout << endl<< endl << "Grab " << save_file_name << std::endl;
+				std::cout << endl << endl << "----------------------" << endl;
+				std::cout << "Grabbing " << save_file_name << std::endl;
 				xacquisition.Grab(1);
-				//enviarComando(hSerial, "1"); // envia o comando 1 primeiro
 				Sleep(3000);
-				enviarComando(hSerial, "2"); // envia o comando 1 primeiro
+				enviarComando(hSerial, "2"); //Dispara a fonte
 				frame_complete.Wait();
 
-				Sleep(5000);
-				cout << "Passou do wait";
-
+				Sleep(5000); //Garantir que o handler fez tudo que precisava. Talvez isso não seja necessário; testar
+				ximg_handle.CloseFile(); //Fazer o imghandler liberar a imagem
 				media = getImageAverage(save_file_name);
-
-				std::cout << "\nMedia de "<< save_file_name << ": " << media << std::endl;
-				if (media < 10000)
-					std::cout << "Imagem abaixo da media" << std::endl;
-				else
-					std::cout << "Imagem igual ou acima da media" << std::endl<<endl<<endl;
-
-				////MANDAR COMANDO PRO ARDUINO GIRAR A AMOSTRA EM X GRAUS (comando == 1)
-				enviarComando(hSerial, "1"); // envia o comando 1 primeiro
-				Sleep(1000); // pequeno atraso para garantir separação dos comandos
-				enviarComando(hSerial, "45"); // envia o valor de graus depois
-
 				std::cout << "Esperando 15 segundos...";
-				Sleep(15000); // pequeno atraso para garantir separação dos comandos
+				Sleep(15000);
 
+				if (media < 10000) {
+					i--;
+					std::cout << endl << "----------------------" << endl;
+					continue;
+				}
+				else {
+					enviarComando(hSerial, "1"); //Gira a amostra
+					Sleep(1000);
+					enviarComando(hSerial, "45");
+					std::cout << endl << "----------------------" << endl;
+				}
 			}
-
 			break;
 		}
 			
@@ -692,10 +678,9 @@ void displayMenu()
 	cout << "C- Parâmetros de ciclo\n";
 	cout << "G- Ganho\n";
 	cout << "I- Tempo de integração\n";
-	cout << "A- Conectar ao arduino\n";
+	//cout << "A- Conectar ao arduino\n";
 	cout << "T- Tomografia\n";
 	cout << "q- Sair do programa\n\n\n";
-
 }
 
 void clearBuffer() {
@@ -759,7 +744,15 @@ uint64_t getImageAverage(string file_name) {
 		}
 	}
 
+	imagemDat.close();
+
 	uint64_t media = soma_total / (1400 * 1200);
+
+	std::cout << "\nMedia de " << save_file_name << ": " << media << std::endl;
+	if (media < 10000)
+		std::cout << "Imagem abaixo da media, repetindo processo" << std::endl;
+	else
+		std::cout << "Imagem igual ou acima da media" << std::endl;
 	return media;
 }
 
