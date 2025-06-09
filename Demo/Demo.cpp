@@ -596,26 +596,24 @@ int main(int argc, char** argv)
 		case 'T':
 		case 't': {
 			
-			ifstream text_file;
-			string text_file_name;
 			uint64_t media;
-
+			uint32_t lost_cycles = 0;
 			cout << "Esperando 5 segundos (segurança)" << endl;
 			Sleep(5000);
 
-			for (int i = 1; i <= 3; i++) {
+			for (int i = 1; i <= 100; i++) {
 				frame_count = 0;
 				lost_frame_count = 0;
 				is_save = 1;
 
-				save_file_name = ("2025-05-27/imgH" + (std::to_string(i)) + ".dat");
+				std::cout << endl << endl << "----------------------" << endl;
+				save_file_name = ("2025-06-10/img" + (std::to_string(i)) + ".dat");
 				if (!ximg_handle.OpenFile(save_file_name.c_str()))
 				{
 					cout << "Falha ao abrir o arquivo de imagem, retornando ao menu principal" << endl;
 					break;
 				}
 
-				std::cout << endl << endl << "----------------------" << endl;
 				std::cout << "Grabbing " << save_file_name << std::endl;
 				xacquisition.Grab(1);
 				Sleep(3000);
@@ -625,8 +623,8 @@ int main(int argc, char** argv)
 				Sleep(5000); //Garantir que o handler fez tudo que precisava. Talvez isso não seja necessário; testar
 				ximg_handle.CloseFile(); //Fazer o imghandler liberar a imagem
 				media = getImageAverage(save_file_name);
-				std::cout << "Esperando 15 segundos...";
-				Sleep(15000);
+				std::cout << "Esperando 90 segundos...";
+				Sleep(90000);
 
 				if (media < 10000) {
 					i--;
@@ -636,13 +634,51 @@ int main(int argc, char** argv)
 				else {
 					enviarComando(hSerial, "1"); //Gira a amostra
 					Sleep(1000);
-					enviarComando(hSerial, "45");
+					enviarComando(hSerial, "3.6");
 					std::cout << endl << "----------------------" << endl;
 				}
 			}
+
+			cout << endl << "Tomografia finalizada" << endl;
+			cout << "Ciclos perdidos: " << lost_cycles << endl << endl;
 			break;
 		}
+		
+		case 'P':
+		case 'p': {
+			frame_count = 0;
+			lost_frame_count = 0;
+
+			//Definindo Ganho como LOW
+			if (1 == xcommand.SetPara(XPARA_GAIN_RANGE, 1))
+			{
+				cout << "Ganho (Low) definido com sucesso\n\n";
+			}
+			else
+			{
+				cout << "Falha ao definir o ganho\n\n";
+			}
+
+			//Definindo Integration Time como 10000000 us
+			if (1 == xcommand.SetPara(XPARA_FRAME_PERIOD, 10000000))
+			{
+				cout << "Tempo de integração (10000000 us) definido com sucesso" << endl << endl;
+			}
+			else
+			{
+				cout << "Falha ao definir o tempo de integração" << endl << endl;
+			}
 			
+			//Definindo 1 frame, 1 numero de ciclo, 3000 ms de cycle interval
+			frame_num = 1;
+			cycle_num = 1;
+			cycle_interval = 3000;
+
+			cout << "Numero de frame por ciclo (1) definido com sucesso" << endl;
+			cout << "Numero de ciclos (1) definido com sucesso" << endl;
+			cout << "Intervalo entre ciclos (3000 ms) definido com sucesso" << endl << endl;
+		}
+
 		default:
 			break;
 
@@ -680,6 +716,7 @@ void displayMenu()
 	cout << "I- Tempo de integração\n";
 	//cout << "A- Conectar ao arduino\n";
 	cout << "T- Tomografia\n";
+	cout << "P- Configurações padrão\n";
 	cout << "q- Sair do programa\n\n\n";
 }
 
@@ -748,9 +785,9 @@ uint64_t getImageAverage(string file_name) {
 
 	uint64_t media = soma_total / (1400 * 1200);
 
-	std::cout << "\nMedia de " << save_file_name << ": " << media << std::endl;
+	std::cout << "\nMedia de " << file_name << ": " << media << std::endl;
 	if (media < 10000)
-		std::cout << "Imagem abaixo da media, repetindo processo" << std::endl;
+		std::cout << "Imagem abaixo da media, repetindo processo..." << std::endl;
 	else
 		std::cout << "Imagem igual ou acima da media" << std::endl;
 	return media;
