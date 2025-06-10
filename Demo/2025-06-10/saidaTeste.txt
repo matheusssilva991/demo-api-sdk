@@ -1,0 +1,149 @@
+Por favor, escolha uma opção: 7
+
+Por favor coloque o nome do arquivo para salvar, *.dat
+2025-06-10/teste5.dat
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Imagem criada: 2025-06-10/teste5.txt
+Por favor, escolha uma opção: 7
+
+Por favor coloque o nome do arquivo para salvar, *.dat
+2025-06-10/teste5.dat
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Imagem criada: 2025-06-10/teste5.txt
+Por favor, escolha uma opção: 7
+
+Por favor coloque o nome do arquivo para salvar, *.dat
+2025-06-10/teste5.dat
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Imagem criada: 2025-06-10/teste5.txt
+Por favor, escolha uma opção: 7
+
+Por favor coloque o nome do arquivo para salvar, *.dat
+2025-06-10/teste6.dat
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Imagem criada: 2025-06-10/teste6.txt
+Por favor, escolha uma opção: t
+
+Esperando 5 segundos (segurança)
+
+
+----------------------
+Grabbing 2025-06-10/img1.dat
+Shutting
+Comando enviado: 2
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Arquivo de media: 2025-06-10/img1.dat
+
+Media de 2025-06-10/img1.dat: 13662
+Imagem igual ou acima da media
+Ciclos erro Total : 0 Consecutivos: 0
+Esperando 180000 milissegundos...Comando enviado: 1
+Comando enviado: 7.2
+
+----------------------
+
+
+----------------------
+Grabbing 2025-06-10/img2.dat
+Shutting
+Comando enviado: 2
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Arquivo de media: 2025-06-10/img2.dat
+
+Media de 2025-06-10/img2.dat: 1418
+Imagem abaixo da media, repetindo processo...
+Ciclos erro Total : 0 Consecutivos: 0
+Esperando 180000 milissegundos...
+----------------------
+
+
+----------------------
+Grabbing 2025-06-10/img2.dat
+Shutting
+Comando enviado: 2
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Arquivo de media: 2025-06-10/img2.dat
+
+Media de 2025-06-10/img2.dat: 1421
+Imagem abaixo da media, repetindo processo...
+Ciclos erro Total : 1 Consecutivos: 1
+Esperando 180000 milissegundos...
+----------------------
+
+
+----------------------
+Grabbing 2025-06-10/img2.dat
+Shutting
+Comando enviado: 2
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Arquivo de media: 2025-06-10/img2.dat
+
+Media de 2025-06-10/img2.dat: 1420
+Imagem abaixo da media, repetindo processo...
+Ciclos erro Total : 2 Consecutivos: 2
+Esperando 180000 milissegundos...
+----------------------
+
+
+----------------------
+Grabbing 2025-06-10/img2.dat
+Shutting
+Comando enviado: 2
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Arquivo de media: 2025-06-10/img2.dat
+
+Media de 2025-06-10/img2.dat: 1419
+Imagem abaixo da media, repetindo processo...
+Ciclos erro Total : 3 Consecutivos: 3
+Esperando 180000 milissegundos...
+----------------------
+
+
+----------------------
+Grabbing 2025-06-10/img2.dat
+Shutting
+Comando enviado: 2
+
+Frame 0 ready, width 1400, height 1200,  lost line 0
+OnXERROR: 27, XImg engine stop abnormally
+Grab complete.
+Arquivo de media: 2025-06-10/img2.dat
+
+Media de 2025-06-10/img2.dat: 1421
+Imagem abaixo da media, repetindo processo...
+Ciclos erro Total : 4 Consecutivos: 4
+Esperando 180000 milissegundos...
+----------------------
+Erro no Raios X
+
+Tomografia finalizada
+Ciclos ruins: 5
+
+Por favor, escolha uma opção:
