@@ -214,7 +214,7 @@ int main(int argc, char** argv)
 	int32_t cycle_it = 0;
 
 	//Arduino Connection
-	const char* portaSerial = "\\\\.\\COM5";
+	const char* portaSerial = "\\\\.\\COM4";
 	HANDLE hSerial = abrirPortaSerial(portaSerial);
 	if (hSerial == INVALID_HANDLE_VALUE) {
 		cout << "Falha na conexão com o arduino\n\n";
@@ -416,7 +416,7 @@ int main(int argc, char** argv)
 			cout << "Por favor, insira o nome do arquivo de offset, *.dat \n";
 
 			cin >> offset_file;
-
+		
 			if (!ximg_handle.ReadFile(offset_file.c_str()))
 			{
 				cout << "Falha ao abrir o arquivo de offset, retornando ao menu principal" << endl;
@@ -602,13 +602,13 @@ int main(int argc, char** argv)
 
 
 			//PARAMETROS
-			int numeroFramesMax = 50;
-			int intervaloDeEspera = 180000; //Em milissegundos
+			int numeroFramesMax = 200;
+			int intervaloDeEspera = 3000; //Em milissegundos
 			int conscutiveErrors = 0;
 
 
-			cout << "Esperando 5 segundos (segurança)" << endl;
-			Sleep(5000);
+			cout << "Esperando 4 segundos (segurança)" << endl;
+			Sleep(4000);
 
 			for (int i = 1; i <= numeroFramesMax; i++) {
 				frame_count = 0;
@@ -616,7 +616,7 @@ int main(int argc, char** argv)
 				is_save = 1;
 
 				std::cout << endl << endl << "----------------------" << endl;
-				save_file_name = ("2025-06-10/img" + (std::to_string(i)) + ".dat");
+				save_file_name = ("20250904/img" + (std::to_string(i)) + ".dat");
 				local_file_name = save_file_name;
 
 				if (!ximg_handle.OpenFile(save_file_name.c_str()))
@@ -627,19 +627,18 @@ int main(int argc, char** argv)
 
 				std::cout << "Grabbing " << save_file_name << std::endl;
 				xacquisition.Grab(1);
-				Sleep(3000);
+				//Sleep(3000);
 				std::cout << "Shutting " << std::endl;
-				enviarComando(hSerial, "2"); //Dispara a fonte
+				//enviarComando(hSerial, "2"); //Dispara a fonte
 				frame_complete.Wait();
 
-				Sleep(5000); //Garantir que o handler fez tudo que precisava. Talvez isso não seja necessário; testar
+				//Sleep(5000); //Garantir que o handler fez tudo que precisava. Talvez isso não seja necessário; testar
 				ximg_handle.CloseFile(); //Fazer o imghandler liberar a imagem
-				media = getImageAverage(local_file_name);
-				std::cout << "Ciclos erro Total : " << bad_cycles << " Consecutivos: " << conscutiveErrors << endl;
-				std::cout << "Esperando " << intervaloDeEspera << " milissegundos...";
-				Sleep(intervaloDeEspera);
+				//media = getImageAverage(local_file_name);
+				//std::cout << "Ciclos erro Total : " << bad_cycles << " Consecutivos: " << conscutiveErrors << endl;
+				
 
-				if (media < 10000) {
+				/*if (media < 10000) {
 					i--;
 					bad_cycles++;
 					std::cout << endl << "----------------------" << endl;
@@ -649,18 +648,20 @@ int main(int argc, char** argv)
 						break;
 					}
 					continue;
-				}
-				else {
-					enviarComando(hSerial, "1"); //Gira a amostra
-					conscutiveErrors = 0;
-					Sleep(1000);
-					enviarComando(hSerial, "7.2");
-					std::cout << endl << "----------------------" << endl;
-				}
+				}*/
+				//else {
+				enviarComando(hSerial, "1"); //Gira a amostra
+				//conscutiveErrors = 0;
+				Sleep(1000);
+				enviarComando(hSerial, "1.8");
+				std::cout << endl << "----------------------" << endl;
+				std::cout << "Esperando " << intervaloDeEspera << " milissegundos...";
+				Sleep(intervaloDeEspera);
+				//}
 			}
 
 			cout << endl << "Tomografia finalizada" << endl;
-			cout << "Ciclos ruins: " << bad_cycles << endl << endl;
+			//cout << "Ciclos ruins: " << bad_cycles << endl << endl;
 			break;
 		}
 		
@@ -702,11 +703,76 @@ int main(int argc, char** argv)
 		}
 
 		case 'm':
-		case 'M' : {
+		case 'M': {
 			string file_name_media;
 			cout << "Por favor coloque o nome do arquivo para calcular a media, *.dat \n";
 			cin >> file_name_media;
 			uint64_t media = getImageAverage(file_name_media);
+			break;
+		}
+
+		case 'f':
+		case 'F': {
+
+			string local_file_name;
+
+			//PARAMETROS
+			int numeroFramesMax = 5;
+			int intervaloDeEspera = 4000; //Em milissegundos
+
+			cout << "Esperando 3 segundos (segurança)" << endl;
+			Sleep(3000);
+
+			for (int i = 1; i <= numeroFramesMax; i++) {
+				frame_count = 0;
+				is_save = 1;
+
+				std::cout << endl << endl << "----------------------" << endl;
+				save_file_name = ("20250904/flat" + (std::to_string(i)) + ".dat");
+				local_file_name = save_file_name;
+
+				if (!ximg_handle.OpenFile(save_file_name.c_str()))
+				{
+					cout << "Falha ao abrir o arquivo de imagem, retornando ao menu principal" << endl;
+					break;
+				}
+				
+				std::cout << "Grabbing " << save_file_name << std::endl;
+				xacquisition.Grab(1);
+				//TESTE Sleep(3000);
+				std::cout << "Shooting " << std::endl;
+				//enviarComando(hSerial, "2"); //Dispara a fonte
+				frame_complete.Wait();
+
+				//Sleep(5000); //Garantir que o handler fez tudo que precisava. Talvez isso não seja necessário; testar
+				ximg_handle.CloseFile(); //Fazer o imghandler liberar a imagem
+				//media = getImageAverage(local_file_name);
+				//std::cout << "Ciclos erro Total : " << bad_cycles << " Consecutivos: " << conscutiveErrors << endl;
+				std::cout << "Esperando " << intervaloDeEspera << " milissegundos...";
+				Sleep(intervaloDeEspera);
+
+				//if (media < 10000) {
+				//	i--;
+				//	bad_cycles++;
+				//	std::cout << endl << "----------------------" << endl;
+				//	conscutiveErrors++;
+				//	if (conscutiveErrors == 5) {
+				//		std::cout << "Erro no Raios X" << endl;
+				//		break;
+				//	}
+				//	continue;
+				//}
+				//else {
+				//	enviarComando(hSerial, "1"); //Gira a amostra
+				//	conscutiveErrors = 0;
+				//	Sleep(1000);
+				//	enviarComando(hSerial, "7.2");
+				//	std::cout << endl << "----------------------" << endl;
+				//}
+			}
+
+			cout << endl << "Flats obtidos" << endl;
+			//cout << "Ciclos ruins: " << bad_cycles << endl << endl;
 			break;
 		}
 
@@ -749,6 +815,8 @@ void displayMenu()
 	cout << "T- Tomografia\n";
 	cout << "M- Media\n";
 	cout << "P- Configurações padrão\n";
+	cout << "F- FLATS\n";
+
 	cout << "q- Sair do programa\n\n\n";
 }
 
